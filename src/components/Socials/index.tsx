@@ -8,7 +8,11 @@ const index = () => {
   return (
     <>
       {config.socials.map(({ platform, link }, i) => (
-        <Link href={link} key={i} className="h-7 w-7">
+        <Link
+          href={link}
+          key={i}
+          className="h-7 w-7 transition-colors hover:text-light"
+        >
           <li>
             {(() => {
               switch (platform) {
