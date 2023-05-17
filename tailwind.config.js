@@ -13,7 +13,18 @@ module.exports = {
       sans: ["var(--font-montserrat)", ...defaultTheme.fontFamily.sans],
       serif: ["var(--font-reckless)", ...defaultTheme.fontFamily.serif],
     },
-    extend: {},
+    extend: {
+      colors: {
+        darker: "#362009",
+        dark: "#222222",
+        light: "#E0B385",
+        lighter: "#F5E0CC",
+      },
+      spacing: {
+        "col-all": "10%",
+        "col-main": "20%",
+      },
+    },
   },
   plugins: [],
 }
