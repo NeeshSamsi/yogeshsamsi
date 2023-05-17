@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require("tailwindcss/defaultTheme")
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
@@ -21,10 +21,10 @@ module.exports = {
         lighter: "#F5E0CC",
       },
       spacing: {
-        "col-all": "10%",
+        "col-wide": "10%",
         "col-main": "20%",
       },
     },
   },
   plugins: [],
-}
+};
