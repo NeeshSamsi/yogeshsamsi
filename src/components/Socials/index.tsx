@@ -11,7 +11,7 @@ const index = () => {
         <Link
           href={link}
           key={i}
-          className="h-7 w-7 transition-colors hover:text-light"
+          className="h-8 w-8 transition-colors hover:text-light md:h-6 md:w-6 lg:h-7 lg:w-7"
         >
           <li>
             {(() => {
