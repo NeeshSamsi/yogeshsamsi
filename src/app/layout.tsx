@@ -1,14 +1,15 @@
-import "./globals.css";
-import { Montserrat } from "next/font/google";
-import localFont from "next/font/local";
-import * as config from "@/lib/config";
-import Navbar from "@/components/Navbar";
+import "./globals.css"
+import { Montserrat } from "next/font/google"
+import localFont from "next/font/local"
+import * as config from "@/lib/config"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-montserrat",
-});
+})
 
 const reckless = localFont({
   src: [
@@ -29,9 +30,9 @@ const reckless = localFont({
     },
   ],
   variable: "--font-reckless",
-});
+})
 
-const { title, description } = config.meta.home;
+const { title, description } = config.meta.home
 
 export const metadata = {
   metadataBase: new URL(config.url),
@@ -57,12 +58,12 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -71,7 +72,8 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
-  );
+  )
 }
