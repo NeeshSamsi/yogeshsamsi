@@ -54,10 +54,10 @@ export const content = {
 
   footer: {
     mailingList: {
-      heading: "",
-      subheading: "",
+      heading: "Join the Mailing List",
+      subheading: "Receive updates on schedule, content & upcoming events.",
     },
-    contactHeading: "Reach out:",
+    contactHeading: "Find me here:",
   },
 }
 
