@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
   content: [
@@ -20,11 +20,17 @@ module.exports = {
         light: "#E0B385",
         lighter: "#F5E0CC",
       },
-      spacing: {
-        "col-wide": "10%",
-        "col-main": "20%",
+      keyframes: {
+        nav: {
+          from: { "clip-path": "inset(0 0 100% 0)" },
+          to: { "clip-path": "inset(0 0 0 0)" },
+        },
+      },
+      animation: {
+        "nav-show": "nav 1000ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "nav-hide": "nav 1000ms cubic-bezier(0.4, 0, 0.2, 1) 1 reverse",
       },
     },
   },
-  plugins: [require('tailwind-hamburgers')],
-};
+  plugins: [require("tailwind-hamburgers")],
+}
