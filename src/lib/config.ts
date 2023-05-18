@@ -1,5 +1,7 @@
 let inDevEnv
-process && process.env.NODE_ENV === "development" ? (inDevEnv = true) : (inDevEnv = false)
+process && process.env.NODE_ENV === "development"
+  ? (inDevEnv = true)
+  : (inDevEnv = false)
 
 export const dev = inDevEnv
 
@@ -61,7 +63,7 @@ export const content = {
 
 export const meta = {
   home: {
-    title: "",
+    title: "Yogesh Samsi",
     description: "",
   },
 }
