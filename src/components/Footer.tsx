@@ -5,13 +5,13 @@ import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:px-[10vw] lg:flex-row lg:items-start lg:gap-8">
+    <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:flex-row md:items-start md:gap-6 md:px-[10vw]">
       <MailingList />
-      <div className="flex flex-col items-center gap-4 lg:items-start">
+      <div className="flex flex-col items-center gap-4 md:items-start">
         <p className="font-serif text-xl font-semibold tracking-wider">
           {config.content.footer.contactHeading}
         </p>
-        <ul className="flex gap-4 lg:gap-6">
+        <ul className="flex gap-4 md:gap-6">
           <Socials hoverClr="text-darker/80" size="lg" />
         </ul>
         <a href={`mailto:${config.email}`} className="hover:underline">
@@ -19,7 +19,7 @@ const Footer = () => {
         </a>
       </div>
       <div>
-        <ul className="flex flex-col items-center gap-3 uppercase lg:items-start">
+        <ul className="flex flex-col items-center gap-3 uppercase md:items-start">
           {config.navLinks.map(({ path, text, newWindow }, i) => (
             <li key={i} className="transition-colors hover:text-darker/80">
               <Link href={path} target={newWindow ? "_blank" : "_self"}>
@@ -35,7 +35,7 @@ const Footer = () => {
 
 const MailingList = () => {
   return (
-    <form className="flex w-[30ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6">
+    <form className="flex w-[30ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
       <div>
         <h6 className="mb-2 font-serif text-xl font-bold tracking-wider">
           {config.content.footer.mailingList.heading}
