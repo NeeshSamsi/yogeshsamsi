@@ -18,7 +18,7 @@ const Navbar = () => {
     <div
       className={`${isHamburgerOpen && "h-screen"} sticky inset-0 text-lighter`}
     >
-      <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 text-sm md:px-[10vw] lg:text-base">
+      <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-[10vw]">
         <div>
           <ul className="hidden gap-4 md:flex lg:gap-6">
             {config.navLinks.map(({ path, text, newWindow }, i) => (
@@ -40,12 +40,12 @@ const Navbar = () => {
         </div>
         <div>
           <ul className="hidden gap-4 md:flex lg:gap-6">
-            <Socials />
+            <Socials hoverClr="text-light" />
           </ul>
 
           <div
-            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham tham-active"
+            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham-active tham"
             }`}
             onClick={handleHamburger}
           >
@@ -77,7 +77,7 @@ const Navbar = () => {
           ))}
         </ul>
         <ul className="flex gap-6">
-          <Socials />
+          <Socials hoverClr="text-light" />
         </ul>
       </div>
     </div>
