@@ -32,5 +32,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-hamburgers")],
+  plugins: [require("tailwind-hamburgers"), require("@tailwindcss/forms")],
 }
