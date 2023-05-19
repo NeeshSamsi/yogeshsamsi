@@ -20,6 +20,10 @@ module.exports = {
         light: "#E0B385",
         lighter: "#F5E0CC",
       },
+      spacing: {
+        "col-outer": "6vw",
+        "col-inner": "12vw",
+      },
       keyframes: {
         nav: {
           from: { "clip-path": "inset(0 0 100% 0)" },
