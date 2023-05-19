@@ -5,7 +5,7 @@ import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:flex-row md:items-start md:gap-6 md:px-[10vw]">
+    <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:flex-row md:items-start md:gap-6 md:px-col-outer">
       <MailingList />
       <div className="flex flex-col items-center gap-4 md:items-start">
         <p className="font-serif text-xl font-semibold tracking-wider">
@@ -35,7 +35,7 @@ const Footer = () => {
 
 const MailingList = () => {
   return (
-    <form className="flex w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
+    <form className="flex max-w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
       <div>
         <h6 className="mb-2 font-serif text-2xl font-bold tracking-wider">
           {config.content.footer.mailingList.heading}

@@ -20,7 +20,7 @@ const Navbar = () => {
         isHamburgerOpen && "h-screen"
       } sticky inset-0 z-50 text-lighter`}
     >
-      <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-[10vw]">
+      <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-col-outer">
         <div>
           <ul className="hidden gap-4 md:flex lg:gap-6">
             {config.navLinks.map(({ path, text, newWindow }, i) => (
