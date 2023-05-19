@@ -35,9 +35,9 @@ const Footer = () => {
 
 const MailingList = () => {
   return (
-    <form className="flex w-[30ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
+    <form className="flex w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
       <div>
-        <h6 className="mb-2 font-serif text-xl font-bold tracking-wider">
+        <h6 className="mb-2 font-serif text-2xl font-bold tracking-wider">
           {config.content.footer.mailingList.heading}
         </h6>
         <p className="text-sm">
