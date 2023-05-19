@@ -16,7 +16,9 @@ const Navbar = () => {
 
   return (
     <div
-      className={`${isHamburgerOpen && "h-screen"} sticky inset-0 text-lighter`}
+      className={`${
+        isHamburgerOpen && "h-screen"
+      } sticky inset-0 z-50 text-lighter`}
     >
       <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-[10vw]">
         <div>
@@ -44,8 +46,8 @@ const Navbar = () => {
           </ul>
 
           <div
-            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham-active tham"
+            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham tham-active"
             }`}
             onClick={handleHamburger}
           >
