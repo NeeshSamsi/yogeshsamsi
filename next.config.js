@@ -1,8 +1,10 @@
+// const { withPlaiceholder } = require("@plaiceholder/next")
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+// module.exports = withPlaiceholder({
+module.exports = {
   images: {
     domains: ["iili.io"],
   },
 }
-
-module.exports = nextConfig
+// })
