@@ -31,14 +31,16 @@ export const twitterUsername = ""
 export const content = {
   home: {
     hero: {
-      imgSrc: 'https://iili.io/HgRpSbn.webp',
-      mobileImgSrc: 'https://iili.io/Hg5CZ67.webp'
+      imgSrc: "https://iili.io/HgRpSbn.webp",
+      mobileImgSrc: "https://iili.io/Hg5CZ67.webp",
     },
     about: {
-      main: "",
-      soloist: "",
-      accompanist: "",
-      guru: "",
+      main: "A unique tabla artist who has simultaneously scaled unprecedented heights of achievement in solo performance, accompaniment, and pedagogy.",
+      soloist:
+        "Combines tradition & innovation in Punjab Gharana, mastering a vast repertoire. He revives lost partition-era treasures and presents a fresh perspective that captures Ustad Allah Rakha's philosophy and rhythmic essence.",
+      accompanist:
+        "Provides sensitive and thoughtful tabla accompaniment to leading vocalists and instrumentalists, reflecting his refined approach groomed under his father, stalwart vocalist Pandit Dinkar Kaikini.",
+      guru: "Dedicated to the future of tabla in his role as a Guru, guiding a new generation of accomplished professionals. His pedagogical approach fosters creative, independent thinkers to propagate and evolve the Gharana.",
     },
     press: [
       {
