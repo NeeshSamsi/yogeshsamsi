@@ -1,7 +1,7 @@
 import * as config from "@/lib/config"
 import Socials from "./Socials"
 import Link from "next/link"
-import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
+import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
 
 const Footer = () => {
   return (
