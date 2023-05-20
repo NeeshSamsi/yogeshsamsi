@@ -30,6 +30,10 @@ export const twitterUsername = ""
 
 export const content = {
   home: {
+    hero: {
+      imgSrc: 'https://iili.io/HgRpSbn.webp',
+      mobileImgSrc: 'https://iili.io/Hg5CZ67.webp'
+    },
     about: {
       main: "",
       soloist: "",
