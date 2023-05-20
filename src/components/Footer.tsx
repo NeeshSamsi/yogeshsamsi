@@ -46,7 +46,7 @@ const MailingList = () => {
       </div>
       <div className="relative flex items-center gap-4">
         <UserIcon className="h-6 w-6" />
-        <div className="relative w-full">
+        <div className="relative w-full cursor-text">
           <input
             type="text"
             id="name"
@@ -56,7 +56,7 @@ const MailingList = () => {
           />
           <label
             htmlFor="name"
-            className="absolute -top-3 left-0 w-full text-sm text-darker transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/70 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker"
+            className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/70 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker"
           >
             Full name
           </label>
@@ -64,7 +64,7 @@ const MailingList = () => {
       </div>
       <div className="flex items-center gap-4">
         <EnvelopeIcon className="h-6 w-6" />
-        <div className="relative w-full">
+        <div className="relative w-full cursor-text">
           <input
             type="email"
             id="email"
@@ -74,7 +74,7 @@ const MailingList = () => {
           />
           <label
             htmlFor="email"
-            className="absolute -top-3 left-0 w-full text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker"
+            className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker"
           >
             Email address
           </label>
