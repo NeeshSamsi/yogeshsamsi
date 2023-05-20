@@ -68,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${reckless.variable} bg-lighter font-sans text-darker`}
+        className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
         <Navbar />
         {children}
