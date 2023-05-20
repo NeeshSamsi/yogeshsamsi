@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Button: FC<Props> = ({ as, text, type, theme, icon, href }) => {
-  const commonStyles = `px-3 py-2 sm:px-4 sm:py-1 font-medium text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl transition-all flex items-center gap-3`
+  const commonStyles = `py-2 px-3 md:px-4 font-medium text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl transition-all flex items-center gap-3`
 
   const lightStyles = "text-light transition-colors hover:text-lighter"
 
