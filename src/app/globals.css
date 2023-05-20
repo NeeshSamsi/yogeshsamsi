@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+path,
+circle,
+ellipse,
+line,
+polygon,
+polyline,
+rect {
+  stroke-width: inherit;
+}
