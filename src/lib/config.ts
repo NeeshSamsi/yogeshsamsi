@@ -42,6 +42,48 @@ export const content = {
         "Provides sensitive and thoughtful tabla accompaniment to leading vocalists and instrumentalists, reflecting his refined approach groomed under his father, stalwart vocalist Pandit Dinkar Kaikini.",
       guru: "Dedicated to the future of tabla in his role as a Guru, guiding a new generation of accomplished professionals. His pedagogical approach fosters creative, independent thinkers to propagate and evolve the Gharana.",
     },
+    events: [
+      {
+        date: "1 & 2 Nov, 2023",
+        title: "Testing Name of Concert/Event",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
+        online: false,
+        venue: "Name of Auditorium",
+        ticketed: false,
+        url: "https://google.com",
+      },
+      {
+        date: "1 & 2 Nov, 2023",
+        title: "Testing Name of Concert/Event",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
+        online: false,
+        venue: "Name of Auditorium",
+        ticketed: false,
+        url: "https://google.com",
+      },
+      {
+        date: "1 & 2 Nov, 2023",
+        title: "Testing Name of Concert/Event",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
+        online: false,
+        venue: "Name of Auditorium",
+        ticketed: true,
+        url: "https://google.com",
+      },
+      {
+        date: "1 & 2 Nov, 2023",
+        title: "Testing Name of Concert/Event",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
+        online: true,
+        venue: "Name of Auditorium",
+        ticketed: false,
+        url: "https://google.com",
+      },
+    ],
     press: [
       {
         channel: "",
