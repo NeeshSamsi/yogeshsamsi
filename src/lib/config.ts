@@ -69,7 +69,7 @@ export const content = {
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
         online: false,
-        venue: "Name of Auditorium",
+        venue: "Tata Theatre, NCPA, Mumbai",
         ticketed: true,
         url: "https://google.com",
       },
@@ -79,7 +79,7 @@ export const content = {
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tenetur temporibus adipisci ab eveniet porro earum inventore ipsam facere vero.",
         online: true,
-        venue: "Name of Auditorium",
+        venue: "Nehru Centre, Mumbai",
         ticketed: false,
         url: "https://google.com",
       },
