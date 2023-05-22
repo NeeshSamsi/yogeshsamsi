@@ -86,16 +86,19 @@ export const content = {
     ],
     press: [
       {
-        channel: "",
-        quote: "",
+        channel: "Washington Post",
+        quote:
+          "Samsi performed a virtuosic 70-minute piece that illustrated the various schools, techniques, and features, of tabla music... Impeccably structured yet freely expansive, the performance was as intricate as a Bach fugue and as ecstatic as a rave-club crescendo.",
       },
       {
-        channel: "",
-        quote: "",
+        channel: "Times of India",
+        quote:
+          "His padhants were as lucid as the following bols through his fingers, and he won repeated applause form the appreciative audience.",
       },
       {
-        channel: "",
-        quote: "",
+        channel: "The Hindu",
+        quote:
+          "Yogesh has emerged as a brilliant and most promising tabla artist. He has already made a mark in the highly competitive music world of Bombay.",
       },
     ],
   },
