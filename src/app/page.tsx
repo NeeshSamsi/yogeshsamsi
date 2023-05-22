@@ -36,11 +36,14 @@ export default async function Home() {
           <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
             Yogesh Samsi
           </h1>
-          <div className="flex flex-wrap items-center gap-2 md:gap-6">
+          <div className="flex flex-wrap items-center gap-2 text-sm sm:text-lg md:gap-6 md:text-base lg:text-lg xl:text-xl">
             <Button
               as="link"
               text="Upcoming events"
-              icon={<ArrowRightIcon className="stroke-[2.5px]" />}
+              icon={{
+                element: <ArrowRightIcon className="stroke-[2.5px]" />,
+                sizes: "w-4 sm:w-5 xl:w-6",
+              }}
               type="Primary"
               theme="Light"
               href="/#events"
@@ -48,7 +51,10 @@ export default async function Home() {
             <Button
               as="link"
               text="Reach out"
-              icon={<ChatBubbleLeftRightIcon />}
+              icon={{
+                element: <ChatBubbleLeftRightIcon />,
+                sizes: "w-4 sm:w-5 xl:w-6",
+              }}
               type="Secondary"
               theme="Light"
               href="/contact"
@@ -70,11 +76,10 @@ export default async function Home() {
         role="about"
         className="space-y-12 px-8 py-12 md:px-col-inner md:py-20"
       >
-        <p className="mx-auto max-w-[45ch] text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl">
+        <h2 className="mx-auto max-w-[45ch] text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl">
           {about.main}
-        </p>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        </h2>
+        <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3">
           {[
             { title: "As a Soloist", para: about.soloist },
             { title: "As an Accompanist", para: about.accompanist },
@@ -89,6 +94,50 @@ export default async function Home() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section
+        role="Upcoming events"
+        className="space-y-12 bg-dark px-8 py-12 text-lighter md:space-y-20 md:px-col-inner md:py-20"
+      >
+        <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
+          Upcoming events
+        </h2>
+
+        <div className="mx-auto grid max-w-md gap-8 lg:max-w-none lg:grid-cols-2">
+          {config.content.home.events.map(
+            ({ date, title, description, online, venue, ticketed, url }, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-4 border border-lighter p-4"
+              >
+                <p className="w-fit text-xs font-medium uppercase tracking-wider text-light sm:text-sm lg:text-sm xl:text-base">
+                  {date}
+                </p>
+                <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl">
+                  {title}
+                </h3>
+                <p>{description}</p>
+                <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:text-sm lg:text-sm xl:text-base">
+                  <p className="font-medium text-light">
+                    {!online ? venue : "Online"}
+                  </p>
+                  <Button
+                    as="link"
+                    href={url}
+                    text="Learn more"
+                    type="Primary"
+                    theme="Light"
+                    icon={{
+                      element: <ArrowRightIcon className="stroke-[2.5px]" />,
+                      sizes: "w-3 xl:w-4",
+                    }}
+                  />
+                </div>
+              </div>
+            )
+          )}
         </div>
       </section>
     </>
