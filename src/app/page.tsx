@@ -5,9 +5,9 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 
 export default async function Home() {
-  const { imgSrc, mobileImgSrc } = config.content.home.hero
-
-  const { about } = config.content.home
+  const { home } = config.content
+  const { hero, about, events, press } = home
+  const { imgSrc, mobileImgSrc } = hero
 
   return (
     <>
@@ -86,9 +86,9 @@ export default async function Home() {
             { title: "As a Guru", para: about.guru },
           ].map((card, i) => (
             <div key={i} className="space-y-4 border border-darker p-4">
-              <p className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl">
+              <h3 className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl">
                 {card.title}
-              </p>
+              </h3>
               <p className="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl">
                 {card.para}
               </p>
@@ -105,8 +105,8 @@ export default async function Home() {
           Upcoming events
         </h2>
 
-        <div className="mx-auto grid max-w-md gap-8 lg:max-w-none lg:grid-cols-2">
-          {config.content.home.events.map(
+        <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12">
+          {events.map(
             ({ date, title, description, online, venue, ticketed, url }, i) => (
               <div
                 key={i}
@@ -139,6 +139,51 @@ export default async function Home() {
             )
           )}
         </div>
+      </section>
+
+      <section
+        role="Press quotes"
+        className="space-y-16 bg-lighter px-8 py-12 text-lighter md:space-y-20 md:px-col-inner md:py-20 "
+      >
+        {press.map(({ channel, quote }, i) => (
+          <div
+            key={i}
+            className="mx-auto w-full max-w-md bg-dark px-12 shadow-lg shadow-dark/50 lg:max-w-none"
+          >
+            <div className="flex -translate-y-10 flex-col items-center gap-4 lg:-translate-y-12">
+              <Image
+                src={`/${channel}.png`}
+                alt={`${channel} Logo`}
+                height={220}
+                width={220}
+                className="aspect-square w-20 rounded-full lg:w-24"
+              />
+              <div className="mb-6 flex max-w-3xl items-center justify-between gap-8">
+                <div className="hidden aspect-square h-28 text-light lg:block">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 100 100"
+                    fill="none"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M8.5 21A35 35 0 0 0 0 45.2v40.8c0 1.4.6 2.6 1.5 3.6A5 5 0 0 0 5 91h30c5.5 0 10-4.6 10-10.2V45.1c0-1.4-.5-2.6-1.5-3.6A5 5 0 0 0 40 40H24.6c.1-2.5.9-5 2.2-7.1C29.3 28.8 34 26 41 24.6l4-.8V9.4h-5c-13.9 0-24.5 4-31.5 11.7Zm55 0A35 35 0 0 0 55 45.2v40.8c0 1.4.6 2.6 1.5 3.6A5 5 0 0 0 60 91h30c5.5 0 10-4.6 10-10.2V45.1c0-1.4-.5-2.6-1.5-3.6A5 5 0 0 0 95 40H79.6c.1-2.5.9-5 2.2-7.1C84.3 28.8 89 26 96 24.6l4-.8V9.4h-5c-13.9 0-24.5 4-31.5 11.7Z"
+                    />
+                  </svg>
+                </div>
+                <div className="hidden h-36 w-1 bg-lighter lg:block" />
+                <h4 className="h-fit text-center text-base sm:text-lg md:text-base lg:text-start lg:text-lg xl:text-xl">
+                  {quote}
+                </h4>
+              </div>
+              <h3 className="font-serif text-lg font-semibold sm:text-xl md:text-lg lg:text-xl xl:text-2xl">
+                {channel}
+              </h3>
+            </div>
+          </div>
+        ))}
       </section>
     </>
   )
