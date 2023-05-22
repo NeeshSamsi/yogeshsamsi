@@ -9,11 +9,11 @@ type Props = {
   type: "Primary" | "Secondary"
   theme: Theme
   href?: string
-  icon?: ReactElement
+  icon?: { element: ReactElement; sizes: string }
 }
 
 const Button: FC<Props> = ({ as, text, type, theme, icon, href }) => {
-  const commonStyles = `py-2 px-3 md:px-4 font-medium text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl transition-all flex items-center gap-3`
+  const commonStyles = `py-2 px-3 md:px-4 font-medium transition-all flex items-center gap-2 md:gap-3`
 
   const lightStyles = "text-light transition-colors hover:text-lighter"
 
@@ -30,7 +30,9 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href }) => {
         }
       >
         <span>{text}</span>
-        <span className="aspect-square w-4 sm:w-5 xl:w-6">{icon}</span>
+        {icon && (
+          <span className={`aspect-square ${icon.sizes}`}>{icon.element}</span>
+        )}
       </button>
     )
   } else if (as === "link") {
@@ -46,8 +48,10 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href }) => {
             : `${commonStyles} ${theme === "Light" && lightStyles}`
         }
       >
-        <span>{text}</span>
-        <span className="aspect-square w-4 sm:w-5 xl:w-6">{icon}</span>
+        <span className="self-stretch">{text}</span>
+        {icon && (
+          <span className={`aspect-square ${icon.sizes}`}>{icon.element}</span>
+        )}
       </Link>
     )
   } else {
