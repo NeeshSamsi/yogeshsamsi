@@ -143,7 +143,7 @@ export default async function Home() {
 
       <section
         role="Press quotes"
-        className="space-y-16 bg-lighter px-8 py-12 text-lighter md:space-y-20 md:px-col-inner md:py-20 "
+        className="space-y-16 bg-lighter px-8 pb-12 pt-24 text-lighter md:space-y-20 md:px-col-inner md:pb-20 md:pt-32"
       >
         {press.map(({ channel, quote }, i) => (
           <div
