@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:flex-row md:items-start md:gap-6 md:px-col-outer">
       <MailingList />
       <div className="flex flex-col items-center gap-4 md:items-start">
-        <p className="font-serif text-xl font-semibold tracking-wider">
+        <p className="font-serif text-2xl font-semibold tracking-wider">
           {config.content.footer.contactHeading}
         </p>
         <ul className="flex gap-4 md:gap-6">
