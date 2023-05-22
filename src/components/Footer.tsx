@@ -3,24 +3,27 @@ import Socials from "./Socials"
 import Link from "next/link"
 import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
 
+const { email, navLinks, content } = config
+const { contactHeading, mailingList } = content.footer
+
 const Footer = () => {
   return (
     <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-4 md:flex-row md:items-start md:gap-6 md:px-col-outer">
       <MailingList />
       <div className="flex flex-col items-center gap-4 md:items-start">
         <p className="font-serif text-2xl font-semibold tracking-wider">
-          {config.content.footer.contactHeading}
+          {contactHeading}
         </p>
         <ul className="flex gap-4 md:gap-6">
           <Socials hoverClr="text-darker/80" size="lg" />
         </ul>
         <a href={`mailto:${config.email}`} className="hover:underline">
-          {config.email}
+          {email}
         </a>
       </div>
       <div>
         <ul className="flex flex-col items-center gap-3 uppercase md:items-start">
-          {config.navLinks.map(({ path, text, newWindow }, i) => (
+          {navLinks.map(({ path, text, newWindow }, i) => (
             <li key={i} className="transition-colors hover:text-darker/80">
               <Link href={path} target={newWindow ? "_blank" : "_self"}>
                 {text}
@@ -38,11 +41,9 @@ const MailingList = () => {
     <form className="flex max-w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 md:px-6 md:py-4 lg:px-8 lg:py-6">
       <div>
         <h6 className="mb-2 font-serif text-2xl font-bold tracking-wider">
-          {config.content.footer.mailingList.heading}
+          {mailingList.heading}
         </h6>
-        <p className="text-sm">
-          {config.content.footer.mailingList.subheading}
-        </p>
+        <p className="text-sm">{mailingList.subheading}</p>
       </div>
       <div className="relative flex items-center gap-4">
         <UserIcon className="h-6 w-6" />
