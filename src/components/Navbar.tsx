@@ -18,7 +18,7 @@ const Navbar = () => {
     <div
       className={`${
         isHamburgerOpen && "h-screen"
-      } sticky inset-0 z-50 text-lighter`}
+      } sticky inset-0 z-50 text-lighter shadow-xl shadow-darker/40`}
     >
       <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-col-outer">
         <div>
@@ -46,8 +46,8 @@ const Navbar = () => {
           </ul>
 
           <div
-            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham tham-active"
+            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham-active tham"
             }`}
             onClick={handleHamburger}
           >
