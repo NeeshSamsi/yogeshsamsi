@@ -1,7 +1,7 @@
 "use client"
 
 import * as config from "@/lib/config"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Socials from "./Socials"
@@ -13,6 +13,8 @@ const Navbar = () => {
   const handleHamburger = () => {
     setIsHamburgerOpen((prevHamburgerState) => !prevHamburgerState)
   }
+
+  useEffect(() => setIsHamburgerOpen(false), [pathname])
 
   return (
     <div
@@ -46,8 +48,8 @@ const Navbar = () => {
           </ul>
 
           <div
-            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham-active tham"
+            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham tham-active"
             }`}
             onClick={handleHamburger}
           >
