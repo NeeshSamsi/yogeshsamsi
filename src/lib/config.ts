@@ -103,6 +103,89 @@ export const content = {
     ],
   },
 
+  about: {
+    hero: {
+      image: {
+        src: "https://iili.io/Hggjrhv.webp",
+        alt: "Yogesh Samsi sitting at a park",
+      },
+      quote: {
+        text: "A man who must be one of the best tabalias of our age, Yogesh",
+        by: "- The Hindu",
+      },
+      pdfUrl: "/Yogesh Samsi - Biodata.pdf",
+    },
+    aboutSection: {
+      left: [
+        "Recognised in the world today as a leading tabla artiste, exhibiting consummate artistry both as a soloist and accompanist. The son of the renowned vocalist Late Pandit Dinkar Kaikini, Yogesh was initiated into tabla by his father at the tender age of four, and later received guidance under Pandit H.Taranath Rao. However it was under the gifted tutelage of the legendary Ustad Allah Rakha that Yogesh received intense training for twenty three years, maturing into one of the most sought after tabla artistes in India today. His style is marked by an unmatched combination of power, sensitivity, knowledge of tradition, tonal clarity, and aesthetics.",
+        "Yogesh has played with many of the top ranking classical instrumentalists, vocalists and dancers of India, including Pt Shivkumar Sharma, Pt Hariprasad Chaurasia, Pt Bhimsen Joshi, Ustad Vilayat Khan, Ustad Amjad Ali Khan, Pt Dinkar Kaikini, and Pt Birju Maharaj. He has also had the privilege of accompanying Ustad Allah Rakha and his son the great maestro Ustad Zakir Hussain in their solo performances.  Apart from accompaniment, Yogesh has performed numerous memorable solo performances in India and abroad. He has been featured in many of the world’s most prestigious venues, including: Carnegie Hall, New York; Kennedy Center, Washington DC; Theatre de la Ville, Paris; Opera House, Sydney; Barbican Centre, London; Bolshoi Theatre, Moskow; Esplanade Theatre, Singapore, to name a few.",
+      ],
+      right: [
+        "Outside of the authentic tradition that he carries forward, Yogesh also embraces collaboration with artists for sounds that fuse music from various world music traditions. In this spirit, he has performed with artists including Taufiq Qureshi, Ranjit Barot, Louis Banks, Shujaat Khan, Karsh Kale, Kayhan Kalhor, and many more.",
+        "Besides performing, Yogesh is very committed to educating students and listeners about his art and the rich legacy of the Punjab Gharana. His teachings across the world has created a large number of students, some of whom are also knowledgable performers. In more recent times, to further the exploration and study of Punjab Gharana, Yogesh has continued efforts to revive old compositions of both the Punjab tradition as well as the compositions of Pandit Sushil Kumar Jain.",
+        "Yogesh is a member of the advisory board for the music department at Pune University and is a chief advisor for educational activities and promotion of Indian Classical music for the reputed music organisation, Darbar, in London.",
+        "Yogesh has currently been appointed as a Guru along with other Gurus like Pt Ulhas Kashalkar, Pt Suresh Talwalkar, Smt N.Rajam and Pt Hariprasad Chaurasia at the Indian Classical Music Gurukul run by the M.I.T group of Institutes In Pune(Loni) which aims at developing professional musicians in the future.",
+      ],
+    },
+    concertHighlights: {
+      left: [
+        "Sawai Gandharv Festival, Pune",
+        "Sapthak Festival, Ahmedabad",
+        "Harvallabh Sangeet Sammelan, Jalandhar",
+        "Dover Lane Music Festival, Calcutta",
+        "Shankar Lal Festival, Delhi",
+        "Taansen Samroh, Gwalior",
+        "Svanubhava, Chennai & Delhi",
+        "Opera House, Sydney",
+        "Australian Institute of Music",
+        "International Festival of Music, Kuwait",
+      ],
+      right: [
+        "Darbar Festival, UK",
+        "St. Xavier's College IMG Festival",
+        "Carnegie Hall, New York",
+        "Kennedy Center, Washington DC",
+        "Concert for the World Bank, Washington DC",
+        "Bolshoi Theatre, Moscow",
+        "Barbican Centre, London",
+        "Theatre de la Ville",
+        "Cologne Radio Festival",
+      ],
+    },
+    discography: [
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+      {
+        img: "",
+        title: "",
+        description: "",
+      },
+    ],
+  },
+
   footer: {
     mailingList: {
       heading: "Join the Mailing List",
