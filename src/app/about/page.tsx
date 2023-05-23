@@ -70,16 +70,13 @@ export default async function About() {
         </h2>
 
         <div className="md:mx-none mx-auto flex max-w-md flex-col gap-8 text-center text-sm sm:text-base md:max-w-none md:flex-row md:text-start md:text-sm lg:text-base xl:text-lg">
-          <div className="flex flex-col gap-12">
-            {aboutSection.left.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </div>
-          <div className="flex flex-col gap-8">
-            {aboutSection.left.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </div>
+          {[aboutSection.left, aboutSection.right].map((paras, i) => (
+            <div key={i} className="flex flex-col gap-6 md:w-1/2 lg:gap-8">
+              {paras.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
     </>
