@@ -1,61 +1,63 @@
 import type { FC, ReactElement } from "react"
 import Link from "next/link"
 
-type Theme = "Light"
+type IconType = { element: ReactElement; sizes: string }
 
 type Props = {
   as: "button" | "link"
   text: string
   type: "Primary" | "Secondary"
-  theme: Theme
+  theme: "Light" | "Dark"
   href?: string
-  icon?: { element: ReactElement; sizes: string }
+  icon?: IconType
+  download?: boolean
 }
 
-const Button: FC<Props> = ({ as, text, type, theme, icon, href }) => {
-  const commonStyles = `py-2 px-3 md:px-4 font-medium transition-all flex items-center gap-2 md:gap-3`
+const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
+  const commonStyles = `py-2 px-3 md:px-4 font-medium transition-colors flex items-center gap-2 md:gap-3`
+  const themeStyles = `${
+    type === "Primary" &&
+    `${theme === "Light" && "bg-light text-darker hover:bg-lighter"} ${
+      theme === "Dark" && "bg-dark text-lighter hover:bg-dark/90"
+    }`
+  }
+      ${
+        type === "Secondary" &&
+        `${theme === "Light" && "text-light hover:text-lighter"} ${
+          theme === "Dark" && "text-dark hover:text-dark/90"
+        }`
+      }`
 
-  const lightStyles = "text-light transition-colors hover:text-lighter"
+  const Icon: FC<{ icon: IconType }> = ({ icon }) => {
+    const { element, sizes } = icon
+    return <span className={`aspect-square ${sizes}`}>{element}</span>
+  }
 
-  if (as === "button") {
-    return (
-      <button
-        className={
-          type === "Primary"
-            ? `${commonStyles} ${
-                theme === "Light" &&
-                `bg-light text-dark hover:bg-lighter hover:text-darker`
-              }`
-            : `${commonStyles} ${theme === "Light" && lightStyles}`
-        }
-      >
-        <span>{text}</span>
-        {icon && (
-          <span className={`aspect-square ${icon.sizes}`}>{icon.element}</span>
-        )}
-      </button>
-    )
-  } else if (as === "link") {
-    return (
-      <Link
-        href={href ? href : "/"}
-        className={
-          type === "Primary"
-            ? `${commonStyles} ${
-                theme === "Light" &&
-                `bg-light text-dark hover:bg-lighter hover:text-darker`
-              }`
-            : `${commonStyles} ${theme === "Light" && lightStyles}`
-        }
-      >
-        <span className="self-stretch">{text}</span>
-        {icon && (
-          <span className={`aspect-square ${icon.sizes}`}>{icon.element}</span>
-        )}
-      </Link>
-    )
-  } else {
-    return <p>Error - Button</p>
+  switch (as) {
+    case "button":
+      return (
+        <button className={`${commonStyles} ${themeStyles}`}>
+          <span>{text}</span>
+          {icon && <Icon icon={icon} />}
+        </button>
+      )
+      break
+    case "link":
+      return (
+        <Link
+          href={href ? href : "/"}
+          download={download}
+          className={`${commonStyles} ${themeStyles}`}
+        >
+          <span>{text}</span>
+          {icon && <Icon icon={icon} />}
+        </Link>
+      )
+      break
+
+    default:
+      return <p>Error - Invalid Button Component Config</p>
+      break
   }
 }
 
