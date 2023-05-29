@@ -14,23 +14,21 @@ const index: FC<Props> = ({ hoverClr, size }) => {
   return (
     <>
       {config.socials.map(({ platform, link }, i) => (
-        <Link
-          href={link}
+        <li
           key={i}
-          className={`h-8 w-8 transition-colors ${(() => {
+        >
+          <Link href={link} className={`block h-8 aspect-square transition-colors ${(() => {
             switch (size) {
               case "sm":
-                return "md:h-6 md:w-6 lg:h-7 lg:w-7"
+                return "h-8 sm:h-12 md:h-6 lg:h-8"
                 break
               case "lg":
-                return "md:h-7 md:w-7 lg:h-8 lg:w-8"
+                return "md:h-7 lg:h-8"
                 break
               default:
                 return
             }
-          })()} hover:${hoverClr}`}
-        >
-          <li>
+          })()} hover:${hoverClr}`}>
             {(() => {
               switch (platform) {
                 case "YouTube":
@@ -46,8 +44,8 @@ const index: FC<Props> = ({ hoverClr, size }) => {
                   return
               }
             })()}
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </>
   )
