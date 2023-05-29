@@ -14,7 +14,7 @@ type Props = {
 }
 
 const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
-  const commonStyles = `py-2 px-3 md:px-4 font-medium transition-colors flex items-center gap-2 md:gap-3`
+  const commonStyles = `py-2 px-3 md:px-4 font-medium transition-colors flex items-center gap-2 md:gap-3 3xl:py-3 3xl:px-5`
   const themeStyles = `${
     type === "Primary" &&
     `${theme === "Light" && "bg-light text-darker hover:bg-lighter"} ${

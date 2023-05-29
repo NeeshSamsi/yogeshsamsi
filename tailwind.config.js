@@ -14,6 +14,14 @@ module.exports = {
       serif: ["var(--font-reckless)", ...defaultTheme.fontFamily.serif],
     },
     extend: {
+      screens: {
+        // sm: "640px",
+        // md: "768px",
+        // lg: "1024px",
+        // xl: "1280px",
+        // "2xl": "1536px",
+        "3xl": "1920px",
+      },
       colors: {
         darker: "#362009",
         dark: "#222222",

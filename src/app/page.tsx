@@ -27,46 +27,46 @@ export default async function Home() {
           fill
           priority
           sizes="100vw"
-          // placeholder="blur"
-          // blurDataURL={}
         />
-        <div className="flex flex-col items-center gap-8 pt-12 md:items-start md:pt-0">
-          <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <div className="flex flex-col items-center gap-8 pt-12 md:items-start md:pt-0 xl:gap-12 2xl:gap-16 3xl:gap-20">
+          <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl">
             Yogesh Samsi
           </h1>
-          <div className="flex flex-wrap items-center gap-2 text-sm sm:text-lg md:gap-6 md:text-base lg:text-lg xl:text-xl">
-            <Button
-              as="link"
-              text="Upcoming events"
-              icon={{
-                element: <ArrowRightIcon className="stroke-[2.5px]" />,
-                sizes: "w-4 sm:w-5 xl:w-6",
-              }}
-              type="Primary"
-              theme="Light"
-              href="/#events"
-            />
-            <Button
-              as="link"
-              text="Reach out"
-              icon={{
-                element: <ChatBubbleLeftRightIcon />,
-                sizes: "w-4 sm:w-5 xl:w-6",
-              }}
-              type="Secondary"
-              theme="Light"
-              href="/contact"
-            />
+          <div className="space-y-6 text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-10 3xl:text-3xl">
+            <div className="flex flex-wrap items-center gap-2 md:gap-6">
+              <Button
+                as="link"
+                text="Upcoming events"
+                icon={{
+                  element: <ArrowRightIcon className="stroke-[2.5px]" />,
+                  sizes: "w-4 sm:w-5 xl:w-6 3xl:w-8",
+                }}
+                type="Primary"
+                theme="Light"
+                href="/#events"
+              />
+              <Button
+                as="link"
+                text="Reach out"
+                icon={{
+                  element: <ChatBubbleLeftRightIcon />,
+                  sizes: "w-4 sm:w-5 xl:w-6 3xl:w-8",
+                }}
+                type="Secondary"
+                theme="Light"
+                href="/contact"
+              />
+            </div>
+            <p className="text-light">
+              Are you an organiser?{" "}
+              <a
+                href="/about"
+                className="underline underline-offset-2 transition-colors hover:text-lighter"
+              >
+                Download Biodata
+              </a>
+            </p>
           </div>
-          <p className="text-sm text-light sm:text-lg md:text-base lg:text-lg xl:text-xl">
-            Are you an organiser?{" "}
-            <a
-              href="/about"
-              className="underline underline-offset-2 transition-colors hover:text-lighter"
-            >
-              Download Biodata
-            </a>
-          </p>
         </div>
       </main>
 

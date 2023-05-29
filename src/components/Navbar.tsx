@@ -22,9 +22,9 @@ const Navbar = () => {
         isHamburgerOpen && "h-screen"
       } sticky inset-0 z-50 text-lighter shadow-xl shadow-darker/40`}
     >
-      <div className="flex w-full items-center justify-between gap-12 bg-darker px-8 py-4 md:px-col-outer">
+      <div className="flex w-full items-center justify-between gap-12 bg-darker px-8 py-4 md:px-col-outer md:py-6">
         <div>
-          <ul className="hidden gap-4 md:flex lg:gap-6 md:text-base lg:text-lg 2xl:text-xl">
+          <ul className="hidden gap-4 md:flex md:text-base lg:gap-6 lg:text-lg 2xl:text-xl">
             {config.navLinks.map(({ path, text, newWindow }, i) => (
               <li
                 key={i}
@@ -64,7 +64,7 @@ const Navbar = () => {
       <div
         className={`${
           isHamburgerOpen ? "flex animate-nav-show" : "hidden"
-        } h-full flex-col items-center gap-12  bg-darker  text-xl sm:text-2xl md:hidden pt-16`}
+        } h-full flex-col items-center gap-12  bg-darker  pt-16 text-xl sm:text-2xl md:hidden`}
       >
         <ul className="flex flex-col items-center gap-6">
           {config.navLinks.map(({ path, text, newWindow }, i) => (
