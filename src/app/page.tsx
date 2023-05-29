@@ -19,8 +19,6 @@ export default async function Home() {
           fill
           priority
           sizes="100vw"
-          // placeholder="blur"
-          // blurDataURL={}
         />
         <Image
           src={mobileImgSrc}

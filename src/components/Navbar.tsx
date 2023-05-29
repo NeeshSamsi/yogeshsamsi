@@ -17,14 +17,14 @@ const Navbar = () => {
   useEffect(() => setIsHamburgerOpen(false), [pathname])
 
   return (
-    <div
+    <nav
       className={`${
         isHamburgerOpen && "h-screen"
       } sticky inset-0 z-50 text-lighter shadow-xl shadow-darker/40`}
     >
-      <nav className="flex w-full items-center justify-between gap-12 bg-darker  px-8 py-4 md:px-col-outer">
+      <div className="flex w-full items-center justify-between gap-12 bg-darker px-8 py-4 md:px-col-outer">
         <div>
-          <ul className="hidden gap-4 md:flex lg:gap-6">
+          <ul className="hidden gap-4 md:flex lg:gap-6 md:text-base lg:text-lg 2xl:text-xl">
             {config.navLinks.map(({ path, text, newWindow }, i) => (
               <li
                 key={i}
@@ -58,15 +58,15 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile Nav */}
       <div
         className={`${
           isHamburgerOpen ? "flex animate-nav-show" : "hidden"
-        } h-full flex-col items-center gap-12  bg-darker pt-16 text-lg md:hidden`}
+        } h-full flex-col items-center gap-12  bg-darker  text-xl sm:text-2xl md:hidden pt-16`}
       >
-        <ul className="flex flex-col items-center gap-4">
+        <ul className="flex flex-col items-center gap-6">
           {config.navLinks.map(({ path, text, newWindow }, i) => (
             <li
               key={i}
@@ -84,7 +84,7 @@ const Navbar = () => {
           <Socials hoverClr="text-light" size="sm" />
         </ul>
       </div>
-    </div>
+    </nav>
   )
 }
 
