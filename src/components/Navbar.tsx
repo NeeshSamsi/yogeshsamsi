@@ -44,12 +44,15 @@ const Navbar = () => {
         </div>
         <div>
           <ul className="hidden gap-4 md:flex lg:gap-6">
-            <Socials hoverClr="text-light" size="sm" />
+            <Socials
+              hoverClr="text-light"
+              sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
+            />
           </ul>
 
           <div
-            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham tham-active"
+            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham-active tham"
             }`}
             onClick={handleHamburger}
           >
@@ -81,7 +84,10 @@ const Navbar = () => {
           ))}
         </ul>
         <ul className="flex gap-6">
-          <Socials hoverClr="text-light" size="sm" />
+          <Socials
+            hoverClr="text-light"
+            sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
+          />
         </ul>
       </div>
     </nav>
