@@ -17,13 +17,13 @@ export default async function About() {
             Yogesh Samsi
           </h1>
           <ul className="flex gap-4 md:gap-6">
-            <Socials hoverClr="text-darker/80" size="lg" />
+            <Socials hoverClr="text-darker/80" sizes="h-8" />
           </ul>
           <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg md:max-w-none md:text-base lg:text-lg xl:text-xl">
             <p>&ldquo;{quote.text}&rdquo;</p>
             <p>{quote.by}</p>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-base md:gap-6 md:text-sm lg:text-base xl:text-lg">
+          <div className="flex flex-wrap items-center gap-2 text-base font-semibold md:gap-6 md:text-sm lg:text-base xl:text-lg">
             <Button
               as="link"
               text="Biodata"
