@@ -3,6 +3,7 @@ import Image from "next/image"
 import Button from "@/components/Button"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
+import Section from "@/components/Section"
 
 export default async function Home() {
   const { home } = config.content
@@ -11,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <main className="relative aspect-[1/1.6] w-full px-8 text-center text-lighter md:flex md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
+      <main className="relative flex aspect-[1/1.6] w-full items-center px-8 text-center text-lighter md:aspect-[1/0.52] md:px-col-inner md:text-start">
         <Image
           src={imgSrc}
           alt="Background image of Yogesh Samsi"
@@ -28,7 +29,7 @@ export default async function Home() {
           priority
           sizes="100vw"
         />
-        <div className="flex flex-col items-center gap-8 pt-12 md:items-start md:pt-0 xl:gap-12 2xl:gap-16 3xl:gap-20">
+        <div className="mx-auto flex max-w-screen-2xl flex-grow flex-col items-center gap-8 pt-12 md:items-start md:pt-0 xl:gap-12 2xl:gap-16 3xl:gap-20">
           <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl">
             Yogesh Samsi
           </h1>
@@ -70,30 +71,27 @@ export default async function Home() {
         </div>
       </main>
 
-      <section
-        role="about"
-        className="space-y-12 px-8 py-12 md:px-col-inner md:py-20"
-      >
-        <h2 className="mx-auto max-w-[45ch] text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl">
+      <Section role="about" bgClr="bg-lighter" txtClr="text-darker">
+        <h2 className="mx-auto text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
           {about.main}
         </h2>
-        <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8 2xl:gap-12">
           {[
             { title: "As a Soloist", para: about.soloist },
             { title: "As an Accompanist", para: about.accompanist },
             { title: "As a Guru", para: about.guru },
           ].map((card, i) => (
             <div key={i} className="space-y-4 border border-darker p-4">
-              <h3 className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl">
+              <h3 className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
                 {card.title}
               </h3>
-              <p className="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl">
+              <p className="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
                 {card.para}
               </p>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
       <section
         role="Upcoming events"
