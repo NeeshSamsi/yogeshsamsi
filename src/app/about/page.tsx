@@ -11,19 +11,19 @@ export default async function About() {
 
   return (
     <>
-      <main className="gap-8 px-8 py-12 text-dark md:flex  md:px-0 md:py-0 md:pl-col-inner">
-        <div className="mx-auto flex flex-col items-center justify-center gap-8 text-center md:mx-0 md:items-start md:gap-6 md:text-start">
-          <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
+      <main className="gap-8 px-8 py-12 text-dark md:py-20 lg:flex lg:px-0 lg:py-0 lg:pl-col-inner">
+        <div className="mx-auto flex flex-col items-center justify-center gap-8 text-center lg:mx-0 lg:items-start lg:gap-6 lg:text-start">
+          <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl">
             Yogesh Samsi
           </h1>
-          <ul className="flex gap-4 md:gap-6">
+          <ul className="flex gap-4 lg:gap-6">
             <Socials hoverClr="text-darker/80" sizes="h-8" />
           </ul>
-          <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg md:max-w-none md:text-base lg:text-lg xl:text-xl">
+          <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:max-w-none lg:text-lg xl:text-xl">
             <p>&ldquo;{quote.text}&rdquo;</p>
             <p>{quote.by}</p>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-base font-semibold md:gap-6 md:text-sm lg:text-base xl:text-lg">
+          <div className="flex flex-wrap items-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg">
             <Button
               as="link"
               text="Biodata"
@@ -49,14 +49,14 @@ export default async function About() {
             />
           </div>
         </div>
-        <div className="aspect[1/1.1] relative hidden h-full w-full md:block">
+        <div className="aspect[1/1.1] relative hidden h-full w-full lg:block">
           <Image
             src={image.src}
             alt={image.alt}
             height={2354}
             width={2160}
             priority
-            className="w-full object-cover md:min-h-[75vh]"
+            className="w-full object-cover lg:h-[85vh]"
           />
         </div>
       </main>
