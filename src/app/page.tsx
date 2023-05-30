@@ -131,25 +131,22 @@ export default async function Home() {
         </div>
       </Section>
 
-      <section
-        role="Press quotes"
-        className="space-y-16 bg-lighter px-8 pb-12 pt-24 text-lighter md:space-y-20 md:px-col-inner md:pb-20 md:pt-32"
-      >
+      <Section role="Press quotes" bgClr="bg-lighter" txtClr="text-lighter">
         {press.map(({ channel, quote }, i) => (
           <div
             key={i}
-            className="mx-auto w-full max-w-md bg-dark px-12 shadow-lg shadow-dark/50 lg:max-w-none"
+            className="mx-auto mt-10 w-full max-w-md bg-dark px-12 shadow-lg shadow-dark/50 lg:mt-12 lg:max-w-none"
           >
-            <div className="flex -translate-y-10 flex-col items-center gap-4 lg:-translate-y-12">
+            <div className="flex -translate-y-10 flex-col items-center gap-4 lg:-translate-y-12 xl:gap-6">
               <Image
                 src={`/${channel}.png`}
                 alt={`${channel} Logo`}
                 height={220}
                 width={220}
-                className="aspect-square w-20 rounded-full lg:w-24"
+                className="aspect-square w-20 rounded-full lg:w-24 2xl:w-32"
               />
-              <div className="mb-6 flex max-w-3xl items-center justify-between gap-8">
-                <div className="hidden aspect-square h-28 text-light lg:block">
+              <div className="mb-6 flex w-full max-w-3xl items-center gap-8 xl:gap-16 2xl:max-w-5xl">
+                <div className="hidden aspect-square h-28 text-light lg:block 2xl:h-36">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="100%"
@@ -163,18 +160,18 @@ export default async function Home() {
                     />
                   </svg>
                 </div>
-                <div className="hidden h-36 w-1 bg-lighter lg:block" />
-                <h4 className="h-fit text-center text-base sm:text-lg md:text-base lg:text-start lg:text-lg xl:text-xl">
+                <div className="hidden h-36 w-1 bg-lighter lg:block 2xl:h-44" />
+                <h4 className="text-center text-base sm:text-lg md:text-base lg:text-start lg:text-lg xl:text-xl 2xl:text-2xl">
                   {quote}
                 </h4>
               </div>
-              <h3 className="font-serif text-lg font-semibold sm:text-xl md:text-lg lg:text-xl xl:text-2xl">
+              <h3 className="font-serif text-lg font-semibold sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
                 {channel}
               </h3>
             </div>
           </div>
         ))}
-      </section>
+      </Section>
     </>
   )
 }
