@@ -6,7 +6,7 @@ import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
 
 export default async function About() {
   const { about } = config.content
-  const { hero, aboutSection, concertHighlights, discography } = about
+  const { hero, aboutSection, concertHighlights } = about
   const { quote, pdfUrl, image } = hero
 
   return (

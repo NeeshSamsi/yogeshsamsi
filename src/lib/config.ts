@@ -152,38 +152,6 @@ export const content = {
         "Cologne Radio Festival",
       ],
     },
-    discography: [
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-      {
-        img: "",
-        title: "",
-        description: "",
-      },
-    ],
   },
 
   footer: {
