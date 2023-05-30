@@ -4,6 +4,7 @@ import Button from "@/components/Button"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 import Section from "@/components/Section"
+import SectionHeading from "@/components/SectionHeading"
 
 export default async function Home() {
   const { home } = config.content
@@ -33,7 +34,7 @@ export default async function Home() {
           <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl">
             Yogesh Samsi
           </h1>
-          <div className="space-y-6 text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-10 3xl:text-3xl">
+          <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-10 3xl:text-3xl">
             <div className="flex flex-wrap items-center gap-2 md:gap-6">
               <Button
                 as="link"
@@ -93,32 +94,25 @@ export default async function Home() {
         </div>
       </Section>
 
-      <section
-        role="Upcoming events"
-        className="space-y-12 bg-dark px-8 py-12 text-lighter md:space-y-20 md:px-col-inner md:py-20"
-      >
-        <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
-          Upcoming events
-        </h2>
+      <Section role="Upcoming events" bgClr="bg-dark" txtClr="text-lighter">
+        <SectionHeading as="h2" text="Upcoming events" />
 
-        <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12">
+        <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
           {events.map(
             ({ date, title, description, online, venue, ticketed, url }, i) => (
               <div
                 key={i}
-                className="flex flex-col gap-4 border border-lighter p-4"
+                className="flex flex-col gap-4 border border-lighter p-4  text-xs sm:text-sm lg:text-sm xl:gap-6 xl:p-6 xl:text-base 2xl:text-lg"
               >
-                <p className="w-fit text-xs font-medium uppercase tracking-wider text-light sm:text-sm lg:text-sm xl:text-base">
+                <p className="w-fit font-medium uppercase tracking-wider">
                   {date}
                 </p>
-                <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl">
+                <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                   {title}
                 </h3>
                 <p>{description}</p>
-                <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:text-sm lg:text-sm xl:text-base">
-                  <p className="font-medium text-light">
-                    {!online ? venue : "Online"}
-                  </p>
+                <div className="flex flex-col items-start justify-between gap-4 font-semibold sm:flex-row sm:items-center">
+                  <p>{!online ? venue : "Online"}</p>
                   <Button
                     as="link"
                     href={url}
@@ -135,7 +129,7 @@ export default async function Home() {
             )
           )}
         </div>
-      </section>
+      </Section>
 
       <section
         role="Press quotes"
