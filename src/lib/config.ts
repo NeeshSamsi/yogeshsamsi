@@ -106,7 +106,7 @@ export const content = {
   about: {
     hero: {
       image: {
-        src: "https://iili.io/Hggjrhv.webp",
+        src: "https://iili.io/Hrh4khX.webp",
         alt: "Yogesh Samsi sitting at a park",
       },
       quote: {
