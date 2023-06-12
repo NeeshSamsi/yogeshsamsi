@@ -78,7 +78,7 @@ export default async function About() {
         </div>
       </Section>
 
-      <Section role="Concert highlights" bgClr="bg-light" txtClr="text-dark">
+      <Section role="Concert highlights" bgClr="bg-lighter" txtClr="text-dark">
         <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
           Concert Highlights
         </h2>
