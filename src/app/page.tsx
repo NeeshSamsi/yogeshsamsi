@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl">
             Yogesh Samsi
           </h1>
-          <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-10 3xl:text-3xl">
+          <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
             <div className="flex flex-wrap items-center gap-2 md:gap-6">
               <Button
                 as="link"
