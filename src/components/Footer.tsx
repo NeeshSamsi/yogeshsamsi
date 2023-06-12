@@ -56,13 +56,13 @@ const MailingList = () => {
         <div className="relative w-full cursor-text">
           <input
             type="text"
-            id="name"
-            name="name"
+            id="mailing-list-name"
+            name="mailing-list-name"
             placeholder="Full name"
             className="peer w-full border-0 border-b border-darker bg-lighter px-0 placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0"
           />
           <label
-            htmlFor="name"
+            htmlFor="mailing-list-name"
             className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/70 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base 3xl:text-lg 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-lg"
           >
             Full name
@@ -74,13 +74,13 @@ const MailingList = () => {
         <div className="relative w-full cursor-text">
           <input
             type="email"
-            id="email"
-            name="email"
+            id="mailing-list-email"
+            name="mailing-list-email"
             placeholder="Email address"
             className="peer w-full border-0 border-b border-darker bg-lighter px-0 placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0"
           />
           <label
-            htmlFor="email"
+            htmlFor="mailing-list-email"
             className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base"
           >
             Email address
