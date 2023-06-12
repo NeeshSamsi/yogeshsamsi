@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <>
-      <main className="relative flex aspect-[1/1.6] w-full items-center px-8 text-center text-lighter md:aspect-[1/0.52] md:px-col-inner md:text-start">
+      <main className="relative flex aspect-[1/1.6] w-full px-8 text-center text-lighter md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
           src={imgSrc}
           alt="Background image of Yogesh Samsi"
