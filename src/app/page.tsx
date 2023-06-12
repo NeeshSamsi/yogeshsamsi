@@ -10,14 +10,14 @@ import SectionHeading from "@/components/SectionHeading"
 const Home: NextPage = () => {
   const { home } = config.content
   const { hero, about, events, press } = home
-  const { imgSrc, mobileImgSrc } = hero
+  const { imgSrc, mobileImgSrc, alt } = hero
 
   return (
     <>
       <main className="relative flex aspect-[1/1.6] w-full px-8 text-center text-lighter md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
           src={imgSrc}
-          alt="Background image of Yogesh Samsi"
+          alt={alt}
           className="-z-10 hidden object-cover md:block"
           fill
           priority
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         />
         <Image
           src={mobileImgSrc}
-          alt="Background image of Yogesh Samsi"
+          alt={alt}
           className="-z-10 block h-full w-full object-cover object-top md:hidden"
           fill
           priority

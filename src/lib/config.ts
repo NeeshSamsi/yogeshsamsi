@@ -33,6 +33,7 @@ export const content = {
     hero: {
       imgSrc: "https://iili.io/HgRpSbn.webp",
       mobileImgSrc: "https://iili.io/Hg5CZ67.webp",
+      alt: "Yogesh Samsi sitting with his tabla",
     },
     about: {
       main: "A unique tabla artist who has simultaneously scaled unprecedented heights of achievement in solo performance, accompaniment, and pedagogy.",
@@ -151,6 +152,13 @@ export const content = {
         "Theatre de la Ville",
         "Cologne Radio Festival",
       ],
+    },
+  },
+
+  contact: {
+    image: {
+      src: "/contact.webp",
+      alt: "Yogesh Samsi playing a tabla",
     },
   },
 
