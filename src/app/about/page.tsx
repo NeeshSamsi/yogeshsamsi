@@ -1,3 +1,4 @@
+import type { NextPage } from "next"
 import * as config from "@/lib/config"
 import Image from "next/image"
 import Button from "@/components/Button"
@@ -5,7 +6,7 @@ import Socials from "@/components/Socials"
 import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
 import Section from "@/components/Section"
 
-export default async function About() {
+const About: NextPage = () => {
   const { about } = config.content
   const { hero, aboutSection, concertHighlights } = about
   const { quote, pdfUrl, image } = hero
@@ -98,3 +99,5 @@ export default async function About() {
     </>
   )
 }
+
+export default About

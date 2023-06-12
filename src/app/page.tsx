@@ -1,3 +1,4 @@
+import type { NextPage } from "next"
 import * as config from "@/lib/config"
 import Image from "next/image"
 import Button from "@/components/Button"
@@ -6,7 +7,7 @@ import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 import Section from "@/components/Section"
 import SectionHeading from "@/components/SectionHeading"
 
-export default async function Home() {
+const Home: NextPage = () => {
   const { home } = config.content
   const { hero, about, events, press } = home
   const { imgSrc, mobileImgSrc } = hero
@@ -175,3 +176,5 @@ export default async function Home() {
     </>
   )
 }
+
+export default Home
