@@ -9,6 +9,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/masterclass",
+        destination: "/learn",
+        permanent: true,
+      },
+      {
         source: "/facebook",
         destination: "https://facebook.com/PanditYogeshSamsi",
         permanent: true,
