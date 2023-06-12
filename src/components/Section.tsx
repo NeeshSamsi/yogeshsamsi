@@ -2,8 +2,8 @@ import type { FC, PropsWithChildren } from "react"
 
 type Props = {
   role: string
-  bgClr: "bg-lighter" | "bg-light" | "bg-dark" | "bg-darker"
-  txtClr: "text-lighter" | "text-light" | "text-dark" | "text-darker"
+  bgClr: BackgroundColors
+  txtClr: TextColors
 }
 
 const Section: FC<PropsWithChildren<Props>> = ({
