@@ -24,7 +24,7 @@ export default async function About() {
             <p>&ldquo;{quote.text}&rdquo;</p>
             <p>{quote.by}</p>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
             <Button
               as="link"
               text="Biodata"
