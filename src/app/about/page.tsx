@@ -3,6 +3,7 @@ import Image from "next/image"
 import Button from "@/components/Button"
 import Socials from "@/components/Socials"
 import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
+import Section from "@/components/Section"
 
 export default async function About() {
   const { about } = config.content
@@ -61,10 +62,7 @@ export default async function About() {
         </div>
       </main>
 
-      <section
-        role="about"
-        className="space-y-12 bg-dark px-8 py-12 text-lighter md:space-y-20 md:px-col-inner md:py-20"
-      >
+      <Section role="About" bgClr="bg-dark" txtClr="text-lighter">
         <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
           About Yogesh
         </h2>
@@ -78,7 +76,7 @@ export default async function About() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
     </>
   )
 }
