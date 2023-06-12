@@ -77,6 +77,24 @@ export default async function About() {
           ))}
         </div>
       </Section>
+
+      <Section role="Concert highlights" bgClr="bg-light" txtClr="text-dark">
+        <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
+          Concert Highlights
+        </h2>
+        <div className="flex flex-col items-center justify-between gap-6 text-center text-base font-medium sm:text-lg md:grid-cols-2 md:flex-row md:items-start md:gap-10 md:text-start md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+          <div className="grid gap-6 md:gap-8">
+            {concertHighlights.left.map((concert, i) => (
+              <p key={i}>{concert}</p>
+            ))}
+          </div>
+          <div className="grid gap-6 md:gap-8">
+            {concertHighlights.right.map((concert, i) => (
+              <p key={i}>{concert}</p>
+            ))}
+          </div>
+        </div>
+      </Section>
     </>
   )
 }
