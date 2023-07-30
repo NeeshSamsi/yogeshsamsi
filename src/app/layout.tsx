@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth scroll-p-16 lg:scroll-p-24 2xl:scroll-p-20">
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
