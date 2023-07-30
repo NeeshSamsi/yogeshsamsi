@@ -1,0 +1,19 @@
+{
+  "metaTitle": "Home",
+  "metaDescription": "The Official Yogesh Samsi Website. Your one stop for all important information as well as to enroll into the Yogesh Samsi Masterclass. ",
+  "aboutHeadline": "A unique tabla artist who has simultaneously scaled unprecedented heights of achievement in solo performance, accompaniment, and pedagogy.",
+  "aboutCards": [
+    {
+      "title": "As a Soloist",
+      "description": "Combines tradition & innovation in Punjab Gharana, mastering a vast repertoire. He revives lost partition-era treasures and presents a fresh perspective that captures Ustad Allah Rakha's philosophy and rhythmic essence."
+    },
+    {
+      "title": "As an Accompanist",
+      "description": "Provides sensitive and thoughtful tabla accompaniment to leading vocalists and instrumentalists, reflecting his refined approach groomed under his father, stalwart vocalist Pandit Dinkar Kaikini."
+    },
+    {
+      "title": "As a Guru",
+      "description": "Dedicated to the future of tabla in his role as a Guru, guiding a new generation of accomplished professionals. His pedagogical approach fosters creative, independent thinkers to propagate and evolve the Gharana."
+    }
+  ]
+}
