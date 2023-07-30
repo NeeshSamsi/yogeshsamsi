@@ -14,17 +14,17 @@ const montserrat = Montserrat({
 const reckless = localFont({
   src: [
     {
-      path: "@/fonts/RecklessNeue/ttf/RecklessNeue-Medium.ttf",
+      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Medium.ttf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "@/fonts/RecklessNeue/ttf/RecklessNeue-SemiBold.ttf",
+      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-SemiBold.ttf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "@/fonts/RecklessNeue/ttf/RecklessNeue-Bold.ttf",
+      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Bold.ttf",
       weight: "700",
       style: "normal",
     },
