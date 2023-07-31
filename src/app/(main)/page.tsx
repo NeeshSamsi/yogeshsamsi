@@ -95,7 +95,12 @@ const Home: NextPage = () => {
         </div>
       </Section>
 
-      <Section role="Upcoming events" id="events" bgClr="bg-dark" txtClr="text-lighter">
+      <Section
+        role="Upcoming events"
+        id="events"
+        bgClr="bg-dark"
+        txtClr="text-lighter"
+      >
         <SectionHeading as="h2" text="Upcoming events" />
 
         <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
@@ -127,7 +132,7 @@ const Home: NextPage = () => {
                   />
                 </div>
               </div>
-            )
+            ),
           )}
         </div>
       </Section>
