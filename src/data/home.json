@@ -1,6 +1,9 @@
 {
   "metaTitle": "Home",
   "metaDescription": "The Official Yogesh Samsi Website. Your one stop for all important information as well as to enroll into the Yogesh Samsi Masterclass. ",
+  "heroImage": "/images/pages/home/heroImage.webp",
+  "heroMobileImage": "/images/pages/home/heroMobileImage.webp",
+  "heroImageAlt": "Yogesh Samsi sitting with his tabla",
   "aboutHeadline": "A unique tabla artist who has simultaneously scaled unprecedented heights of achievement in solo performance, accompaniment, and pedagogy.",
   "aboutCards": [
     {
