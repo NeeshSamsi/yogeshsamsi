@@ -24,7 +24,7 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
       ${
         type === "Secondary" &&
         `${theme === "Light" && "text-light hover:text-lighter"} ${
-          theme === "Dark" && "text-dark hover:text-dark/90"
+          theme === "Dark" && "text-dark hover:text-dark/80"
         }`
       }`
 
