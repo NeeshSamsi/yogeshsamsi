@@ -1,6 +1,7 @@
-import type { NextPage } from "next"
-import * as config from "@/lib/config"
 import Image from "next/image"
+
+import reader from "@/lib/keystatic"
+
 import {
   ChatBubbleBottomCenterTextIcon,
   EnvelopeIcon,
@@ -8,8 +9,38 @@ import {
   UserIcon,
 } from "@heroicons/react/24/solid"
 
-const Contact: NextPage = () => {
-  const { src, alt } = config.content.contact.image
+export async function generateMetadata() {
+  const contact = await reader.singletons.contact.read()
+  if (!contact) throw new Error("Keystatic Content Not Found - Contact Page")
+
+  const { metaTitle: title, metaDescription: description } = contact
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: "/contact",
+      type: "website",
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary",
+    },
+    themeColor: "#362009",
+    alternates: {
+      canonical: "/contact",
+    },
+  }
+}
+
+const Contact = async () => {
+  const contact = await reader.singletons.contact.read()
+  if (!contact) throw new Error("Keystatic Content Not Found - Contact Page")
+
+  const { image, imageAlt } = contact
 
   return (
     <main className="gap-8 px-8 py-12 text-dark md:py-20 lg:flex lg:px-0 lg:py-0 lg:pl-col-inner">
@@ -83,8 +114,8 @@ const Contact: NextPage = () => {
       </div>
       <div className="aspect[1/1.1] relative hidden h-full w-full lg:block">
         <Image
-          src={src}
-          alt={alt}
+          src={image}
+          alt={imageAlt}
           height={2354}
           width={2160}
           priority

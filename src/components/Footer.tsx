@@ -1,25 +1,33 @@
-import * as config from "@/lib/config"
-import Socials from "./Socials"
 import Link from "next/link"
-import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
 
-const { email, navLinks, content } = config
-const { contactHeading, mailingList } = content.footer
+import reader from "@/lib/keystatic"
+
+import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
+import Socials from "./Socials"
 
 const headingFontStyles =
   "font-serif text-2xl font-bold tracking-wider xl:text-3xl 3xl:text-4xl"
 
-const Footer = () => {
+const Footer = async () => {
+  const settings = await reader.singletons.settings.read()
+
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { email, navLinks, mailingListTitle, mailingListDescription } = settings
+
   return (
     <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-8 md:flex-row md:items-start md:gap-8 md:px-col-outer">
-      <MailingList />
+      <MailingList
+        title={mailingListTitle}
+        description={mailingListDescription}
+      />
       <div className="flex flex-col items-center gap-4 md:items-start xl:gap-8">
-        <p className={`${headingFontStyles}`}>{contactHeading}</p>
+        <p className={`${headingFontStyles}`}>Find me here:</p>
         <ul className="flex gap-4 md:gap-6">
           <Socials hoverClr="text-darker/80" sizes="h-8 xl:h-10" />
         </ul>
         <a
-          href={`mailto:${config.email}`}
+          href={`mailto:${email}`}
           className="text-base hover:underline xl:text-lg 2xl:text-xl"
         >
           {email}
@@ -40,16 +48,18 @@ const Footer = () => {
   )
 }
 
-const MailingList = () => {
+const MailingList = ({
+  title,
+  description,
+}: {
+  title: string
+  description: string
+}) => {
   return (
     <form className="flex max-w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 text-base md:px-6 md:py-4 lg:px-8 lg:py-6 xl:text-lg 3xl:gap-8 3xl:text-xl">
       <div>
-        <h6 className={`mb-4 3xl:mb-6 ${headingFontStyles}`}>
-          {mailingList.heading}
-        </h6>
-        <p className="text-sm xl:text-base 3xl:text-lg">
-          {mailingList.subheading}
-        </p>
+        <h6 className={`mb-4 3xl:mb-6 ${headingFontStyles}`}>{title}</h6>
+        <p className="text-sm xl:text-base 3xl:text-lg">{description}</p>
       </div>
       <div className="flex items-end gap-4 3xl:gap-6">
         <UserIcon className="aspect-square h-6 xl:h-7 3xl:h-8" />
