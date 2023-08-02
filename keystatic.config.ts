@@ -124,6 +124,24 @@ export default config({
             length: { min: 1 },
           },
         }),
+        heroImage: fields.image({
+          label: "Hero Image",
+          directory: "/public/images/pages/home/",
+          publicPath: "/images/pages/home/",
+          validation: { isRequired: true },
+        }),
+        heroMobileImage: fields.image({
+          label: "Hero Image - Mobile",
+          directory: "/public/images/pages/home/",
+          publicPath: "/images/pages/home/",
+          validation: { isRequired: true },
+        }),
+        heroImageAlt: fields.text({
+          label: "Hero Image Alternate Text",
+          description:
+            "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+          validation: { length: { min: 1 } },
+        }),
         aboutHeadline: fields.text({
           label: "Headline - About Section",
           multiline: true,
@@ -160,7 +178,7 @@ export default config({
         date: fields.array(
           fields.date({
             label: "Date",
-            validation: { isRequired: true, min: new Date().toString() },
+            validation: { isRequired: true},
           }),
           {
             label: "Date(s)",
