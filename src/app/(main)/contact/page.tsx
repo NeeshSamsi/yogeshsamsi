@@ -105,7 +105,7 @@ const Contact = async () => {
           </div>
           <button
             type="submit"
-            className="flex w-fit items-center gap-4 bg-dark px-5 py-3 font-serif text-lg font-semibold tracking-wider text-lighter xl:text-xl 3xl:text-2xl"
+            className="flex w-fit items-center gap-4 bg-dark px-5 py-3 font-serif text-lg font-semibold tracking-wider text-lighter transition-colors hover:bg-dark/90 xl:text-xl 3xl:text-2xl"
           >
             <span>Reach out</span>
             <PaperAirplaneIcon className="aspect-square h-4 xl:h-5" />
