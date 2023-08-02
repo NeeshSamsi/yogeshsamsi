@@ -1,15 +1,49 @@
-import type { NextPage } from "next"
-import * as config from "@/lib/config"
 import Image from "next/image"
-import Button from "@/components/Button"
-import Socials from "@/components/Socials"
+
+import reader from "@/lib/keystatic"
+
 import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
 import Section from "@/components/Section"
+import Socials from "@/components/Socials"
+import Button from "@/components/Button"
 
-const About: NextPage = () => {
-  const { about } = config.content
-  const { hero, aboutSection, concertHighlights } = about
-  const { quote, pdfUrl, image } = hero
+export async function generateMetadata() {
+  const about = await reader.singletons.about.read()
+  if (!about) throw new Error("Keystatic Content Not Found - About Page")
+
+  const { metaTitle: title, metaDescription: description } = about
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: "/about",
+      type: "website",
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary",
+    },
+    themeColor: "#362009",
+    alternates: {
+      canonical: "/about",
+    },
+  }
+}
+
+const About = async () => {
+  // const { about } = config.content
+  // const { hero, aboutSection, concertHighlights } = about
+  // const { quote, pdfUrl, image } = hero
+
+  const about = await reader.singletons.about.read()
+
+  if (!about) throw new Error("Keystatic Content Not Found - About Page")
+
+  const { heroImage, heroImageAlt, quoteText, quoteBy, biodata, aboutLeft, aboutRight, concertsLeft, concertsRight } = about
 
   return (
     <>
@@ -19,11 +53,11 @@ const About: NextPage = () => {
             Yogesh Samsi
           </h1>
           <ul className="flex gap-4 lg:gap-6">
-            <Socials hoverClr="text-darker/80" sizes="h-8 lg:h-10 3xl:h-12" />
+            <Socials hoverClr="text-darker/90" sizes="h-8 lg:h-10 3xl:h-12" />
           </ul>
           <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl 3xl:text-2xl">
-            <p>&ldquo;{quote.text}&rdquo;</p>
-            <p>{quote.by}</p>
+            <p>&ldquo;{quoteText}&rdquo;</p>
+            <p>{quoteBy}</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
             <Button
@@ -35,7 +69,7 @@ const About: NextPage = () => {
               }}
               type="Primary"
               theme="Dark"
-              href={`${pdfUrl}`}
+              href={`${biodata}`}
               download
             />
             <Button
@@ -53,8 +87,8 @@ const About: NextPage = () => {
         </div>
         <div className="aspect[1/1.1] relative hidden h-full w-full lg:block">
           <Image
-            src={image.src}
-            alt={image.alt}
+            src={heroImage}
+            alt={heroImageAlt}
             height={2354}
             width={2160}
             priority
@@ -69,7 +103,7 @@ const About: NextPage = () => {
         </h2>
 
         <div className="md:mx-none mx-auto flex max-w-md flex-col gap-8 text-center text-sm sm:text-base md:max-w-none md:flex-row md:text-start md:text-sm lg:text-base xl:text-lg">
-          {[aboutSection.left, aboutSection.right].map((paras, i) => (
+          {[aboutLeft, aboutRight].map((paras, i) => (
             <div key={i} className="flex flex-col gap-6 md:w-1/2 lg:gap-8">
               {paras.map((para, i) => (
                 <p key={i}>{para}</p>
@@ -85,12 +119,12 @@ const About: NextPage = () => {
         </h2>
         <div className="flex flex-col items-center justify-between gap-6 text-center text-base font-medium sm:text-lg md:grid-cols-2 md:flex-row md:items-start md:gap-10 md:text-start md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
           <div className="grid gap-6 md:gap-8">
-            {concertHighlights.left.map((concert, i) => (
+            {concertsLeft.map((concert, i) => (
               <p key={i}>{concert}</p>
             ))}
           </div>
           <div className="grid gap-6 md:gap-8">
-            {concertHighlights.right.map((concert, i) => (
+            {concertsRight.map((concert, i) => (
               <p key={i}>{concert}</p>
             ))}
           </div>
