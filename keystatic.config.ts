@@ -166,6 +166,107 @@ export default config({
         ),
       },
     }),
+
+    about: singleton({
+      label: "About Page",
+      path: "src/data/about",
+      format: "json",
+      schema: {
+        metaTitle: fields.text({
+          label: "Metadata Title",
+          description:
+            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        metaDescription: fields.text({
+          label: "Metadata Description",
+          description:
+            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+          multiline: true,
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        heroImage: fields.image({
+          label: "Hero Image",
+          directory: "/public/images/pages/about/",
+          publicPath: "/images/pages/about/",
+          validation: { isRequired: true },
+        }),
+        heroImageAlt: fields.text({
+          label: "Hero Image Alternate Text",
+          description:
+            "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+          validation: { length: { min: 1 } },
+        }),
+        quoteText: fields.text({
+          label: "Quote Text - Hero Section",
+          validation: { length: { min: 1 } },
+        }),
+        quoteBy: fields.text({
+          label: "Quote By - Hero Section",
+          validation: { length: { min: 1 } },
+        }),
+        biodata: fields.file({
+          label: "Biodata PDF",
+          directory: "public/files/biodata",
+          publicPath: "/files/biodata/",
+          validation: { isRequired: true },
+        }),
+
+        aboutLeft: fields.array(
+          fields.text({
+            label: "Paragraph",
+            multiline: true,
+            validation: { length: { min: 1 } },
+          }),
+          {
+            label: "Left Column - About Section",
+            description:
+              "List of paragraphs of information shown in the left column of the about section",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value,
+          },
+        ),
+        aboutRight: fields.array(
+          fields.text({
+            label: "Paragraph",
+            multiline: true,
+            validation: { length: { min: 1 } },
+          }),
+          {
+            label: "Right Column - About Section",
+            description:
+              "List of paragraphs of information shown in the right column of the about section",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value,
+          },
+        ),
+
+        concertsLeft: fields.array(
+          fields.text({ label: "Concert", validation: { length: { min: 1 } } }),
+          {
+            label: "Left Column - Concert Highlights",
+            description:
+              "List of concerts shown in the left column of the Concert Highlights",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value,
+          },
+        ),
+        concertsRight: fields.array(
+          fields.text({ label: "Concert", validation: { length: { min: 1 } } }),
+          {
+            label: "Right Column - Concert Highlights",
+            description:
+              "List of concerts shown in the right column of the Concert Highlights",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value,
+          },
+        ),
+      },
+    }),
   },
 
   collections: {
@@ -178,7 +279,7 @@ export default config({
         date: fields.array(
           fields.date({
             label: "Date",
-            validation: { isRequired: true},
+            validation: { isRequired: true },
           }),
           {
             label: "Date(s)",
