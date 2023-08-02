@@ -1,31 +1,55 @@
-import type { NextPage } from "next"
-import * as config from "@/lib/config"
 import Image from "next/image"
-import Button from "@/components/Button"
+
+import reader from "@/lib/keystatic"
+import { formatDates } from "@/lib/utils"
+
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 import Section from "@/components/Section"
 import SectionHeading from "@/components/SectionHeading"
+import Button from "@/components/Button"
 
-const Home: NextPage = () => {
-  const { home } = config.content
-  const { hero, about, events, press } = home
-  const { imgSrc, mobileImgSrc, alt } = hero
+const Home = async () => {
+  const home = await reader.singletons.home.read()
+  const events = (await reader.collections.events.all()).map((event) => ({
+    ...event.entry,
+    date: event.entry.date.map((dateString) => new Date(dateString)),
+    title: event.slug,
+  }))
+  const testimonials = (await reader.collections.testimonials.all()).map(
+    (event) => ({
+      ...event.entry,
+      name: event.slug,
+    }),
+  )
+
+  if (!home) throw new Error("Keystatic Content Not Found - Home Page")
+  if (!events) throw new Error("Keystatic Content Not Found - Upcoming Events")
+  if (!testimonials)
+    throw new Error("Keystatic Content Not Found - Press Testimonials")
+
+  const {
+    heroImage,
+    heroMobileImage,
+    heroImageAlt,
+    aboutHeadline,
+    aboutCards,
+  } = home
 
   return (
     <>
       <main className="relative flex aspect-[1/1.6] w-full px-8 text-center text-lighter md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
-          src={imgSrc}
-          alt={alt}
+          src={heroImage}
+          alt={heroImageAlt}
           className="-z-10 hidden object-cover md:block"
           fill
           priority
           sizes="100vw"
         />
         <Image
-          src={mobileImgSrc}
-          alt={alt}
+          src={heroMobileImage}
+          alt={heroImageAlt}
           className="-z-10 block h-full w-full object-cover object-top md:hidden"
           fill
           priority
@@ -75,20 +99,16 @@ const Home: NextPage = () => {
 
       <Section role="about" bgClr="bg-lighter" txtClr="text-darker">
         <h2 className="mx-auto text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
-          {about.main}
+          {aboutHeadline}
         </h2>
         <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8 2xl:gap-12">
-          {[
-            { title: "As a Soloist", para: about.soloist },
-            { title: "As an Accompanist", para: about.accompanist },
-            { title: "As a Guru", para: about.guru },
-          ].map((card, i) => (
+          {aboutCards.map(({ title, description }, i) => (
             <div key={i} className="space-y-4 border border-darker p-4">
               <h3 className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
-                {card.title}
+                {title}
               </h3>
               <p className="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
-                {card.para}
+                {description}
               </p>
             </div>
           ))}
@@ -105,24 +125,30 @@ const Home: NextPage = () => {
 
         <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
           {events.map(
-            ({ date, title, description, online, venue, ticketed, url }, i) => (
+            ({ date, title, description, name, link, ctaText, ctaLink }, i) => (
               <div
                 key={i}
                 className="flex flex-col gap-4 border border-lighter p-4  text-xs sm:text-sm lg:text-sm xl:gap-6 xl:p-6 xl:text-base 2xl:text-lg"
               >
                 <p className="w-fit font-medium uppercase tracking-wider">
-                  {date}
+                  {date.length === 1 ? formatDates(date) : ""}
                 </p>
                 <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                   {title}
                 </h3>
                 <p>{description}</p>
                 <div className="flex flex-col items-start justify-between gap-4 font-semibold sm:flex-row sm:items-center">
-                  <p>{!online ? venue : "Online"}</p>
+                  {link ? (
+                    <a href={link} className="hover:underline">
+                      {name}
+                    </a>
+                  ) : (
+                    <p>{name}</p>
+                  )}
                   <Button
                     as="link"
-                    href={url}
-                    text="Learn more"
+                    href={ctaLink}
+                    text={ctaText}
                     type="Primary"
                     theme="Light"
                     icon={{
@@ -138,15 +164,15 @@ const Home: NextPage = () => {
       </Section>
 
       <Section role="Press quotes" bgClr="bg-lighter" txtClr="text-lighter">
-        {press.map(({ channel, quote }, i) => (
+        {testimonials.map(({ name, logo, quote }, i) => (
           <div
             key={i}
             className="mx-auto mt-10 w-full max-w-md bg-dark px-12 shadow-lg shadow-dark/50 lg:mt-12 lg:max-w-none"
           >
             <div className="flex -translate-y-10 flex-col items-center gap-4 lg:-translate-y-12 xl:gap-6">
               <Image
-                src={`/${channel}.png`}
-                alt={`${channel} Logo`}
+                src={logo}
+                alt={`${name} Logo`}
                 height={220}
                 width={220}
                 className="aspect-square w-20 rounded-full lg:w-24 2xl:w-32"
@@ -172,7 +198,7 @@ const Home: NextPage = () => {
                 </h4>
               </div>
               <h3 className="font-serif text-lg font-semibold sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
-                {channel}
+                {name}
               </h3>
             </div>
           </div>
