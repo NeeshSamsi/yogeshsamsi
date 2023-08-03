@@ -1,32 +1,38 @@
 import type { FC, ReactElement } from "react"
 import Link from "next/link"
 
+import { cn } from "@/lib/utils"
+
 type IconType = { element: ReactElement; sizes: string }
 
 type Props = {
   as: "button" | "link"
   text: string
   type: "Primary" | "Secondary"
-  theme: "Light" | "Dark"
+  theme: "Lighter" | "Light" | "Darker"
   href?: string
   icon?: IconType
   download?: boolean
 }
 
 const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
-  const commonStyles = `py-2 px-3 md:px-4 transition-colors flex items-center gap-2 md:gap-3 3xl:py-3 3xl:px-5`
-  const themeStyles = `${
-    type === "Primary" &&
-    `${theme === "Light" && "bg-light text-darker hover:bg-lighter"} ${
-      theme === "Dark" && "bg-dark text-lighter hover:bg-dark/90"
-    }`
-  }
-      ${
-        type === "Secondary" &&
-        `${theme === "Light" && "text-light hover:text-lighter"} ${
-          theme === "Dark" && "text-dark hover:text-dark/80"
-        }`
-      }`
+  const buttonClasses = cn(
+    "py-2 px-3 md:px-4 transition-colors flex items-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
+    {
+      "bg-light text-darker hover:bg-lighter":
+        type === "Primary" && theme === "Light",
+      "bg-lighter text-darker hover:bg-light":
+        type === "Primary" && theme === "Lighter",
+      "bg-darker text-lighter hover:bg-darker/90":
+        type === "Primary" && theme === "Darker",
+      "text-light hover:text-lighter":
+        type === "Secondary" && theme === "Light",
+      "text-lighter hover:text-light":
+        type === "Secondary" && theme === "Lighter",
+      "text-darker hover:text-darker/80":
+        type === "Secondary" && theme === "Darker",
+    },
+  )
 
   const Icon: FC<{ icon: IconType }> = ({ icon }) => {
     const { element, sizes } = icon
@@ -36,7 +42,7 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
   switch (as) {
     case "button":
       return (
-        <button className={`${commonStyles} ${themeStyles}`}>
+        <button className={buttonClasses}>
           <span>{text}</span>
           {icon && <Icon icon={icon} />}
         </button>
@@ -47,7 +53,7 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
         <Link
           href={href ? href : "/"}
           download={download}
-          className={`${commonStyles} ${themeStyles}`}
+          className={buttonClasses}
         >
           <span>{text}</span>
           {icon && <Icon icon={icon} />}
