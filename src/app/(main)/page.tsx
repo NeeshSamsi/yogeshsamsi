@@ -8,6 +8,7 @@ import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 import Section from "@/components/Section"
 import SectionHeading from "@/components/SectionHeading"
 import Button from "@/components/Button"
+import Event from "@/components/Event"
 
 const Home = async () => {
   const home = await reader.singletons.home.read()
@@ -101,7 +102,7 @@ const Home = async () => {
         <h2 className="mx-auto text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
           {aboutHeadline}
         </h2>
-        <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8 2xl:gap-12">
+        <div className="mx-auto grid max-w-lg gap-6 lg:max-w-none lg:grid-cols-3 lg:gap-8 2xl:gap-12">
           {aboutCards.map(({ title, description }, i) => (
             <div key={i} className="space-y-4 border border-darker p-4">
               <h3 className="font-serif text-lg font-semibold tracking-wide sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
@@ -123,42 +124,15 @@ const Home = async () => {
       >
         <SectionHeading as="h2" text="Upcoming events" />
 
-        <div className="mx-auto grid max-w-md gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
-          {events.map(
-            ({ date, title, description, name, link, ctaText, ctaLink }, i) => (
-              <div
-                key={i}
-                className="flex flex-col gap-4 border border-lighter p-4  text-xs sm:text-sm lg:text-sm xl:gap-6 xl:p-6 xl:text-base 2xl:text-lg"
-              >
-                <p className="w-fit font-medium uppercase tracking-wider">
-                  {date.length === 1 ? formatDates(date) : ""}
-                </p>
-                <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
-                  {title}
-                </h3>
-                <p>{description}</p>
-                <div className="flex flex-col items-start justify-between gap-4 font-semibold sm:flex-row sm:items-center">
-                  {link ? (
-                    <a href={link} className="hover:underline">
-                      {name}
-                    </a>
-                  ) : (
-                    <p>{name}</p>
-                  )}
-                  <Button
-                    as="link"
-                    href={ctaLink}
-                    text={ctaText}
-                    type="Primary"
-                    theme="Light"
-                    icon={{
-                      element: <ArrowRightIcon className="stroke-[2.5px]" />,
-                      sizes: "w-3 xl:w-4",
-                    }}
-                  />
-                </div>
-              </div>
-            ),
+        <div className="mx-auto grid max-w-lg gap-x-12 gap-y-8 lg:max-w-none lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
+          {events ? (
+            events.map((event, i) => (
+              <Event key={i} event={event} theme="Lighter" />
+            ))
+          ) : (
+            <p className="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+              No upcoming events
+            </p>
           )}
         </div>
       </Section>
@@ -167,7 +141,7 @@ const Home = async () => {
         {testimonials.map(({ name, logo, quote }, i) => (
           <div
             key={i}
-            className="mx-auto mt-10 w-full max-w-md bg-dark px-12 shadow-lg shadow-dark/50 lg:mt-12 lg:max-w-none"
+            className="mx-auto mt-10 w-full max-w-lg bg-dark px-12 shadow-lg shadow-dark/50 lg:mt-12 lg:max-w-none"
           >
             <div className="flex -translate-y-10 flex-col items-center gap-4 lg:-translate-y-12 xl:gap-6">
               <Image
