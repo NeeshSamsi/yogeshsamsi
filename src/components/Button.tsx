@@ -9,7 +9,7 @@ type Props = {
   as: "button" | "link"
   text: string
   type: "Primary" | "Secondary"
-  theme: "Lighter" | "Light" | "Darker"
+  theme: "Lighter" | "Light" | "Darker" | "Dark"
   href?: string
   icon?: IconType
   download?: boolean
@@ -23,12 +23,15 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
         type === "Primary" && theme === "Light",
       "bg-lighter text-darker hover:bg-light":
         type === "Primary" && theme === "Lighter",
+      "bg-dark text-lighter hover:bg-dark/90":
+        type === "Primary" && theme === "Dark",
       "bg-darker text-lighter hover:bg-darker/90":
         type === "Primary" && theme === "Darker",
       "text-light hover:text-lighter":
         type === "Secondary" && theme === "Light",
       "text-lighter hover:text-light":
         type === "Secondary" && theme === "Lighter",
+      "text-dark hover:text-dark/80": type === "Secondary" && theme === "Dark",
       "text-darker hover:text-darker/80":
         type === "Secondary" && theme === "Darker",
     },
