@@ -99,7 +99,7 @@ const MailingList = ({
       </div>
       <button
         type="submit"
-        className="bg-darker px-5 py-2 font-serif font-semibold tracking-wider text-lighter"
+        className="bg-darker px-5 py-2 font-serif font-semibold tracking-wider text-lighter transition-all hover:bg-darker/90 focus-visible:bg-darker/90"
       >
         Join now
       </button>
