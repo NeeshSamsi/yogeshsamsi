@@ -38,8 +38,8 @@ const reckless = localFont({
 export async function generateMetadata() {
   const settings = await reader.singletons.settings.read()
   const home = await reader.singletons.home.read()
-  if(!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-  if(!home) throw new Error("Keystatic Content Not Found - Home Page")
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+  if (!home) throw new Error("Keystatic Content Not Found - Home Page")
 
   const { siteName, url, metaTitle: title } = settings
   const { metaDescription: description } = home
@@ -70,11 +70,14 @@ export async function generateMetadata() {
   }
 }
 
-export default function MainLayout({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
   return (
     <html
       lang="en"
@@ -83,7 +86,7 @@ export default function MainLayout({
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
-        <Navbar />
+        <Navbar navLinks={settings.navLinks} />
         {children}
         <Footer />
       </body>

@@ -1,12 +1,19 @@
 "use client"
 
-import * as config from "@/lib/config"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Socials from "./Socials"
 
-const Navbar = () => {
+const Navbar = ({
+  navLinks,
+}: {
+  navLinks: readonly {
+    readonly text: string
+    readonly path: string
+    readonly newWindow: boolean
+  }[]
+}) => {
   const pathname = usePathname()
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false)
 
@@ -25,7 +32,7 @@ const Navbar = () => {
       <div className="flex w-full items-center justify-between gap-12 bg-darker px-8 py-4 md:px-col-outer md:py-6">
         <div>
           <ul className="hidden gap-4 md:flex md:text-base lg:gap-6 lg:text-lg 2xl:text-xl">
-            {config.navLinks.map(({ path, text, newWindow }, i) => (
+            {navLinks.map(({ path, text, newWindow }, i) => (
               <li
                 key={i}
                 className={`transition-colors hover:text-light ${
@@ -70,7 +77,7 @@ const Navbar = () => {
         } h-full flex-col items-center gap-12  bg-darker  pt-16 text-xl sm:text-2xl md:hidden`}
       >
         <ul className="flex flex-col items-center gap-6">
-          {config.navLinks.map(({ path, text, newWindow }, i) => (
+          {navLinks.map(({ path, text, newWindow }, i) => (
             <li
               key={i}
               className={`transition-colors hover:text-light ${
