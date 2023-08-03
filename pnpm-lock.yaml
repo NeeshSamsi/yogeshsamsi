@@ -9,6 +9,7 @@ specifiers:
   '@types/react': 18.2.17
   '@types/react-dom': 18.2.7
   autoprefixer: 10.4.14
+  clsx: ^2.0.0
   eslint: 8.46.0
   eslint-config-next: 13.4.12
   next: 13.4.12
@@ -18,6 +19,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   tailwind-hamburgers: ^1.3.5
+  tailwind-merge: ^1.14.0
   tailwindcss: 3.3.3
   typescript: 5.1.6
 
@@ -30,6 +32,7 @@ dependencies:
   '@types/react': 18.2.17
   '@types/react-dom': 18.2.7
   autoprefixer: 10.4.14_postcss@8.4.27
+  clsx: 2.0.0
   eslint: 8.46.0
   eslint-config-next: 13.4.12_eslint@8.46.0+typescript@5.1.6
   next: 13.4.12_react-dom@18.2.0+react@18.2.0
@@ -39,6 +42,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   tailwind-hamburgers: 1.3.5
+  tailwind-merge: 1.14.0
   tailwindcss: 3.3.3
   typescript: 5.1.6
 
@@ -2559,6 +2563,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /clsx/2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: false
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -4914,6 +4923,10 @@ packages:
 
   /tailwind-hamburgers/1.3.5:
     resolution: {integrity: sha512-0K1wfXWmF73BP3RWZU/UitFycV85f8gG7P0OZDB47fAjJ00hiv5AaFM3bJBtYynwfMG9vMgx05zpBogKVwyT2Q==}
+    dev: false
+
+  /tailwind-merge/1.14.0:
+    resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
     dev: false
 
   /tailwindcss/3.3.3:
