@@ -291,16 +291,27 @@ export default config({
           },
         }),
         images: fields.array(
-          fields.image({
-            label: "Image",
-            directory: "/public/images/pages/gallery/",
-            publicPath: "/images/pages/gallery/",
-            validation: { isRequired: true },
-          }),
+          fields.object(
+            {
+              image: fields.image({
+                label: "Image",
+                directory: "/public/images/pages/gallery/",
+                publicPath: "/images/pages/gallery/",
+                validation: { isRequired: true },
+              }),
+              alt: fields.text({
+                label: "Alternate Text",
+                description:
+                  "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+                validation: { length: { min: 1 } },
+              }),
+            },
+            { label: "Image" },
+          ),
           {
             label: "Gallery Images",
             validation: { length: { min: 1 } },
-            // itemLabel: (props) => props.,
+            itemLabel: (props) => props.fields.alt.value,
           },
         ),
       },
