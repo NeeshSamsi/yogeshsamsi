@@ -14,13 +14,14 @@ module.exports = {
       serif: ["var(--font-reckless)", ...defaultTheme.fontFamily.serif],
     },
     extend: {
+      // Changes for the upper breakpoint take effect above common sizes no at common sizes.
       screens: {
-        // sm: "640px",
-        // md: "768px",
-        // lg: "1024px",
-        // xl: "1280px",
-        // "2xl": "1536px",
-        "3xl": "1920px",
+        sm: "641px",
+        md: "769px",
+        lg: "1025px",
+        xl: "1281px",
+        "2xl": "1537px",
+        "3xl": "1921px",
       },
       colors: {
         darker: "#362009",
