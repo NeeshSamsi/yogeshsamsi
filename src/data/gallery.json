@@ -1,4 +1,46 @@
 {
   "metaTitle": "Gallery",
-  "metaDescription": "Browse pictures of Yogesh Samsi"
+  "metaDescription": "Browse pictures of Yogesh Samsi",
+  "images": [
+    {
+      "image": "/images/pages/gallery/images/0/image.JPG",
+      "alt": "Yogesh Samsi speaking at a Workshop"
+    },
+    {
+      "image": "/images/pages/gallery/images/1/image.jpg",
+      "alt": "Yogesh Samsi formal portrait in a grey kurta"
+    },
+    {
+      "image": "/images/pages/gallery/images/2/image.JPG",
+      "alt": "Yogesh Samsi teaching at a Workshop"
+    },
+    {
+      "image": "/images/pages/gallery/images/3/image.jpg",
+      "alt": "Yogesh Samsi Kolkata Solo performance"
+    },
+    {
+      "image": "/images/pages/gallery/images/4/image.JPG",
+      "alt": "Yogesh Samsi playing at a Workshop"
+    },
+    {
+      "image": "/images/pages/gallery/images/5/image.jpg",
+      "alt": "Yogesh Samsi at a Chowpatty beach at sunset"
+    },
+    {
+      "image": "/images/pages/gallery/images/6/image.jpg",
+      "alt": "Yogesh Samsi playing tabla - black & white"
+    },
+    {
+      "image": "/images/pages/gallery/images/7/image.jpg",
+      "alt": "Yogesh Samsi sitting with the tablas - formal"
+    },
+    {
+      "image": "/images/pages/gallery/images/8/image.JPG",
+      "alt": "Yogesh Samsi doing padhant at a Workshop"
+    },
+    {
+      "image": "/images/pages/gallery/images/9/image.jpg",
+      "alt": "Yogesh Samsi playing tabla in front of a picture of his father Pt. Dinkar Kaikini"
+    }
+  ]
 }
