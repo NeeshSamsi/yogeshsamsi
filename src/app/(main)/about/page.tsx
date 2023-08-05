@@ -35,15 +35,21 @@ export async function generateMetadata() {
 }
 
 const About = async () => {
-  // const { about } = config.content
-  // const { hero, aboutSection, concertHighlights } = about
-  // const { quote, pdfUrl, image } = hero
-
   const about = await reader.singletons.about.read()
 
   if (!about) throw new Error("Keystatic Content Not Found - About Page")
 
-  const { heroImage, heroImageAlt, quoteText, quoteBy, biodata, aboutLeft, aboutRight, concertsLeft, concertsRight } = about
+  const {
+    heroImage,
+    heroImageAlt,
+    quoteText,
+    quoteBy,
+    biodata,
+    aboutLeft,
+    aboutRight,
+    concertsLeft,
+    concertsRight,
+  } = about
 
   return (
     <>
