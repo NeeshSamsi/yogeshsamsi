@@ -81,7 +81,7 @@ export default async function MainLayout({
   return (
     <html
       lang="en"
-      className="scroll-p-16 scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
+      className="scroll-p-16 scroll-smooth lg:scroll-p-24 2xl:scroll-p-20 overscroll-none"
     >
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
