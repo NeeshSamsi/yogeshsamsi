@@ -69,7 +69,7 @@ const Gallery = async () => {
 
   return (
     <main className="bg-lighter px-8 py-12 text-dark md:px-col-inner md:py-20 2xl:py-32">
-      <div className="mx-auto max-w-screen-2xl space-y-12 md:space-y-20 2xl:space-y-32">
+      <div className="mx-auto max-w-screen-2xl space-y-12 md:space-y-20 2xl:space-y-24">
         <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
           Gallery
         </h1>
