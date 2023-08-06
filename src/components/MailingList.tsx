@@ -145,7 +145,6 @@ const FloatingLabelInput = ({
         type={type}
         id={id}
         placeholder={placeholder}
-        // required
         {...register(id)}
         className="peer w-full border-0 border-b border-darker bg-lighter px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0 xl:text-lg 3xl:text-xl"
       />
