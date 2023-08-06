@@ -74,33 +74,37 @@ const Gallery = async () => {
           Gallery
         </h1>
 
-        <div className="columns-1 gap-4 space-y-6 sm:columns-2 xl:columns-3 xl:gap-8 xl:space-y-8 3xl:columns-4">
-          {images.map(({ src, alt, dimensions, blurDataURL }, i) => (
-            <div
-              key={i}
-              className="group relative h-full w-full shadow-md shadow-darker/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg"
-            >
-              <div className="absolute z-0 h-full w-full transition-colors group-hover:bg-darker/60 group-focus-visible:bg-darker/60">
-                <div className="absolute bottom-0 flex h-fit w-full items-center justify-between p-4 text-lighter opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <p className="text-base xl:text-lg">
-                    {dimensions.width} x {dimensions.height}
-                  </p>
-                  <a href={src} download>
-                    <ArrowDownTrayIcon className="aspect-square w-6 lg:w-8" />
-                  </a>
+        <div className="min-h-screen columns-1 gap-4 space-y-6 sm:columns-2 xl:columns-3 xl:gap-8 xl:space-y-8 3xl:columns-4">
+          {images.length > 0 ? (
+            images.map(({ src, alt, dimensions, blurDataURL }, i) => (
+              <div
+                key={i}
+                className="group relative h-full w-full shadow-md shadow-darker/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg"
+              >
+                <div className="absolute z-0 h-full w-full transition-colors group-hover:bg-darker/60 group-focus-visible:bg-darker/60">
+                  <div className="absolute bottom-0 flex h-fit w-full items-center justify-between p-4 text-lighter opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <p className="text-base xl:text-lg">
+                      {dimensions.width} x {dimensions.height}
+                    </p>
+                    <a href={src} download>
+                      <ArrowDownTrayIcon className="aspect-square w-6 lg:w-8" />
+                    </a>
+                  </div>
                 </div>
+                <Image
+                  src={src}
+                  alt={alt}
+                  {...dimensions}
+                  placeholder="blur"
+                  blurDataURL={blurDataURL}
+                  sizes=""
+                  className="z-0 h-full w-full object-cover"
+                />
               </div>
-              <Image
-                src={src}
-                alt={alt}
-                {...dimensions}
-                placeholder="blur"
-                blurDataURL={blurDataURL}
-                sizes=""
-                className="z-0 h-full w-full object-cover"
-              />
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No images to show.</p>
+          )}
         </div>
       </div>
     </main>
