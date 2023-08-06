@@ -78,17 +78,24 @@ export default async function MainLayout({
   const settings = await reader.singletons.settings.read()
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
 
+  const { navLinks, email, mailingListTitle, mailingListDescription } = settings
+
   return (
     <html
       lang="en"
-      className="scroll-p-16 scroll-smooth lg:scroll-p-24 2xl:scroll-p-20 overscroll-none"
+      className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
     >
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
-        <Navbar navLinks={settings.navLinks} />
+        <Navbar navLinks={navLinks} />
         {children}
-        <Footer />
+        <Footer
+          email={email}
+          navLinks={navLinks}
+          mailingListTitle={mailingListTitle}
+          mailingListDescription={mailingListDescription}
+        />
       </body>
     </html>
   )

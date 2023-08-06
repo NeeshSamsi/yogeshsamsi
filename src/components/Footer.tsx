@@ -1,17 +1,27 @@
-import Link from "next/link"
+"use client"
 
-import reader from "@/lib/keystatic"
+import Link from "next/link"
 
 import Socials from "./Socials"
 import MailingList from "./MailingList"
 
-const Footer = async () => {
-  const settings = await reader.singletons.settings.read()
+type Props = {
+  readonly email: string
+  readonly navLinks: readonly {
+    readonly text: string
+    readonly path: string
+    readonly newWindow: boolean
+  }[]
+  readonly mailingListTitle: string
+  readonly mailingListDescription: string
+}
 
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
-  const { email, navLinks, mailingListTitle, mailingListDescription } = settings
-
+const Footer = ({
+  email,
+  navLinks,
+  mailingListTitle,
+  mailingListDescription,
+}: Props) => {
   return (
     <footer className="flex flex-col items-center justify-between gap-16 bg-light px-8 py-8 md:flex-row md:items-start md:gap-8 md:px-col-outer">
       <MailingList
