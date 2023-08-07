@@ -37,7 +37,7 @@ async function validateEvent(eventSlug: string) {
   }
 }
 
-export async function parseEvent(eventSlug: string) {
+async function parseEvent(eventSlug: string) {
   const rawEvent = await reader.collections.events.read(eventSlug, {
     resolveLinkedFiles: true,
   })
