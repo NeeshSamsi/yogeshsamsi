@@ -7,6 +7,7 @@ import reader from "@/lib/keystatic"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import Script from "next/script"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -85,6 +86,12 @@ export default async function MainLayout({
       lang="en"
       className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
     >
+      <Script
+        strategy="lazyOnload"
+        src="https://neesh-umami.vercel.app/script.js"
+        data-website-id="cc681e71-31cf-4b34-8101-c5926a8fef1f"
+      />
+
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
