@@ -4,6 +4,7 @@
   "description": "This is a description blah blah blah blah blah blah blah blah blah blah blah blah ",
   "name": "ONLINE",
   "ctaText": "Register now",
+  "ctaLink": "https://forms.gle",
   "internal": {
     "discriminant": true,
     "value": {
