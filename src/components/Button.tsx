@@ -14,7 +14,7 @@ type Props = {
 
 const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
   const buttonClasses = cn(
-    "py-2 px-3 md:px-4 transition-colors flex items-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
+    "py-2 px-3 md:px-4 transition-colors flex items-center justify-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
     {
       "bg-light text-darker hover:bg-lighter":
         type === "Primary" && theme === "Light",
