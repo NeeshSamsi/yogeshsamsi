@@ -1,17 +1,24 @@
-import { cn, formatDates } from "@/lib/utils"
+import type { DocumentElement } from "@keystatic/core"
+
+import { cn } from "@/lib/utils"
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import Button from "./Button"
 
 type Props = {
   event: {
-    date: Date[]
+    date: string
     title: string
     description: string
     name: string
     link: string | null
     ctaText: string
     ctaLink: string
+    // timings?: string
+    // page?: readonly {
+    //   readonly subtitle: string
+    //   readonly content: DocumentElement[]
+    // }[]
   }
   theme: "Lighter" | "Darker"
 }
@@ -31,9 +38,7 @@ const Event = ({
       )}
     >
       <div className="flex flex-col gap-4 xl:gap-6">
-        <p className="w-fit font-medium uppercase tracking-wider">
-          {date.length === 1 ? formatDates(date) : ""}
-        </p>
+        <p className="w-fit font-medium tracking-wider">{date}</p>
         <h3 className="font-serif text-xl font-semibold tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
           {title}
         </h3>
@@ -47,14 +52,16 @@ const Event = ({
         ) : (
           <p>{name}</p>
         )}
-        <Button as="link" href={ctaLink} type="Primary" theme={theme}>
-          <>
-            <span>{ctaText}</span>
-            <span>
-              <ArrowRightIcon className="w-3 stroke-[2.5px] xl:w-4" />
-            </span>
-          </>
-        </Button>
+        {ctaText && (
+          <Button as="link" href={ctaLink} type="Primary" theme={theme}>
+            <>
+              <span>{ctaText}</span>
+              <span>
+                <ArrowRightIcon className="w-3 stroke-[2.5px] xl:w-4" />
+              </span>
+            </>
+          </Button>
+        )}
       </div>
     </div>
   )

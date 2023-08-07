@@ -362,21 +362,15 @@ export default config({
       format: "json",
       slugField: "title",
       schema: {
-        date: fields.array(
-          fields.date({
-            label: "Date",
-            validation: { isRequired: true },
-          }),
-          {
-            label: "Date(s)",
-            description: "The date of the event. Optionally add more than 1.",
-            validation: { length: { min: 1 } },
-            itemLabel: (props) => props.value || "Add a date",
-          },
-        ),
-        title: fields.text({
-          label: "Title",
+        date: fields.text({
+          label: "Date(s)",
           validation: { length: { min: 1 } },
+        }),
+        title: fields.slug({
+          name: {
+            label: "Title",
+            validation: { length: { min: 1 } },
+          },
         }),
         description: fields.text({
           label: "Description",
@@ -396,10 +390,48 @@ export default config({
           label: "Button Text - Call to Action",
           validation: { length: { min: 1 } },
         }),
-        ctaLink: fields.text({
-          label: "Button Link - Call to Action",
-          validation: { length: { min: 1 } },
-        }),
+
+        internal: fields.conditional(
+          fields.checkbox({
+            label: "Internal Event",
+            description: "Events hosted by us - Masterclasses/Lec Dems.",
+          }),
+          {
+            true: fields.object({
+              timings: fields.text({
+                label: "Timings",
+                validation: { length: { min: 1 } },
+              }),
+              page: fields.array(
+                fields.object({
+                  subtitle: fields.text({
+                    label: "Subtitle",
+                    validation: { length: { min: 1 } },
+                  }),
+                  content: fields.document({
+                    label: "Content",
+                    links: true,
+                    formatting: {
+                      inlineMarks: true,
+                      listTypes: true,
+                    },
+                  }),
+                }),
+                {
+                  label: "Page Content",
+                  validation: { length: { min: 1 } },
+                  itemLabel: ({ fields }) => fields.subtitle.value,
+                },
+              ),
+            }),
+            false: fields.object({
+              ctaLink: fields.text({
+                label: "Button Link - Call to Action",
+                validation: { length: { min: 1 } },
+              }),
+            }),
+          },
+        ),
       },
     }),
 

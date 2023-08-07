@@ -1,7 +1,6 @@
 import Image from "next/image"
 
 import reader from "@/lib/keystatic"
-import { formatDates } from "@/lib/utils"
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
@@ -12,15 +11,28 @@ import Event from "@/components/Event"
 
 const Home = async () => {
   const home = await reader.singletons.home.read()
-  const events = (await reader.collections.events.all()).map((event) => ({
-    ...event.entry,
-    date: event.entry.date.map((dateString) => new Date(dateString)),
-    title: event.slug,
-  }))
+  const events = (
+    await reader.collections.events.all({ resolveLinkedFiles: true })
+  ).map((event) => {
+    const { internal, ...rest } = event.entry
+
+    if (internal.discriminant) {
+      return {
+        ...rest,
+        ctaLink: `/${event.slug}`,
+      }
+    } else {
+      return {
+        ...rest,
+        ...internal.value,
+      }
+    }
+  })
   const testimonials = (await reader.collections.testimonials.all()).map(
-    (event) => ({
-      ...event.entry,
-      name: event.slug,
+    (testimonial) => ({
+      ...testimonial.entry,
+
+      name: testimonial.slug,
     }),
   )
 
