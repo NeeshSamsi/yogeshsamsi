@@ -388,7 +388,9 @@ export default config({
         }),
         ctaText: fields.text({
           label: "Button Text - Call to Action",
-          validation: { length: { min: 1 } },
+        }),
+        ctaLink: fields.text({
+          label: "Button Link - Call to Action",
         }),
 
         internal: fields.conditional(
@@ -402,6 +404,7 @@ export default config({
                 label: "Timings",
                 validation: { length: { min: 1 } },
               }),
+
               page: fields.array(
                 fields.object({
                   subtitle: fields.text({
@@ -424,12 +427,7 @@ export default config({
                 },
               ),
             }),
-            false: fields.object({
-              ctaLink: fields.text({
-                label: "Button Link - Call to Action",
-                validation: { length: { min: 1 } },
-              }),
-            }),
+            false: fields.empty(),
           },
         ),
       },
