@@ -47,17 +47,14 @@ const Event = ({
         ) : (
           <p>{name}</p>
         )}
-        <Button
-          as="link"
-          href={ctaLink}
-          text={ctaText}
-          type="Primary"
-          theme={theme}
-          icon={{
-            element: <ArrowRightIcon className="stroke-[2.5px]" />,
-            sizes: "w-3 xl:w-4",
-          }}
-        />
+        <Button as="link" href={ctaLink} type="Primary" theme={theme}>
+          <>
+            <span>{ctaText}</span>
+            <span>
+              <ArrowRightIcon className="w-3 stroke-[2.5px] xl:w-4" />
+            </span>
+          </>
+        </Button>
       </div>
     </div>
   )

@@ -73,24 +73,19 @@ const NotFound = () => {
           page or if you think this is a mistake, kindly reach out to us.
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:gap-6 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-          <Button
-            as="link"
-            text="Back to Homepage"
-            type="Primary"
-            theme="Darker"
-            href="/"
-          />
-          <Button
-            as="link"
-            text="Reach out"
-            icon={{
-              element: <ChatBubbleLeftRightIcon />,
-              sizes: "w-4 sm:w-5 xl:w-6 3xl:w-8",
-            }}
-            type="Secondary"
-            theme="Darker"
-            href="/contact"
-          />
+          <Button as="link" type="Primary" theme="Darker" href="/">
+            <>
+              <span>Back to Homepage</span>
+            </>
+          </Button>
+          <Button as="link" type="Secondary" theme="Darker" href="/contact">
+            <>
+              <span>Back to Homepage</span>
+              <span>
+                <ChatBubbleLeftRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
+              </span>
+            </>
+          </Button>
         </div>
       </div>
     </main>

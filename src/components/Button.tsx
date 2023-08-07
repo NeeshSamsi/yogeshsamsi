@@ -1,21 +1,18 @@
-import type { FC, ReactElement } from "react"
+import type { FC, ReactNode } from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
-type IconType = { element: ReactElement; sizes: string }
-
 type Props = {
   as: "button" | "link"
-  text: string
+  children: ReactNode
   type: "Primary" | "Secondary"
   theme: "Lighter" | "Light" | "Darker" | "Dark"
   href?: string
-  icon?: IconType
   download?: boolean
 }
 
-const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
+const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
   const buttonClasses = cn(
     "py-2 px-3 md:px-4 transition-colors flex items-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
     {
@@ -37,19 +34,9 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
     },
   )
 
-  const Icon: FC<{ icon: IconType }> = ({ icon }) => {
-    const { element, sizes } = icon
-    return <span className={`aspect-square ${sizes}`}>{element}</span>
-  }
-
   switch (as) {
     case "button":
-      return (
-        <button className={buttonClasses}>
-          <span>{text}</span>
-          {icon && <Icon icon={icon} />}
-        </button>
-      )
+      return <button className={buttonClasses}>{children}</button>
       break
     case "link":
       return (
@@ -58,14 +45,13 @@ const Button: FC<Props> = ({ as, text, type, theme, icon, href, download }) => {
           download={download}
           className={buttonClasses}
         >
-          <span>{text}</span>
-          {icon && <Icon icon={icon} />}
+          {children}
         </Link>
       )
       break
 
     default:
-      return <p>Error - Invalid Button Component Config</p>
+      throw new Error("Invalid Button Configuration")
       break
   }
 }

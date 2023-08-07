@@ -68,27 +68,26 @@ const About = async () => {
           <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
             <Button
               as="link"
-              text="Biodata"
-              icon={{
-                element: <ArrowDownTrayIcon className="stroke-[2.5px]" />,
-                sizes: "w-3 sm:w-4 xl:w-5",
-              }}
               type="Primary"
               theme="Dark"
               href={`${biodata}`}
               download
-            />
-            <Button
-              as="link"
-              text="Gallery"
-              icon={{
-                element: <ArrowRightIcon className="stroke-[2.5px]" />,
-                sizes: "w-3 sm:w-4 xl:w-5",
-              }}
-              type="Secondary"
-              theme="Dark"
-              href="/gallery"
-            />
+            >
+              <>
+                <span>Download biodata</span>
+                <span>
+                  <ArrowDownTrayIcon className="aspect-square w-3 stroke-[2.5px] sm:w-4 xl:w-5" />
+                </span>
+              </>
+            </Button>
+            <Button as="link" type="Secondary" theme="Dark" href="/gallery">
+              <>
+                <span>Gallery</span>
+                <span>
+                  <ArrowRightIcon className="aspect-square w-3 stroke-[2.5px] sm:w-4 xl:w-5" />
+                </span>
+              </>
+            </Button>
           </div>
         </div>
         <div className="aspect[1/1.1] relative hidden h-full w-full lg:block">
