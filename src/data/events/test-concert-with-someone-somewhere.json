@@ -4,11 +4,7 @@
   "description": "This is a test concert with someone somewhere",
   "name": "Venue name",
   "link": "https://google.com",
-  "ctaText": "Check it out",
   "internal": {
-    "discriminant": false,
-    "value": {
-      "ctaLink": "https://google.com"
-    }
+    "discriminant": false
   }
 }
