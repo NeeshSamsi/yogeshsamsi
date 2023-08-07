@@ -24,7 +24,6 @@ const Home = async () => {
     } else {
       return {
         ...rest,
-        ...internal.value,
       }
     }
   })
