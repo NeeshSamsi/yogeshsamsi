@@ -159,6 +159,7 @@ const Home = async () => {
                 alt={`${name} Logo`}
                 height={220}
                 width={220}
+                sizes="(min-width: 1540px) 128px, (min-width: 1040px) 96px, 80px"
                 className="aspect-square w-20 rounded-full lg:w-24 2xl:w-32"
               />
               <div className="mb-6 flex w-full max-w-3xl items-center gap-8 xl:gap-16 2xl:max-w-5xl">

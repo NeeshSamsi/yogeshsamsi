@@ -47,6 +47,7 @@ const Contact = async () => {
           alt={imageAlt}
           height={2354}
           width={2160}
+          sizes="51.73vw"
           priority
           className="w-full object-cover lg:h-[85vh]"
         />
