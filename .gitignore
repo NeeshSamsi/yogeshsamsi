@@ -5,6 +5,8 @@
 .env
 .env.*
 
+.unlighthouse
+
 # dependencies
 /node_modules
 /.pnp
