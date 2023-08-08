@@ -103,7 +103,7 @@ const Home = async () => {
         </div>
       </main>
 
-      <Section role="about" bgClr="bg-lighter" txtClr="text-darker">
+      <Section bgClr="bg-lighter" txtClr="text-darker">
         <h2 className="mx-auto text-center font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
           {aboutHeadline}
         </h2>
@@ -121,12 +121,7 @@ const Home = async () => {
         </div>
       </Section>
 
-      <Section
-        role="Upcoming events"
-        id="events"
-        bgClr="bg-dark"
-        txtClr="text-lighter"
-      >
+      <Section id="events" bgClr="bg-dark" txtClr="text-lighter">
         <SectionHeading as="h2" text="Upcoming events" />
 
         <div className="mx-auto max-w-lg lg:max-w-none">
@@ -147,7 +142,7 @@ const Home = async () => {
         </div>
       </Section>
 
-      <Section role="Press quotes" bgClr="bg-lighter" txtClr="text-lighter">
+      <Section bgClr="bg-lighter" txtClr="text-lighter">
         {testimonials.map(({ name, logo, quote }, i) => (
           <div
             key={i}

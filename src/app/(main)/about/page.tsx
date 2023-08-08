@@ -103,7 +103,7 @@ const About = async () => {
         </div>
       </main>
 
-      <Section role="About" bgClr="bg-dark" txtClr="text-lighter">
+      <Section bgClr="bg-dark" txtClr="text-lighter">
         <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
           About Yogesh
         </h2>
@@ -119,7 +119,7 @@ const About = async () => {
         </div>
       </Section>
 
-      <Section role="Concert highlights" bgClr="bg-lighter" txtClr="text-dark">
+      <Section bgClr="bg-lighter" txtClr="text-dark">
         <h2 className="text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl">
           Concert Highlights
         </h2>

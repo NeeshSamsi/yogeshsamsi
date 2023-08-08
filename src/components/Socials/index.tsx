@@ -17,6 +17,7 @@ const index: FC<Props> = ({ hoverClr, sizes }) => {
           <a
             href={link}
             target="_blank"
+            aria-label={`Link to Yogesh Samsi's ${platform}`}
             className={`block aspect-square transition-colors ${sizes} hover:${hoverClr}`}
           >
             {(() => {

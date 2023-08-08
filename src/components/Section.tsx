@@ -1,14 +1,12 @@
 import type { FC, PropsWithChildren } from "react"
 
 type Props = {
-  role: string
   id?: string
   bgClr: BackgroundColors
   txtClr: TextColors
 }
 
 const Section: FC<PropsWithChildren<Props>> = ({
-  role,
   id,
   bgClr,
   txtClr,
@@ -16,7 +14,6 @@ const Section: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <section
-      role={role}
       id={id}
       className={`px-8 py-12 md:px-col-inner md:py-20 2xl:py-32 ${bgClr} ${txtClr}`}
     >
