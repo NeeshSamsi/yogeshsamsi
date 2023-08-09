@@ -73,7 +73,13 @@ const Home = async () => {
           </h1>
           <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
             <div className="flex flex-wrap items-center gap-2 md:gap-6">
-              <Button as="link" type="Primary" theme="Light" href="/#events">
+              <Button
+                as="link"
+                type="Primary"
+                theme="Light"
+                href="/#events"
+                umami="home-events-cta"
+              >
                 <>
                   <span>Upcoming events</span>
                   <span>
@@ -81,7 +87,13 @@ const Home = async () => {
                   </span>
                 </>
               </Button>
-              <Button as="link" type="Secondary" theme="Light" href="/contact">
+              <Button
+                as="link"
+                type="Secondary"
+                theme="Light"
+                href="/contact"
+                umami="home-contact-cta"
+              >
                 <>
                   <span>Reach out</span>
                   <span>
@@ -95,6 +107,7 @@ const Home = async () => {
               <a
                 href="/about"
                 className="underline underline-offset-2 transition-colors hover:text-lighter"
+                data-umami-event="home-biodata-cta"
               >
                 Download Biodata
               </a>

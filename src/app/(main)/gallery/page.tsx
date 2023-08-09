@@ -86,7 +86,13 @@ const Gallery = async () => {
                     <p className="text-base xl:text-lg">
                       {dimensions.width} x {dimensions.height}
                     </p>
-                    <a href={src} download aria-label="Download image">
+                    <a
+                      href={src}
+                      download
+                      aria-label="Download image"
+                      data-umami-event="download-image"
+                      data-umami-event-image={alt}
+                    >
                       <ArrowDownTrayIcon className="aspect-square w-6 lg:w-8" />
                     </a>
                   </div>

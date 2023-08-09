@@ -10,9 +10,18 @@ type Props = {
   theme: "Lighter" | "Light" | "Darker" | "Dark"
   href?: string
   download?: boolean
+  umami?: string
 }
 
-const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
+const Button: FC<Props> = ({
+  as,
+  children,
+  type,
+  theme,
+  href,
+  download,
+  umami,
+}) => {
   const buttonClasses = cn(
     "py-2 px-3 md:px-4 transition-colors flex items-center justify-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
     {
@@ -34,17 +43,18 @@ const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
     },
   )
 
+  const buttonProps = {
+    className: buttonClasses,
+    ...(umami && { "data-umami-event": umami }),
+  }
+
   switch (as) {
     case "button":
-      return <button className={buttonClasses}>{children}</button>
+      return <button {...buttonProps}>{children}</button>
       break
     case "link":
       return (
-        <Link
-          href={href ? href : "/"}
-          download={download}
-          className={buttonClasses}
-        >
+        <Link href={href ? href : "/"} download={download} {...buttonProps}>
           {children}
         </Link>
       )

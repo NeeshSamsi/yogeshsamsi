@@ -58,8 +58,8 @@ const Navbar = ({
           </ul>
 
           <div
-            className={`tham-e-spin tham tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham-active tham"
+            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
+              isHamburgerOpen && "tham tham-active"
             }`}
             onClick={handleHamburger}
           >
