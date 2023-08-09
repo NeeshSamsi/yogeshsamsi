@@ -19,7 +19,6 @@ const index: FC<Props> = ({ hoverClr, sizes }) => {
             target="_blank"
             aria-label={`Link to Yogesh Samsi's ${platform}`}
             className={`block aspect-square transition-colors ${sizes} hover:${hoverClr}`}
-            data-umami-event={platform.toLocaleLowerCase()}
           >
             {(() => {
               switch (platform) {

@@ -72,7 +72,6 @@ const About = async () => {
               theme="Dark"
               href={`${biodata}`}
               download
-              data-umami-event="about-biodata-cta"
             >
               <>
                 <span>Download biodata</span>
@@ -81,13 +80,7 @@ const About = async () => {
                 </span>
               </>
             </Button>
-            <Button
-              as="link"
-              type="Secondary"
-              theme="Dark"
-              href="/gallery"
-              data-umami-event="home-gallery-cta"
-            >
+            <Button as="link" type="Secondary" theme="Dark" href="/gallery">
               <>
                 <span>Gallery</span>
                 <span>
