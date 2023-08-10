@@ -68,6 +68,9 @@ export async function generateMetadata() {
     alternates: {
       canonical: "/",
     },
+    verification: {
+      google: "1k9fSdlfvgYGjJYg4ibNvDSDjhhFX3XBUTQGYnZigFI"
+    }
   }
 }
 
