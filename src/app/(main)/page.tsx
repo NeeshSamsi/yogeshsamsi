@@ -126,14 +126,11 @@ const Home = async () => {
 
         <div className="mx-auto max-w-lg lg:max-w-none">
           {events.length > 0 ? (
-            events.map((event, i) => (
-              <div
-                key={i}
-                className="l:gap-y-12 grid gap-x-12 gap-y-8 lg:grid-cols-2 xl:gap-x-16 3xl:gap-x-20 3xl:gap-y-16"
-              >
-                <Event event={event} theme="Lighter" />
-              </div>
-            ))
+            <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2 xl:gap-x-16 xl:gap-y-12 3xl:gap-x-20 3xl:gap-y-16">
+              {events.map((event, i) => (
+                <Event key={i} event={event} theme="Lighter" />
+              ))}
+            </div>
           ) : (
             <p className="text-center text-lg sm:text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
               No upcoming events. Join the mailing list to stay up to date.
