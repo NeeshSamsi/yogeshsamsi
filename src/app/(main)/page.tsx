@@ -13,20 +13,30 @@ const Home = async () => {
   const home = await reader.singletons.home.read()
   const events = (
     await reader.collections.events.all({ resolveLinkedFiles: true })
-  ).map((event) => {
-    const { internal, ...rest } = event.entry
+  )
+    .sort(
+      (a, b) => Number(new Date(a.entry.date)) - Number(new Date(b.entry.date)),
+    )
+    .map((event) => {
+      const { internal, ...rest } = event.entry
 
-    if (internal.discriminant) {
-      return {
-        ...rest,
-        ctaLink: `/${event.slug}`,
+      if (internal.discriminant) {
+        return {
+          ...rest,
+          date: new Intl.DateTimeFormat("en-GB", {
+            dateStyle: "medium",
+          }).format(new Date(rest.date)),
+          ctaLink: `/${event.slug}`,
+        }
+      } else {
+        return {
+          ...rest,
+          date: new Intl.DateTimeFormat("en-GB", {
+            dateStyle: "medium",
+          }).format(new Date(rest.date)),
+        }
       }
-    } else {
-      return {
-        ...rest,
-      }
-    }
-  })
+    })
   const testimonials = (await reader.collections.testimonials.all()).map(
     (testimonial) => ({
       ...testimonial.entry,
