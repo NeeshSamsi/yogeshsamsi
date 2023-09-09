@@ -364,6 +364,7 @@ export default config({
       schema: {
         date: fields.text({
           label: "Date(s)",
+          description: "In YYYY-MM-DD format",
           validation: { length: { min: 1 } },
         }),
         title: fields.slug({
