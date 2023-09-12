@@ -63,7 +63,7 @@ const About = async () => {
           </ul>
           <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl 3xl:text-2xl">
             <p>&ldquo;{quoteText}&rdquo;</p>
-            <p>{quoteBy}</p>
+            <p>- {quoteBy}</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
             <Button
