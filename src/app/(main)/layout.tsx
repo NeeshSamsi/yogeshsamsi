@@ -69,8 +69,8 @@ export async function generateMetadata() {
       canonical: "/",
     },
     verification: {
-      google: "1k9fSdlfvgYGjJYg4ibNvDSDjhhFX3XBUTQGYnZigFI"
-    }
+      google: "1k9fSdlfvgYGjJYg4ibNvDSDjhhFX3XBUTQGYnZigFI",
+    },
   }
 }
 
@@ -91,7 +91,7 @@ export default async function MainLayout({
     >
       <Script
         strategy="lazyOnload"
-        src="https://neesh-umami.vercel.app/script.js"
+        src="https://umami.neeshsamsi.com/script.js"
         data-website-id="cc681e71-31cf-4b34-8101-c5926a8fef1f"
       />
 

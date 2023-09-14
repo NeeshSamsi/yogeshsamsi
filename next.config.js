@@ -34,7 +34,7 @@ module.exports = {
       {
         source: "/stats",
         destination:
-          "https://neesh-umami.vercel.app/websites/cc681e71-31cf-4b34-8101-c5926a8fef1f",
+          "https://umami.neeshsamsi.com/websites/cc681e71-31cf-4b34-8101-c5926a8fef1f",
         permanent: true,
       },
       ...socialRedirects,
