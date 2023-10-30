@@ -23,7 +23,6 @@ export async function generateMetadata() {
       description,
       card: "summary",
     },
-    themeColor: "#362009",
     alternates: {
       canonical: "/contact",
     },

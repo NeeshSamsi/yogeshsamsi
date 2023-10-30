@@ -1,5 +1,7 @@
 import "./globals.css"
 
+import { type Viewport } from 'next'
+
 import { Montserrat } from "next/font/google"
 import localFont from "next/font/local"
 
@@ -36,6 +38,13 @@ const reckless = localFont({
   variable: "--font-reckless",
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#362009",
+}
+
 export async function generateMetadata() {
   const settings = await reader.singletons.settings.read()
   const home = await reader.singletons.home.read()
@@ -64,7 +73,6 @@ export async function generateMetadata() {
       description,
       card: "summary",
     },
-    themeColor: "#362009",
     alternates: {
       canonical: "/",
     },

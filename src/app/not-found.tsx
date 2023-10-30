@@ -2,7 +2,7 @@
 
 import "./(main)/globals.css"
 
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Montserrat } from "next/font/google"
 import localFont from "next/font/local"
 import { usePathname } from "next/navigation"
@@ -37,6 +37,13 @@ const reckless = localFont({
   variable: "--font-reckless",
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#362009",
+}
+
 const title = "Page Not Found"
 const description =
   "Unfortunately, the page you were looking for was not found. Consider visiting the home page or reaching out."
@@ -54,7 +61,6 @@ export const metadata: Metadata = {
     description,
     card: "summary",
   },
-  themeColor: "#362009",
 }
 
 const NotFound = () => {

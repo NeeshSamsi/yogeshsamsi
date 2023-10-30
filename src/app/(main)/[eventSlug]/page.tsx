@@ -89,7 +89,6 @@ export async function generateMetadata({ params }: Props) {
         description,
         card: "summary",
       },
-      themeColor: "#362009",
       alternates: {
         canonical: `/${eventSlug}`,
       },
