@@ -10,17 +10,21 @@ export default async function getBlurDataURL(imageUrl: string) {
       ? settings.url
       : "http://localhost:3000"
 
-  const res = await fetch(url + imageUrl)
+  try {
+    const res = await fetch(url + imageUrl)
 
-  if (!res.ok) {
-    throw new Error(
-      `Failed to fetch image from ${url}${imageUrl}: ${res.status} ${res.statusText}`,
-    )
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch image from ${url}${imageUrl}: ${res.status} ${res.statusText}`,
+      )
+    }
+
+    const buffer = await res.arrayBuffer()
+
+    const { base64 } = await getPlaiceholder(Buffer.from(buffer))
+
+    return base64
+  } catch (error) {
+    throw new Error(`Failed to fetch image from ${url}${imageUrl}`)
   }
-
-  const buffer = await res.arrayBuffer()
-
-  const { base64 } = await getPlaiceholder(Buffer.from(buffer))
-
-  return base64
 }
