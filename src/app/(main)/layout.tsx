@@ -1,6 +1,6 @@
 import "./globals.css"
 
-import { type Viewport } from 'next'
+import { type Viewport } from "next"
 
 import { Montserrat } from "next/font/google"
 import localFont from "next/font/local"
@@ -100,7 +100,7 @@ export default async function MainLayout({
       <Script
         strategy="lazyOnload"
         src="https://umami.neeshsamsi.com/script.js"
-        data-website-id="cc681e71-31cf-4b34-8101-c5926a8fef1f"
+        data-website-id="4a245c9f-8d2b-4eb2-82fa-ace0fdfb8492"
       />
 
       <body
