@@ -317,6 +317,81 @@ export default config({
       },
     }),
 
+    masterclass: singleton({
+      label: "Masterclass Page",
+      path: "src/data/masterclass",
+      format: "json",
+      schema: {
+        metaTitle: fields.text({
+          label: "Metadata Title",
+          description:
+            "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        metaDescription: fields.text({
+          label: "Metadata Description",
+          description:
+            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+          multiline: true,
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        title: fields.text({
+          label: "Masterclass Title",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        dates: fields.text({
+          label: "Masterclass Dates",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        deadline: fields.text({
+          label: "Registration Deadline",
+          validation: {
+            length: { min: 1 },
+          },
+        }),
+        formLink: fields.url({
+          label: "Google Form Link",
+          description: "Link to the Google Form for registration.",
+        }),
+        heroImage: fields.image({
+          label: "Hero Image",
+          directory: "/public/images/pages/masterclass/",
+          publicPath: "/images/pages/masterclass/",
+          validation: { isRequired: true },
+        }),
+        heroMobileImage: fields.image({
+          label: "Hero Image - Mobile",
+          directory: "/public/images/pages/masterclass/",
+          publicPath: "/images/pages/masterclass/",
+          validation: { isRequired: true },
+        }),
+        heroImageAlt: fields.text({
+          label: "Hero Image Alternate Text",
+          description:
+            "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+          validation: { length: { min: 1 } },
+        }),
+        details: fields.document({
+          label: "Masterclass Details",
+
+          formatting: {
+            headingLevels: [2],
+            inlineMarks: true,
+
+            listTypes: true,
+          },
+        }),
+      },
+    }),
+
     contact: singleton({
       label: "Contact Page",
       path: "src/data/contact",
