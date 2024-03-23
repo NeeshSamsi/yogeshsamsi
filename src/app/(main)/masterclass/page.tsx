@@ -64,6 +64,7 @@ export default async function Masterclass() {
                 type="Primary"
                 theme="Light"
                 href={formLink || "/masterclass#details"}
+                target="_blank"
               >
                 <>
                   <span>Apply Now</span>
@@ -105,6 +106,7 @@ export default async function Masterclass() {
               type="Primary"
               theme="Dark"
               href={formLink || "/masterclass#details"}
+              target="_blank"
             >
               <>
                 <span>Apply Now</span>

@@ -9,10 +9,19 @@ type Props = {
   type: "Primary" | "Secondary"
   theme: "Lighter" | "Light" | "Darker" | "Dark"
   href?: string
+  target?: "_blank"
   download?: boolean
 }
 
-const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
+const Button: FC<Props> = ({
+  as,
+  children,
+  type,
+  theme,
+  href,
+  target,
+  download,
+}) => {
   const buttonClasses = cn(
     "py-2 px-3 md:px-4 transition-colors flex items-center justify-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
     {
@@ -42,6 +51,7 @@ const Button: FC<Props> = ({ as, children, type, theme, href, download }) => {
       return (
         <Link
           href={href ? href : "/"}
+          target={target ? target : "_self"}
           download={download}
           className={buttonClasses}
         >
