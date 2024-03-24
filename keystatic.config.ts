@@ -339,6 +339,10 @@ export default config({
             length: { min: 1 },
           },
         }),
+        active: fields.checkbox({
+          label: "Active",
+          description: "Is this masterclass active?",
+        }),
         title: fields.text({
           label: "Masterclass Title",
           validation: {

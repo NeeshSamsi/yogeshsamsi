@@ -32,6 +32,7 @@ export default async function Masterclass() {
     heroImage,
     heroMobileImage,
     heroImageAlt,
+    active,
     title,
     dates,
     deadline,
@@ -42,7 +43,9 @@ export default async function Masterclass() {
   return (
     <>
       <p className="block bg-lighter py-1 text-center text-base font-semibold text-darker sm:text-lg lg:py-3 lg:text-xl 2xl:text-2xl">
-        Deadline for registration is: {deadline}
+        {active
+          ? `Deadline for registration is: ${deadline}`
+          : "This Masterclass is No Longer Accepting Registrations"}
       </p>
       <main className="relative flex aspect-[1/1.6] w-full px-8 text-center text-lighter md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
