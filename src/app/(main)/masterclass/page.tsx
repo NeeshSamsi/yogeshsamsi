@@ -1,12 +1,26 @@
-import Button from "@/components/Button"
-import Section from "@/components/Section"
+import { type Metadata } from "next"
+
 import reader from "@/lib/keystatic"
+import Image from "next/image"
+import { DocumentRenderer } from "@keystatic/core/renderer"
 import {
   ArrowDownIcon,
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/solid"
-import { DocumentRenderer } from "@keystatic/core/renderer"
-import Image from "next/image"
+import Button from "@/components/Button"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const masterclass = await reader.singletons.masterclass.read({
+    resolveLinkedFiles: true,
+  })
+  if (!masterclass)
+    throw new Error("Keystatic Content Not Found - Masterclass Page")
+
+  return {
+    title: masterclass.metaTitle,
+    description: masterclass.metaDescription,
+  }
+}
 
 export default async function Masterclass() {
   const masterclass = await reader.singletons.masterclass.read({
