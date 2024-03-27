@@ -17,7 +17,6 @@ const socialRedirects = [
 ]
 
 /** @type {import('next').NextConfig} */
-// module.exports = withPlaiceholder({
 module.exports = {
   async redirects() {
     return [
@@ -40,5 +39,18 @@ module.exports = {
       ...socialRedirects,
     ]
   },
+  async headers() {
+    return [
+      {
+        source: "/public/files/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET",
+          },
+        ],
+      },
+    ]
+  },
 }
-// })
