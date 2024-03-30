@@ -33,24 +33,24 @@ module.exports = {
       {
         source: "/stats",
         destination:
-          "https://umami.neeshsamsi.com/websites/cc681e71-31cf-4b34-8101-c5926a8fef1f",
+          "https://umami.neeshsamsi.com/websites/45d705f2-b44a-45cf-b94e-a8fb619b5fe0",
         permanent: true,
       },
       ...socialRedirects,
     ]
   },
-  async headers() {
-    return [
-      {
-        source: "/public/files/:path*",
-        headers: [
-          { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET",
-          },
-        ],
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/public/files/:path*",
+  //       headers: [
+  //         { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
+  //         {
+  //           key: "Access-Control-Allow-Methods",
+  //           value: "GET",
+  //         },
+  //       ],
+  //     },
+  //   ]
+  // },
 }
