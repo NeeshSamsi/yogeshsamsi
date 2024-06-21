@@ -10,6 +10,7 @@ import reader from "@/lib/keystatic"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import Script from "next/script"
+import MasterclassBanner from "@/components/MasterclassBanner"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -89,8 +90,12 @@ export default async function MainLayout({
 }) {
   const settings = await reader.singletons.settings.read()
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+    
+    const masterclass = await reader.singletons.masterclass.read()
+  if (!masterclass) throw new Error("Keystatic Content Not Found - Masterclass Page")
 
   const { navLinks, email, mailingListTitle, mailingListDescription } = settings
+  const { active, title} = masterclass
 
   return (
     <html
@@ -107,6 +112,10 @@ export default async function MainLayout({
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
         <Navbar navLinks={navLinks} />
+        {active && (
+
+        <MasterclassBanner title={title} />
+        ) }
         {children}
         <Footer
           email={email}
