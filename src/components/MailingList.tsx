@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import { mailingListSchema, MailingListSchemaType } from "@/lib/zodSchemas"
 import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
+import { subscribe } from "@/app/actions/mailing-list"
 
 const MailingList = ({
   title,
@@ -27,15 +28,13 @@ const MailingList = ({
   })
 
   const onSubmit: SubmitHandler<MailingListSchemaType> = async (data) => {
-    const res = await fetch("/api/mailing-list", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-
-    if (res.status !== 200) {
+    const res = await subscribe(data)
+    if (!res || res.serverError || res.validationErrors) {
       setResponse("Something went wrong. Please try again later.")
     } else {
-      setResponse("Thank you for joining the Mailing List!")
+      setResponse(
+        res.data?.message || "Thank you for joining the Mailing List!",
+      )
       reset()
     }
 
