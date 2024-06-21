@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Yogesh-Samsi-s-workspace-7dkagb.eu-central-1.xata.sh/db/ysadmin",
+  "codegen": {
+    "output": "src/lib/xata.ts"
+  }
+}
