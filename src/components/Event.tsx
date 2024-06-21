@@ -1,5 +1,3 @@
-import type { DocumentElement } from "@keystatic/core"
-
 import { cn } from "@/lib/utils"
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
