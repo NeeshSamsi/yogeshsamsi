@@ -90,12 +90,13 @@ export default async function MainLayout({
 }) {
   const settings = await reader.singletons.settings.read()
   if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-    
-    const masterclass = await reader.singletons.masterclass.read()
-  if (!masterclass) throw new Error("Keystatic Content Not Found - Masterclass Page")
+
+  const masterclass = await reader.singletons.masterclass.read()
+  if (!masterclass)
+    throw new Error("Keystatic Content Not Found - Masterclass Page")
 
   const { navLinks, email, mailingListTitle, mailingListDescription } = settings
-  const { active, title} = masterclass
+  const { active, title } = masterclass
 
   return (
     <html
@@ -111,11 +112,8 @@ export default async function MainLayout({
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
+        {active && <MasterclassBanner title={title} />}
         <Navbar navLinks={navLinks} />
-        {active && (
-
-        <MasterclassBanner title={title} />
-        ) }
         {children}
         <Footer
           email={email}
