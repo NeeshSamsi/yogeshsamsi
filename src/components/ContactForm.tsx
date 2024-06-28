@@ -1,11 +1,12 @@
 "use client"
 
-import { type ReactElement, useState } from "react"
+import { useState } from "react"
 
 import { useForm, UseFormRegister, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zodSchemas"
+import { contact } from "@/app/actions/contact"
 
 import {
   ChatBubbleBottomCenterTextIcon,
@@ -27,12 +28,9 @@ const ContactForm = () => {
   })
 
   const onSubmit: SubmitHandler<ContactFormSchemaType> = async (data) => {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
+    const res = await contact(data)
 
-    if (res.status !== 200) {
+    if (res?.serverError || res?.validationErrors || !res?.data?.success) {
       setResponse("Something went wrong. Please try again later.")
     } else {
       setResponse("Thank you reaching out. We will get back to you soon.")
@@ -73,41 +71,43 @@ const ContactForm = () => {
       </div>
 
       <div className="grid gap-2">
-      <div className="flex items-end gap-4 xl:gap-6">
-        <EnvelopeIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
-        <FloatingLabelInput
-          type="email"
-          id="email"
-          placeholder="Email address"
-          register={register}
-        />
+        <div className="flex items-end gap-4 xl:gap-6">
+          <EnvelopeIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
+          <FloatingLabelInput
+            type="email"
+            id="email"
+            placeholder="Email address"
+            register={register}
+          />
+        </div>
+        {errors.email && (
+          <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
+            {errors.email?.message}
+          </p>
+        )}
       </div>
-      {errors.email && (
-        <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
-          {errors.email?.message}
-        </p>
-      )}
+
+      <div className="grid gap-2">
+        <div className="flex items-end gap-4 xl:gap-6">
+          <ChatBubbleBottomCenterTextIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
+          <FloatingLabelInput
+            type="textarea"
+            id="message"
+            placeholder="Your message"
+            register={register}
+          />
+        </div>
+        {errors.message && (
+          <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
+            {errors.message?.message}
+          </p>
+        )}
       </div>
-      
-<div className="grid gap-2">
-      <div className="flex items-end gap-4 xl:gap-6">
-        <ChatBubbleBottomCenterTextIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
-        <FloatingLabelInput
-          type="textarea"
-          id="message"
-          placeholder="Your message"
-          register={register}
-        />
-      </div>
-      {errors.message && (
-        <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
-          {errors.message?.message}
-        </p>
-      )}
-      </div>
-      
+
       {showConfirmation ? (
-        <p className="text-lg font-medium text-dark xl:text-xl 3xl:text-2xl">{response}</p>
+        <p className="text-lg font-medium text-dark xl:text-xl 3xl:text-2xl">
+          {response}
+        </p>
       ) : (
         <button
           type="submit"
