@@ -14,6 +14,11 @@ const socialRedirects = [
     destination: "https://youtube.com/@YogeshSamsiOfficial",
     permanent: true,
   },
+  {
+    source: "/bio",
+    destination: "/about",
+    permanent: true,
+  },
 ]
 
 /** @type {import('next').NextConfig} */
