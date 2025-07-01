@@ -8,6 +8,7 @@ import {
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/solid"
 import Button from "@/components/Button"
+import { Dialog } from "@/components/ui/dialog"
 
 export async function generateMetadata(): Promise<Metadata> {
   const masterclass = await reader.singletons.masterclass.read({
