@@ -12,9 +12,9 @@ import { CalendarIcon } from "@heroicons/react/24/solid"
 import Button from "@/components/Button"
 
 type Props = {
-  params: {
+  params: Promise<{
     eventSlug: string
-  }
+  }>
 }
 
 // UTIL FUNCTIONS
@@ -67,7 +67,8 @@ export async function generateStaticParams() {
   return getEventsPaths()
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { eventSlug } = params
 
   if (await validateEvent(eventSlug)) {
@@ -96,7 +97,8 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-const EventPage = async ({ params }: Props) => {
+const EventPage = async (props: Props) => {
+  const params = await props.params;
   const { eventSlug } = params
 
   if (!(await validateEvent(eventSlug))) {
