@@ -1,3 +1,6 @@
+import fs from "node:fs"
+import path from "node:path"
+
 import Image from "next/image"
 import { imageSize } from "image-size"
 
@@ -48,7 +51,11 @@ const Gallery = async () => {
   const images = await Promise.all(
     rawImages.map(async ({ image, alt }) => {
       const blurDataURL = await getBlurDataURL(image)
-      const { height, width } = imageSize(`./public/${image}`)
+
+      const imageBuffer = fs.readFileSync(
+      path.join(process.cwd(), "public", image),
+    )
+      const { height, width } = imageSize(imageBuffer as unknown as Uint8Array)
 
       if (!height || !width)
         throw new Error(`Failed to get dimensions of image at ${image}`)

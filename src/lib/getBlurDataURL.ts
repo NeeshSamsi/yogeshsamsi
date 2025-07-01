@@ -28,7 +28,7 @@ export default async function getBlurDataURL(imageUrl: string) {
       path.join(process.cwd(), "public", imageUrl),
     )
 
-    const { base64 } = await getPlaiceholder(Buffer.from(imageBuffer))
+    const { base64 } = await getPlaiceholder(imageBuffer)
 
     return base64
   } catch (error) {
