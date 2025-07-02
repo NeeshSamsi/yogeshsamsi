@@ -1,33 +1,25 @@
 "use server"
 
 import { actionClient } from "@/lib/safeAction"
-import { getXataClient } from "@/lib/xata"
+// import { getXataClient } from "@/lib/xata"
 import { mailingListSchema } from "@/lib/zodSchemas"
+import bento from "@/lib/bento"
 
 export const subscribe = actionClient
-  .schema(mailingListSchema)
+  .inputSchema(mailingListSchema)
   .action(async ({ parsedInput: { mlName: name, mlEmail: email } }) => {
+    const first_name = name.split(" ")[0]
+    const last_name = name.split(" ").slice(1).join(" ")
+
     try {
-      // Create a new user if it doesn't exist
-
-      const xata = getXataClient()
-
-      const user = await xata.db.users.getFirst({ filter: { email } })
-      if (user) {
-        return {
-          message: "You are already subscribed to the Mailing List.",
-        }
-      }
-
-      await xata.db.users.create({
-        name,
+      await bento.V1.track({
         email,
+        type: "$subscribe",
+        fields: {
+          first_name,
+          last_name,
+        },
       })
-      return {
-        message: "Thank you for joining the Mailing List!",
-      }
-
-      // Update Google Sheet
     } catch (err) {
       console.error(err)
       throw new Error("Something went wrong, please try again later.")
