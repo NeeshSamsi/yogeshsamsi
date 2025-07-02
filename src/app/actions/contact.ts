@@ -2,37 +2,59 @@
 
 import { contactFormSchema } from "@/lib/zodSchemas"
 import { actionClient } from "@/lib/safeAction"
-import sendEmail from "@/lib/sendEmail"
+import bento from "@/lib/bento"
+
+const FORMSPARK_URL = "https://submit-form.com/xE2Dj15to"
 
 export const contact = actionClient
-  .schema(contactFormSchema)
+  .inputSchema(contactFormSchema)
   .action(async ({ parsedInput }) => {
-    const { name, email: to, message } = parsedInput
+    const { name, email, message } = parsedInput
 
-    const userNotification = await sendEmail({
-      to,
-      name,
-      subject: "Thank You for reaching out to Yogesh Samsi",
-      message:
-        "Thank you for reaching out to Yogesh Samsi through the Website. We will get back to you as soon as we can.",
-    })
-    const ourNotification = await sendEmail({
-      to: "yogeshsamsiofficial@gmail.com",
-      name: "Team",
-      subject: `New Contact Form Submission: ${name}`,
-      message: `New Contact Form Submission\n\nName: ${name}\nEmail: ${to}\nMessage: ${message}`,
-    })
+    const first_name = name.split(" ")[0]
+    const last_name = name.split(" ").slice(1).join(" ")
 
-    if (!userNotification || userNotification?.rejected.length > 0)
-      return { success: false, message: "Error sending user notification" }
-    if (!ourNotification || ourNotification?.rejected.length > 0)
-      return {
-        success: false,
-        message: "Error sending Contact Form notification",
+    try {
+      // await bento.V1.track({
+      //   email,
+      //   type: "$contact",
+      //   fields: {
+      //     first_name,
+      //     last_name,
+      //   },
+      //   details: {
+      //     message,
+      //   },
+      // })
+
+      const res = await fetch(FORMSPARK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _email: {
+            subject: `New Contact Form Submission: ${name}`,
+            from: name,
+            replyto: email,
+          },
+        }),
+      })
+
+      if (res.status === 200) {
+        console.log(JSON.stringify(res, null, 2))
+        return {
+          success: true,
+        }
+      } else {
+        throw new Error("Failed to submit, please try again later.")
       }
-
-    return {
-      success: true,
-      message: `Successfully submitted ${name}'s Contact Form.`,
+    } catch (err) {
+      console.error(err)
+      throw new Error("Something went wrong, please try again later.")
     }
   })
