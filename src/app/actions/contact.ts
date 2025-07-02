@@ -46,11 +46,11 @@ export const contact = actionClient
       })
 
       if (res.status === 200) {
-        console.log(JSON.stringify(res, null, 2))
         return {
           success: true,
         }
       } else {
+        console.log(res)
         throw new Error("Failed to submit, please try again later.")
       }
     } catch (err) {
