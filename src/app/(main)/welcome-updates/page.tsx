@@ -8,8 +8,8 @@ const WelcomeUpdates = () => {
 
         <div className="prose prose-lg marker:text-dark">
           <p>
-            Your subscription to Yogesh Samsi's updates has been successfully
-            confirmed.
+            Your subscription to Yogesh Samsi&apos;s updates has been
+            successfully confirmed.
           </p>
           <p>
             You are now officially part of a community that will receive timely
@@ -19,13 +19,14 @@ const WelcomeUpdates = () => {
             <li>
               <strong>Upcoming Performances: </strong>
               <span>
-                Keep up with Yogesh Samsi's schedule - concerts and workshops.
+                Keep up with Yogesh Samsi&apos;s schedule - concerts and
+                workshops.
               </span>
             </li>
             <li>
               <strong>Online Presence: </strong>
               <span>
-                Stay informed about Yogesh Samsi's latest videos on{" "}
+                Stay informed about Yogesh Samsi&apos;s latest videos on{" "}
                 <a href="https://youtube.com/@yogeshsamsiofficial">
                   YouTube @YogeshSamsiOfficial
                 </a>{" "}
