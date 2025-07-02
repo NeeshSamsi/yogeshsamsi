@@ -15,17 +15,17 @@ export const contact = actionClient
     const last_name = name.split(" ").slice(1).join(" ")
 
     try {
-      // await bento.V1.track({
-      //   email,
-      //   type: "$contact",
-      //   fields: {
-      //     first_name,
-      //     last_name,
-      //   },
-      //   details: {
-      //     message,
-      //   },
-      // })
+      await bento.V1.track({
+        email,
+        type: "$contact",
+        fields: {
+          first_name,
+          last_name,
+        },
+        details: {
+          message,
+        },
+      })
 
       const res = await fetch(FORMSPARK_URL, {
         method: "POST",
