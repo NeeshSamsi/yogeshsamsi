@@ -1,14 +1,10 @@
-"use client"
-
 import "./(main)/globals.css"
 
 import type { Metadata, Viewport } from "next"
 import { Montserrat } from "next/font/google"
 import localFont from "next/font/local"
-import { usePathname } from "next/navigation"
 
-import Button from "@/components/Button"
-import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
+import NotFoundContent from "@/components/NotFoundContent"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -64,36 +60,11 @@ export const metadata: Metadata = {
 }
 
 const NotFound = () => {
-  const pathname = usePathname()
-
   return (
     <main
       className={`${montserrat.variable} ${reckless.variable} min-h-screen overscroll-none bg-lighter px-8 py-12 font-sans text-darker md:px-col-inner md:py-20 2xl:py-32`}
     >
-      <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-4 sm:gap-6 xl:gap-12">
-        <h1 className="text-center font-serif text-3xl font-bold tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
-          This Page Doesn&rsquo;t Exist
-        </h1>
-        <h2 className="mx-auto text-center text-lg tracking-wide sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
-          The page {pathname} could not be found. Consider visiting the Home
-          page or if you think this is a mistake, kindly reach out to us.
-        </h2>
-        <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:gap-6 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-          <Button as="link" type="Primary" theme="Darker" href="/">
-            <>
-              <span>Back to Homepage</span>
-            </>
-          </Button>
-          <Button as="link" type="Secondary" theme="Darker" href="/contact">
-            <>
-              <span>Back to Homepage</span>
-              <span>
-                <ChatBubbleLeftRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
-              </span>
-            </>
-          </Button>
-        </div>
-      </div>
+      <NotFoundContent />
     </main>
   )
 }
