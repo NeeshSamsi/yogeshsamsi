@@ -20,6 +20,11 @@ export const subscribe = actionClient
           last_name,
         },
       })
+
+      return {
+        success: true,
+        message: "Thank you for joining the Mailing List!",
+      }
     } catch (err) {
       console.error(err)
       throw new Error("Something went wrong, please try again later.")
