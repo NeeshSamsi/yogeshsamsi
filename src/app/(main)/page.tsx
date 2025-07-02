@@ -8,6 +8,7 @@ import Section from "@/components/Section"
 import SectionHeading from "@/components/SectionHeading"
 import Button from "@/components/Button"
 import Event from "@/components/Event"
+import Link from "next/link"
 
 const Home = async () => {
   const home = await reader.singletons.home.read()
@@ -102,12 +103,12 @@ const Home = async () => {
             </div>
             <p className="text-light">
               Are you an organiser?{" "}
-              <a
+              <Link
                 href="/about"
                 className="underline underline-offset-2 transition-colors hover:text-lighter"
               >
                 Download Biodata
-              </a>
+              </Link>
             </p>
           </div>
         </div>
