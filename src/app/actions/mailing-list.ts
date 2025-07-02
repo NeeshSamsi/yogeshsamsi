@@ -14,7 +14,7 @@ export const subscribe = actionClient
     try {
       await bento.V1.track({
         email,
-        type: "$subscribe",
+        type: "$opt.in",
         fields: {
           first_name,
           last_name,
