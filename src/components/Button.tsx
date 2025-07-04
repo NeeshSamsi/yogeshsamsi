@@ -11,6 +11,7 @@ type Props = {
   href?: string
   target?: "_blank"
   download?: boolean
+  submit?: boolean
 }
 
 const Button: FC<Props> = ({
@@ -21,6 +22,7 @@ const Button: FC<Props> = ({
   href,
   target,
   download,
+  submit,
 }) => {
   const buttonClasses = cn(
     "py-2 px-3 md:px-4 transition-colors flex items-center justify-center gap-2 md:gap-3 3xl:py-3 3xl:px-5",
@@ -45,7 +47,11 @@ const Button: FC<Props> = ({
 
   switch (as) {
     case "button":
-      return <button className={buttonClasses}>{children}</button>
+      return (
+        <button className={buttonClasses} type={submit ? "submit" : "button"}>
+          {children}
+        </button>
+      )
       break
     case "link":
       return (
