@@ -12,3 +12,9 @@ export const contactFormSchema = z.object({
   message: z.string().min(1, "Message is required."),
 })
 export type ContactFormSchemaType = z.infer<typeof contactFormSchema>
+
+export const masterclassFormSchema = z.object({
+  name: z.string().min(1, "Full name is required."),
+  email: z.string().min(1, "Email is required.").email("Invalid email."),
+})
+export type MasterclassFormSchemaType = z.infer<typeof masterclassFormSchema>
