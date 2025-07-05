@@ -5,7 +5,8 @@ import reader from "@/lib/keystatic"
 import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
 import Section from "@/components/Section"
 import Socials from "@/components/Socials"
-import Button from "@/components/Button"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export async function generateMetadata() {
   const about = await reader.singletons.about.read()
@@ -65,27 +66,21 @@ const About = async () => {
             <p>- {quoteBy}</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
-            <Button
-              as="link"
-              type="Primary"
-              theme="Dark"
-              href={`${biodata}`}
-              download
-            >
-              <>
+            <Button asChild variant="primary" theme="dark">
+              <Link href={`${biodata}`} download>
                 <span>Download biodata</span>
                 <span>
                   <ArrowDownTrayIcon className="aspect-square w-3 stroke-[2.5px] sm:w-4 xl:w-5" />
                 </span>
-              </>
+              </Link>
             </Button>
-            <Button as="link" type="Secondary" theme="Dark" href="/gallery">
-              <>
+            <Button asChild variant="secondary" theme="dark">
+              <Link href="/gallery">
                 <span>Gallery</span>
                 <span>
                   <ArrowRightIcon className="aspect-square w-3 stroke-[2.5px] sm:w-4 xl:w-5" />
                 </span>
-              </>
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,9 +1,9 @@
 "use client"
 
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 
-import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
-import Button from "./Button"
+import { Button } from "@/components/ui/button"
 
 export default function NotFoundContent() {
   const pathname = usePathname()
@@ -18,10 +18,10 @@ export default function NotFoundContent() {
         or if you think this is a mistake, kindly reach out to us.
       </h2>
       <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:gap-6 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-        <Button as="link" type="Primary" theme="Darker" href="/">
-          <>
+        <Button asChild variant="primary" theme="darker">
+          <Link href="/">
             <span>Back to Homepage</span>
-          </>
+          </Link>
         </Button>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
-import Button from "./Button"
+import { Button } from "@/components/ui/button"
 
 type Props = {
   event: {
@@ -51,13 +52,17 @@ const Event = ({
           <p>{name}</p>
         )}
         {ctaText && (
-          <Button as="link" href={ctaLink} type="Primary" theme={theme}>
-            <>
+          <Button
+            asChild
+            variant="primary"
+            theme={theme.toLowerCase() as "lighter" | "darker"}
+          >
+            <Link href={ctaLink}>
               <span>{ctaText}</span>
               <span>
                 <ArrowRightIcon className="w-3 stroke-[2.5px] xl:w-4" />
               </span>
-            </>
+            </Link>
           </Button>
         )}
       </div>

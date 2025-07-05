@@ -6,7 +6,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
 import Section from "@/components/Section"
 import SectionHeading from "@/components/SectionHeading"
-import Button from "@/components/Button"
+import { Button } from "@/components/ui/button"
 import Event from "@/components/Event"
 import Link from "next/link"
 
@@ -84,21 +84,21 @@ const Home = async () => {
           </h1>
           <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
             <div className="flex flex-wrap items-center gap-2 md:gap-6">
-              <Button as="link" type="Primary" theme="Light" href="/#events">
-                <>
+              <Button asChild variant="primary" theme="light">
+                <Link href="/#events">
                   <span>Upcoming events</span>
                   <span>
                     <ArrowRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
                   </span>
-                </>
+                </Link>
               </Button>
-              <Button as="link" type="Secondary" theme="Light" href="/contact">
-                <>
+              <Button asChild variant="secondary" theme="light">
+                <Link href="/contact">
                   <span>Reach out</span>
                   <span>
                     <ChatBubbleLeftRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
                   </span>
-                </>
+                </Link>
               </Button>
             </div>
             <p className="text-light">

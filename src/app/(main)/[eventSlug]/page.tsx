@@ -9,7 +9,8 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline"
 import { CalendarIcon } from "@heroicons/react/24/solid"
-import Button from "@/components/Button"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 type Props = {
   params: Promise<{
@@ -68,7 +69,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
+  const params = await props.params
   const { eventSlug } = params
 
   if (await validateEvent(eventSlug)) {
@@ -98,7 +99,7 @@ export async function generateMetadata(props: Props) {
 }
 
 const EventPage = async (props: Props) => {
-  const params = await props.params;
+  const params = await props.params
   const { eventSlug } = params
 
   if (!(await validateEvent(eventSlug))) {
@@ -131,7 +132,7 @@ const EventPage = async (props: Props) => {
   } = rawEvent
 
   return (
-    <main className="mx-auto max-w-lg bg-lighter px-8 py-12 text-dark md:max-w-none md:px-col-inner md:py-20 2xl:py-32 ">
+    <main className="mx-auto max-w-lg bg-lighter px-8 py-12 text-dark md:max-w-none md:px-col-inner md:py-20 2xl:py-32">
       <div className="mx-auto flex max-w-screen-2xl flex-row justify-between gap-16">
         <article className="grid gap-10">
           <h1 className="font-serif text-4xl font-bold tracking-wide sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
@@ -248,8 +249,8 @@ const Details = ({
 
 const CTA = ({ ctaText, ctaLink }: { ctaText: string; ctaLink: string }) => {
   return (
-    <Button as="link" type="Primary" theme="Darker" href={ctaLink}>
-      <span>{ctaText}</span>
+    <Button asChild variant="primary" theme="darker">
+      <Link href={ctaLink}>{ctaText}</Link>
     </Button>
   )
 }
