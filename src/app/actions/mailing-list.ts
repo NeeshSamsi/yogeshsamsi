@@ -1,7 +1,6 @@
 "use server"
 
 import { actionClient } from "@/lib/safeAction"
-// import { getXataClient } from "@/lib/xata"
 import { mailingListSchema } from "@/lib/zodSchemas"
 import bento from "@/lib/bento"
 
