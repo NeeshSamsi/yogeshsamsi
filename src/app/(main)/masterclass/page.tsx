@@ -7,8 +7,9 @@ import {
   ArrowDownIcon,
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/solid"
-import Button from "@/components/Button"
-import MasterclassApplication from "@/components/MasterclassApplication"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import MasterclassRegistration from "@/components/MasterclassRegistration"
 
 export async function generateMetadata(): Promise<Metadata> {
   const masterclass = await reader.singletons.masterclass.read({
@@ -77,19 +78,14 @@ export default async function Masterclass() {
           </p>
           <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
             <div className="flex flex-row flex-wrap items-center justify-center gap-2 md:flex-col md:justify-start md:gap-6 lg:flex-row">
-              <MasterclassApplication />
-              <Button
-                as="link"
-                type="Secondary"
-                theme="Light"
-                href="/masterclass#details"
-              >
-                <>
+              <MasterclassRegistration />
+              <Button asChild variant="secondary" theme="light">
+                <Link href="/masterclass#details">
                   <span>Learn more</span>
                   <span>
                     <ArrowDownIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
                   </span>
-                </>
+                </Link>
               </Button>
             </div>
           </div>
@@ -106,19 +102,13 @@ export default async function Masterclass() {
           </article>
 
           <div className="w-fit text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-            <Button
-              as="link"
-              type="Primary"
-              theme="Dark"
-              href={formLink || "/masterclass#details"}
-              target="_blank"
-            >
-              <>
+            <Button asChild variant="primary" theme="dark">
+              <Link href={formLink || "/masterclass#details"} target="_blank">
                 <span>Apply Now</span>
                 <span>
                   <ArrowTopRightOnSquareIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
                 </span>
-              </>
+              </Link>
             </Button>
           </div>
         </div>
