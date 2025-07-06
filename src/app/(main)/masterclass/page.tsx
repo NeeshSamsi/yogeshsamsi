@@ -3,10 +3,7 @@ import { type Metadata } from "next"
 import reader from "@/lib/keystatic"
 import Image from "next/image"
 import { DocumentRenderer } from "@keystatic/core/renderer"
-import {
-  ArrowDownIcon,
-  ArrowTopRightOnSquareIcon,
-} from "@heroicons/react/24/solid"
+import { ArrowDownIcon } from "@heroicons/react/24/solid"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import MasterclassRegistration from "@/components/MasterclassRegistration"
@@ -40,6 +37,8 @@ export default async function Masterclass() {
     deadline,
     details,
   } = masterclass
+
+  // const active = true
 
   return (
     <>

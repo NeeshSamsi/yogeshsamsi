@@ -9,7 +9,9 @@ import { redirect } from "next/navigation"
 export const registerMasterclass = actionClient
   .inputSchema(masterclassFormSchema)
   .action(
-    async ({ parsedInput: { name, email } }): Promise<{ success: boolean }> => {
+    async ({
+      parsedInput: { name, email },
+    }): Promise<{ success: boolean; redirect?: string }> => {
       const first_name = name.split(" ")[0]
       const last_name = name.split(" ").slice(1).join(" ")
 
@@ -35,7 +37,7 @@ export const registerMasterclass = actionClient
           return { success: false }
         }
         if (!user || !user.attributes.fields?.batch) {
-          redirect(formLink)
+          return { success: true, redirect: formLink }
         } else {
           return { success: true }
         }

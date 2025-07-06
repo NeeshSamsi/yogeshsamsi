@@ -56,10 +56,13 @@ export default function MasterclassRegistration({
       setTimeout(() => {
         setFormError(undefined)
       }, 5000)
+    } else if (res.data?.redirect) {
+      // Handle redirect to external form
+      window.location.href = res.data.redirect
+    } else {
+      reset()
+      setCurrentStep(2)
     }
-
-    reset()
-    setCurrentStep(2)
   }
 
   const handleOpenChange = (newOpen: boolean) => {
