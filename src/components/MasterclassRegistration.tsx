@@ -14,7 +14,7 @@ import { registerMasterclass } from "@/app/actions/masterclass"
 
 import { useState } from "react"
 
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -25,8 +25,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid"
+import { VariantProps } from "class-variance-authority"
 
-export default function MasterclassRegistration() {
+interface MasterclassRegistrationProps {
+  callToAction: VariantProps<typeof buttonVariants>
+}
+
+export default function MasterclassRegistration({
+  callToAction: { variant, theme },
+}: MasterclassRegistrationProps) {
   const [open, setOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [formError, setFormError] = useState<string>()
@@ -127,8 +134,8 @@ export default function MasterclassRegistration() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="primary" theme="light">
-          Get Started
+        <Button variant={variant} theme={theme}>
+          Register now
         </Button>
       </DialogTrigger>
       <DialogContent>
