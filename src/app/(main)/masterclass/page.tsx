@@ -38,7 +38,6 @@ export default async function Masterclass() {
     title,
     dates,
     deadline,
-    formLink,
     details,
   } = masterclass
 
@@ -76,9 +75,11 @@ export default async function Masterclass() {
           <p className="text-lg font-semibold sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
             {dates}
           </p>
-          <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
-            <div className="flex flex-row flex-wrap items-center justify-center gap-2 md:flex-col md:justify-start md:gap-6 lg:flex-row">
-              <MasterclassRegistration />
+          {active && (
+            <div className="flex flex-row flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+              <MasterclassRegistration
+                callToAction={{ variant: "primary", theme: "light" }}
+              />
               <Button asChild variant="secondary" theme="light">
                 <Link href="/masterclass#details">
                   <span>Learn more</span>
@@ -88,7 +89,7 @@ export default async function Masterclass() {
                 </Link>
               </Button>
             </div>
-          </div>
+          )}
         </div>
       </main>
 
@@ -101,16 +102,13 @@ export default async function Masterclass() {
             <DocumentRenderer document={details} />
           </article>
 
-          <div className="w-fit text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-            <Button asChild variant="primary" theme="dark">
-              <Link href={formLink || "/masterclass#details"} target="_blank">
-                <span>Apply Now</span>
-                <span>
-                  <ArrowTopRightOnSquareIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
-                </span>
-              </Link>
-            </Button>
-          </div>
+          {active && (
+            <div className="w-fit text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+              <MasterclassRegistration
+                callToAction={{ variant: "primary", theme: "dark" }}
+              />
+            </div>
+          )}
         </div>
       </section>
     </>
