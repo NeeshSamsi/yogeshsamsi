@@ -36,7 +36,11 @@ export const registerMasterclass = actionClient
         if (!registered) {
           return { success: false }
         }
-        if (!user || !user.attributes.fields?.batch) {
+        if (
+          !user ||
+          !user.attributes.fields?.batch ||
+          !user.attributes.fields?.timezone
+        ) {
           return { success: true, redirect: formLink }
         } else {
           return { success: true }
