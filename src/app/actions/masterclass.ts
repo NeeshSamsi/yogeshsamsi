@@ -4,7 +4,6 @@ import bento from "@/lib/bento"
 import reader from "@/lib/keystatic"
 import { actionClient } from "@/lib/safeAction"
 import { masterclassFormSchema } from "@/lib/zodSchemas"
-import { redirect } from "next/navigation"
 
 export const registerMasterclass = actionClient
   .inputSchema(masterclassFormSchema)
@@ -15,7 +14,9 @@ export const registerMasterclass = actionClient
       const first_name = name.split(" ")[0]
       const last_name = name.split(" ").slice(1).join(" ")
 
-      const masterclass = await reader.singletons.masterclass.read()
+      const masterclass = await reader.singletons.masterclass.read({
+        resolveLinkedFiles: true,
+      })
       if (!masterclass)
         throw new Error("Keystatic Content Not Found - Masterclass Page")
       const { formLink } = masterclass
