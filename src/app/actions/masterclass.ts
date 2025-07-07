@@ -1,28 +1,22 @@
 "use server"
 
+import { z } from "zod"
 import bento from "@/lib/bento"
-import reader from "@/lib/keystatic"
 import { actionClient } from "@/lib/safeAction"
 import { masterclassFormSchema } from "@/lib/zodSchemas"
 
 export const registerMasterclass = actionClient
-  .inputSchema(masterclassFormSchema)
+  .inputSchema(
+    masterclassFormSchema.extend({
+      formLink: z.string().min(1, "Name is required.").url(),
+    }),
+  )
   .action(
     async ({
-      parsedInput: { name, email },
+      parsedInput: { name, email, formLink },
     }): Promise<{ success: boolean; redirect?: string }> => {
       const first_name = name.split(" ")[0]
       const last_name = name.split(" ").slice(1).join(" ")
-
-      const masterclass = await reader.singletons.masterclass.read({
-        resolveLinkedFiles: true,
-      })
-      if (!masterclass)
-        throw new Error("Keystatic Content Not Found - Masterclass Page")
-      const { formLink } = masterclass
-      if (!formLink) {
-        throw new Error("Keystatic Content Not Found - Masterclass Form Link")
-      }
 
       try {
         const user = await bento.V1.Subscribers.getSubscribers({ email })

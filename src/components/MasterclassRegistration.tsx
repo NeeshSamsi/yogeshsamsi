@@ -28,10 +28,12 @@ import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid"
 import { VariantProps } from "class-variance-authority"
 
 interface MasterclassRegistrationProps {
+  formLink: string
   callToAction: VariantProps<typeof buttonVariants>
 }
 
 export default function MasterclassRegistration({
+  formLink,
   callToAction: { variant, theme },
 }: MasterclassRegistrationProps) {
   const [open, setOpen] = useState(false)
@@ -48,7 +50,7 @@ export default function MasterclassRegistration({
   })
 
   const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (data) => {
-    const res = await registerMasterclass(data)
+    const res = await registerMasterclass({ ...data, formLink })
 
     if (!res || res.serverError || res.validationErrors || !res.data?.success) {
       setFormError("Something went wrong. Please try again or reach out to us.")

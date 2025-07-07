@@ -36,7 +36,11 @@ export default async function Masterclass() {
     dates,
     deadline,
     details,
+    formLink,
   } = masterclass
+
+  if (!formLink)
+    throw new Error("Keystatic Content Not Found - Masterclass Form Link")
 
   // const active = true
 
@@ -77,6 +81,7 @@ export default async function Masterclass() {
           {active && (
             <div className="flex flex-row flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
               <MasterclassRegistration
+                formLink={formLink}
                 callToAction={{ variant: "primary", theme: "light" }}
               />
               <Button asChild variant="secondary" theme="light">
@@ -104,6 +109,7 @@ export default async function Masterclass() {
           {active && (
             <div className="w-fit text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
               <MasterclassRegistration
+                formLink={formLink}
                 callToAction={{ variant: "primary", theme: "dark" }}
               />
             </div>
