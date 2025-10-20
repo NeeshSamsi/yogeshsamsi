@@ -103,11 +103,11 @@ export default async function MainLayout({
       lang="en"
       className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
     >
-      <Script
+      {/* <Script
         strategy="lazyOnload"
         src="https://umami.neeshsamsi.com/script.js"
         data-website-id="45d705f2-b44a-45cf-b94e-a8fb619b5fe0"
-      />
+      /> */}
 
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
