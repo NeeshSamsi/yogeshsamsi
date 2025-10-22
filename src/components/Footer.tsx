@@ -23,7 +23,10 @@ const Footer = ({
   mailingListDescription,
 }: Props) => {
   return (
-    <footer className="grid gap-8 bg-light px-8 py-8 md:px-col-outer">
+    <footer
+      id="contact"
+      className="grid gap-8 bg-light px-8 py-8 md:px-col-outer"
+    >
       <div className="flex flex-col items-center justify-between gap-16 md:flex-row md:items-start md:gap-8">
         <MailingList
           title={mailingListTitle}

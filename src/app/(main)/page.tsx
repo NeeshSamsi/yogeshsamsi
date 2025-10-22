@@ -93,7 +93,7 @@ const Home = async () => {
                 </Link>
               </Button>
               <Button asChild variant="secondary" theme="light">
-                <Link href="/contact">
+                <Link href="/#contact">
                   <span>Reach out</span>
                   <span>
                     <ChatBubbleLeftRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
