@@ -16,7 +16,7 @@ export default function MasterclassBanner({ title }: Props) {
 
   return (
     <p className="flex flex-col items-center justify-center bg-lighter px-8 py-1 text-center text-lg font-medium text-darker sm:flex-row sm:text-xl">
-      <span>{title} by Yogesh Samsi</span>
+      <span>{title} Masterclass by Yogesh Samsi</span>
       <Button asChild variant="secondary" theme="darker">
         <Link href="/masterclass">
           <span className="font-semibold underline">Join now</span>
