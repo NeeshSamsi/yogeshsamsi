@@ -9,5 +9,9 @@
     "heroImage": "/images/pages/academy/hero/heroImage.jpg",
     "heroMobileImage": "/images/pages/academy/hero/heroMobileImage.jpg",
     "heroImageAlt": "Yogesh Samsi standing holding and playing a tabla."
+  },
+  "philosophy": {
+    "title": "Our Philosophy",
+    "paragraphs": []
   }
 }
