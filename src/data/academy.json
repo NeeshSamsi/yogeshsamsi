@@ -49,5 +49,18 @@
     "paragraphs": [
       "Yogesh Samsi’s senior students who have been under his tutelage for more than 15 years one on one under guru shishya parampara. They are all highly qualified and performers in their own right. They have been specially taken through this specifically designed syllabus."
     ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How do I make payments?",
+        "answer": "This is how"
+      },
+      {
+        "question": "Who will my teacher be?",
+        "answer": "Yogesh Samsi’s senior students who have been under his tutelage for more than 15 years one on one under guru shishya parampara. They are all highly qualified and performers in their own right. They have been specially taken through this specifically designed syllabus"
+      }
+    ]
   }
 }
