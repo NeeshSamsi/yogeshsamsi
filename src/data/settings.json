@@ -24,6 +24,11 @@
       "newWindow": false
     },
     {
+      "text": "Academy",
+      "path": "/academy",
+      "newWindow": false
+    },
+    {
       "text": "Contact",
       "path": "/#contact",
       "newWindow": false
