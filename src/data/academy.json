@@ -18,5 +18,30 @@
       "Now in his 50’s, Yogesh Samsi effortlessly navigates any musical setting and this is the experience he wants to share with you here. The goal of this endeavour is to instill foundational skills and develop a holistic outlook towards the subject of  Tabla. ",
       "Yogesh Ji has personally designed not only a syllabus but also instilled his unique style of teaching within his senior students. After spending his entire life perfecting his craft and learning in an un institutionalised form, it has been his dream and he has spent his entire life carving out a method that brings together the essence of the Guru shishya style of teaching and combines them with modern day goal oriented quick learning which is specially meant to cater the modern day disciple."
     ]
+  },
+  "features": {
+    "title": "Redefining Online Learning, On Your Own Terms",
+    "items": [
+      {
+        "icon": "MonitorDot",
+        "title": "Personalised 1:1 or Group Zoom Sessions",
+        "description": "Everyone learns differently, some thrive solo, others flourish in a group. Whether you prefer focused one-on-one guidance or the energy of a peer learning environment, we offers both."
+      },
+      {
+        "icon": "CalendarClock",
+        "title": "Personalised Time Slot",
+        "description": "We understand that life doesn’t always follow a fixed schedule. Whether you're balancing work, school, or live in a different timezone, we let you choose a class time that truly works for you."
+      },
+      {
+        "icon": "FileDown",
+        "title": "Downloadable PDF Class Notes ",
+        "description": "Stay fully present during class. We’ve got the note-taking covered. After every session, you’ll receive well-organised PDF notes to help you revise and reflect at your own pace."
+      },
+      {
+        "icon": "NotePen",
+        "title": "Module-wise Reviews by Yogesh Samsi",
+        "description": "At key points along your journey, your progress will be reviewed by none other than Yogesh Samsi. His insights will help fine-tune your understanding and bring out the subtleties in your playing."
+      }
+    ]
   }
 }
