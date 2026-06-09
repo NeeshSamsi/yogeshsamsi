@@ -400,6 +400,176 @@ export default config({
       },
     }),
 
+    academy: singleton({
+      label: "Academy Page",
+      path: "src/data/academy",
+      format: "json",
+      schema: {
+        meta: fields.object(
+          {
+            metaTitle: fields.text({
+              label: "Metadata Title",
+              description:
+                "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+              validation: { length: { min: 1 } },
+            }),
+            metaDescription: fields.text({
+              label: "Metadata Description",
+              description:
+                "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+              multiline: true,
+              validation: { length: { min: 1 } },
+            }),
+          },
+          { label: "Meta Information" },
+        ),
+        hero: fields.object(
+          {
+            title: fields.text({
+              label: "Hero Title",
+              validation: { length: { min: 1 } },
+            }),
+            description: fields.text({
+              label: "Hero Description",
+              multiline: true,
+              validation: { length: { min: 1 } },
+            }),
+            heroImage: fields.image({
+              label: "Hero Image",
+              directory: "/public/images/pages/academy/",
+              publicPath: "/images/pages/academy/",
+              validation: { isRequired: true },
+            }),
+            heroMobileImage: fields.image({
+              label: "Hero Image - Mobile",
+              directory: "/public/images/pages/academy/",
+              publicPath: "/images/pages/academy/",
+              validation: { isRequired: true },
+            }),
+            heroImageAlt: fields.text({
+              label: "Hero Image Alternate Text",
+              description:
+                "This is read out to visually impaired users and displayed in a situation where the image was unable to load for any reason.",
+              validation: { length: { min: 1 } },
+            }),
+          },
+          { label: "Hero" },
+        ),
+        philosophy: fields.object(
+          {
+            title: fields.text({
+              label: "Section Title",
+              validation: { length: { min: 1 } },
+            }),
+            videoLink: fields.url({
+              label: "YouTube Embed Link",
+              description:
+                "Paste the YouTube embed URL (e.g. https://www.youtube.com/embed/VIDEO_ID).",
+            }),
+            paragraphs: fields.array(
+              fields.text({
+                label: "Paragraph",
+                multiline: true,
+                validation: { length: { min: 1 } },
+              }),
+              {
+                label: "Paragraphs",
+                itemLabel: (props) => props.value,
+              },
+            ),
+          },
+          { label: "Philosophy Section" },
+        ),
+        features: fields.object(
+          {
+            title: fields.text({
+              label: "Section Title",
+              validation: { length: { min: 1 } },
+            }),
+            items: fields.array(
+              fields.object({
+                icon: fields.text({
+                  label: "Lucide Icon Name",
+                  description:
+                    "Exact PascalCase Lucide icon name, e.g. BookOpen, Music, Users.",
+                  validation: { length: { min: 1 } },
+                }),
+                title: fields.text({
+                  label: "Feature Title",
+                  validation: { length: { min: 1 } },
+                }),
+                description: fields.text({
+                  label: "Feature Description",
+                  multiline: true,
+                  validation: { length: { min: 1 } },
+                }),
+              }),
+              {
+                label: "Features",
+                itemLabel: (props) => props.fields.title.value,
+              },
+            ),
+          },
+          { label: "Features Section" },
+        ),
+        team: fields.object(
+          {
+            title: fields.text({
+              label: "Section Title",
+              validation: { length: { min: 1 } },
+            }),
+            image: fields.image({
+              label: "Team Photo",
+              directory: "/public/images/pages/academy/team/",
+              publicPath: "/images/pages/academy/team/",
+            }),
+            imageAlt: fields.text({
+              label: "Team Photo Alt Text",
+              description: "Describe the photo for screen readers.",
+            }),
+            paragraphs: fields.array(
+              fields.text({
+                label: "Paragraph",
+                multiline: true,
+                validation: { length: { min: 1 } },
+              }),
+              {
+                label: "Paragraphs",
+                itemLabel: (props) => props.value.slice(0, 60),
+              },
+            ),
+          },
+          { label: "Team Section" },
+        ),
+        faq: fields.object(
+          {
+            title: fields.text({
+              label: "Section Title",
+              validation: { length: { min: 1 } },
+            }),
+            items: fields.array(
+              fields.object({
+                question: fields.text({
+                  label: "Question",
+                  validation: { length: { min: 1 } },
+                }),
+                answer: fields.text({
+                  label: "Answer",
+                  multiline: true,
+                  validation: { length: { min: 1 } },
+                }),
+              }),
+              {
+                label: "FAQ Items",
+                itemLabel: (props) => props.fields.question.value,
+              },
+            ),
+          },
+          { label: "FAQ Section" },
+        ),
+      },
+    }),
+
     contact: singleton({
       label: "Contact Page",
       path: "src/data/contact",
