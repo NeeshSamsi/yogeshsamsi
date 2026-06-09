@@ -66,6 +66,9 @@ importers:
       image-size:
         specifier: ^2.0.2
         version: 2.0.2
+      import-in-the-middle:
+        specifier: 1.14.2
+        version: 1.14.2
       lucide-react:
         specifier: ^0.525.0
         version: 0.525.0(react@18.3.1)
@@ -99,6 +102,9 @@ importers:
       react-hook-form:
         specifier: ^7.59.0
         version: 7.59.0(react@18.3.1)
+      require-in-the-middle:
+        specifier: 7.5.2
+        version: 7.5.2
       sharp:
         specifier: ^0.34.2
         version: 0.34.2
@@ -4676,7 +4682,7 @@ snapshots:
       '@babel/parser': 7.27.7
       '@babel/template': 7.27.2
       '@babel/types': 7.27.7
-      debug: 4.4.1
+      debug: 4.4.3
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -4689,7 +4695,7 @@ snapshots:
       '@babel/parser': 7.28.0
       '@babel/template': 7.27.2
       '@babel/types': 7.28.0
-      debug: 4.4.1
+      debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
@@ -7456,7 +7462,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.6
       cosmiconfig: 7.1.0
-      resolve: 1.22.10
+      resolve: 1.22.11
 
   balanced-match@1.0.2: {}
 
@@ -9357,9 +9363,9 @@ snapshots:
 
   require-in-the-middle@7.5.2:
     dependencies:
-      debug: 4.4.1
+      debug: 4.4.3
       module-details-from-path: 1.0.4
-      resolve: 1.22.10
+      resolve: 1.22.11
     transitivePeerDependencies:
       - supports-color
 
