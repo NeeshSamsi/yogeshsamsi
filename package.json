@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@bentonow/bento-node-sdk": "^0.2.1",
+    "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.1.1",
     "@keystatic/core": "^0.5.22",

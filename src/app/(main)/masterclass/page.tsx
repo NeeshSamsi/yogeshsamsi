@@ -79,7 +79,7 @@ export default async function Masterclass() {
             {dates}
           </p>
           {active && (
-            <div className="flex flex-row flex-wrap items-center justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+            <div className="flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:text-base lg:flex-row lg:items-center lg:gap-6 lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
               <MasterclassRegistration
                 formLink={formLink}
                 callToAction={{ variant: "primary", theme: "light" }}
@@ -88,7 +88,10 @@ export default async function Masterclass() {
                 <Link href="/masterclass#details">
                   <span>Learn more</span>
                   <span>
-                    <ArrowDownIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
+                    <ArrowDownIcon
+                      strokeWidth={2.5}
+                      className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8"
+                    />
                   </span>
                 </Link>
               </Button>
