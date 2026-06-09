@@ -12,7 +12,6 @@
   },
   "philosophy": {
     "title": "Our Philosophy",
-    "videoLink": null,
     "paragraphs": [
       "In his formative years, his gurus Pt. Dinkar Kaikini and Ustad Alla Rakha instilled in him the importance of sharing his knowledge, wisdom and expertise. From teaching at the Ustad Alla Rakha Institute, assisting Ustadji himself, to conducting masterclasses and workshops worldwide, he has trained both hobbyists and professionals with unwavering charisma for over 40 years now.",
       "Teaching is second nature to him, and his students perform in venues both large and small across the globe. This endeavour unites his deep-rooted values with a lifetime of dedication, aiming to inspire you to become the next torchbearer of this rich lineage and tradition.",
@@ -39,7 +38,7 @@
         "description": "Stay fully present during class. We’ve got the note-taking covered. After every session, you’ll receive well-organised PDF notes to help you revise and reflect at your own pace."
       },
       {
-        "icon": "NotePen",
+        "icon": "NotebookPen",
         "title": "Module-wise Reviews by Yogesh Samsi",
         "description": "At key points along your journey, your progress will be reviewed by none other than Yogesh Samsi. His insights will help fine-tune your understanding and bring out the subtleties in your playing."
       }
