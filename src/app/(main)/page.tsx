@@ -85,8 +85,8 @@ const Home = async () => {
           <div className="space-y-6 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:space-y-8 2xl:text-2xl 3xl:space-y-12 3xl:text-3xl">
             <div className="flex flex-wrap items-center gap-2 md:gap-6">
               <Button asChild variant="primary" theme="light">
-                <Link href="/#events">
-                  <span>Upcoming events</span>
+                <Link href="/academy">
+                  <span>Learn tabla</span>
                   <span>
                     <ArrowRightIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
                   </span>
