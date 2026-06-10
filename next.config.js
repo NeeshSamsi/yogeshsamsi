@@ -24,6 +24,14 @@ const socialRedirects = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ["127.0.0.1"],
+  async rewrites() {
+    return [
+      {
+        source: "/u/:path*",
+        destination: "https://umami.neeshsamsi.com/:path*",
+      },
+    ]
+  },
   async redirects() {
     return [
       {
