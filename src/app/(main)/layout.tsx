@@ -9,8 +9,8 @@ import reader from "@/lib/keystatic"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
-import Script from "next/script"
 import MasterclassBanner from "@/components/MasterclassBanner"
+import Umami from "@/components/Umami"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -103,12 +103,7 @@ export default async function MainLayout({
       lang="en"
       className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
     >
-      <Script
-        strategy="lazyOnload"
-        src="https://umami.neeshsamsi.com/script.js"
-        data-website-id="45d705f2-b44a-45cf-b94e-a8fb619b5fe0"
-      />
-
+      <Umami />
       <body
         className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
       >
