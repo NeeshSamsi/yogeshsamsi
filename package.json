@@ -64,7 +64,8 @@
       "unrs-resolver"
     ],
     "onlyBuiltDependencies": [
-      "sharp"
+      "sharp",
+      "@sentry/cli"
     ]
   }
 }
