@@ -54,7 +54,9 @@ export default async function Academy() {
             {description}
           </p>
           <div className="flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:items-center lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-            <AcademyRegistration callToAction={{ variant: "primary", theme: "light" }} />
+            <AcademyRegistration
+              callToAction={{ variant: "primary", theme: "light" }}
+            />
             <Button asChild variant="secondary" theme="light">
               <Link href="/academy#philosophy">
                 <span>See how it works</span>
@@ -116,8 +118,8 @@ export default async function Academy() {
               <div className="flex items-center gap-3">
                 <DynamicIcon
                   name={item.icon}
-                  className="h-8 w-8 shrink-0 xl:h-10 xl:w-10"
-                  strokeWidth={1.5}
+                  className="size-6 shrink-0 lg:size-8"
+                  strokeWidth={2}
                 />
                 <h3 className="font-serif text-lg font-semibold lg:text-xl xl:text-2xl 2xl:text-3xl">
                   {item.title}
