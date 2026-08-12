@@ -29,7 +29,7 @@ export default async function Academy() {
 
   return (
     <>
-      <main className="relative flex aspect-[1/2.34] w-full px-8 text-center text-lighter md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
+      <main className="relative flex aspect-[1/2.34] w-full px-8 text-center text-darker md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
           src={heroImage}
           alt={heroImageAlt}
@@ -50,14 +50,14 @@ export default async function Academy() {
           <h1 className="max-w-[15ch] text-balance font-serif text-4xl font-semibold tracking-wider sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl">
             {title}
           </h1>
-          <p className="max-w-[50ch] text-balance text-base text-light sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+          <p className="max-w-[50ch] text-balance text-base text-darker sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
             {description}
           </p>
           <div className="flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:items-center lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
             <AcademyRegistration
-              callToAction={{ variant: "primary", theme: "light" }}
+              callToAction={{ variant: "primary", theme: "darker" }}
             />
-            <Button asChild variant="secondary" theme="light">
+            <Button asChild variant="secondary" theme="darker">
               <Link href="/academy#philosophy">
                 <span>See how it works</span>
                 <span>
