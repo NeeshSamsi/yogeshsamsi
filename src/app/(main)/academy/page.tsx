@@ -24,11 +24,17 @@ export default async function Academy() {
   const academy = await reader.singletons.academy.read()
   if (!academy) throw new Error("Keystatic Content Not Found - Academy Page")
 
-  const { hero, philosophy, features, team, faq } = academy
+  const { active, inactiveNotice, hero, philosophy, features, team, faq, cta } =
+    academy
   const { title, description, heroImage, heroMobileImage, heroImageAlt } = hero
 
   return (
     <>
+      {!active && (
+        <p className="block bg-lighter py-1 text-center text-base font-semibold text-darker sm:text-lg lg:py-3 lg:text-xl 2xl:text-2xl">
+          {inactiveNotice}
+        </p>
+      )}
       <main className="relative flex aspect-[1/2.34] w-full px-8 text-center text-darker md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
         <Image
           src={heroImage}
@@ -54,9 +60,11 @@ export default async function Academy() {
             {description}
           </p>
           <div className="flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:items-center lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
-            <AcademyRegistration
-              callToAction={{ variant: "primary", theme: "darker" }}
-            />
+            {active && (
+              <AcademyRegistration
+                callToAction={{ variant: "primary", theme: "darker" }}
+              />
+            )}
             <Button asChild variant="secondary" theme="darker">
               <Link href="/academy#philosophy">
                 <span>See how it works</span>
@@ -175,6 +183,24 @@ export default async function Academy() {
         </h2>
         <FaqAccordion items={faq.items} />
       </Section>
+
+      {active && (
+        <Section id="enroll" bgClr="bg-lighter" txtClr="text-darker">
+          <div className="flex flex-col items-center gap-6 text-center md:gap-8 2xl:gap-10">
+            <h2 className="max-w-[20ch] text-balance font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+              {cta.title}
+            </h2>
+            <p className="max-w-[55ch] text-balance text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+              {cta.description}
+            </p>
+            <div className="text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+              <AcademyRegistration
+                callToAction={{ variant: "primary", theme: "darker" }}
+              />
+            </div>
+          </div>
+        </Section>
+      )}
     </>
   )
 }

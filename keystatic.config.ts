@@ -423,6 +423,19 @@ export default config({
           },
           { label: "Meta Information" },
         ),
+        active: fields.checkbox({
+          label: "Active",
+          description:
+            "Is the Academy currently accepting students? When unchecked, the Enroll Now buttons and the closing call to action section are hidden, and the notice below is shown as a banner at the top of the page.",
+          defaultValue: true,
+        }),
+        inactiveNotice: fields.text({
+          label: "Inactive Notice",
+          description:
+            "Shown as a banner at the top of the page when the Academy is not active.",
+          multiline: true,
+          validation: { length: { min: 1 } },
+        }),
         hero: fields.object(
           {
             title: fields.text({
@@ -566,6 +579,24 @@ export default config({
             ),
           },
           { label: "FAQ Section" },
+        ),
+        cta: fields.object(
+          {
+            title: fields.text({
+              label: "Heading",
+              validation: { length: { min: 1 } },
+            }),
+            description: fields.text({
+              label: "Description",
+              multiline: true,
+              validation: { length: { min: 1 } },
+            }),
+          },
+          {
+            label: "Closing Call To Action Section",
+            description:
+              "The final section at the bottom of the page. Only shown when the Academy is active.",
+          },
         ),
       },
     }),

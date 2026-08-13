@@ -3,6 +3,8 @@
     "metaTitle": "Yogesh Samsi Online Tabla Academy",
     "metaDescription": "The ultimate online tabla syllabus that integrates the depth of the guru-shishya tradition with a modern, goal-oriented approach distilling Yogesh Samsi's lifetime steeped in Hindustani Classical Music."
   },
+  "active": true,
+  "inactiveNotice": "The Academy is temporarily not accepting new students as we are currently full.",
   "hero": {
     "title": "Yogesh Samsi Online Tabla Academy",
     "description": "The ultimate online tabla syllabus that integrates the depth of the guru-shishya tradition with a modern, goal-oriented approach distilling Yogesh Samsi's lifetime steeped in Hindustani Classical Music.",
@@ -58,5 +60,9 @@
         "answer": "You will be taught by Yogesh Samsi’s senior students, disciples who have trained under him for over 15 years through the guru-shishya parampara. Key milestones in your progress will be reviewed by Yogesh Samsi himself."
       }
     ]
+  },
+  "cta": {
+    "title": "Begin Your Tabla Journey",
+    "description": "Learn from a lineage that has shaped Hindustani Classical Music for generations, guided by a syllabus designed by Yogesh Samsi himself. Enroll today and take your first step."
   }
 }
