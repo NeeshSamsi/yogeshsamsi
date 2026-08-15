@@ -46,6 +46,8 @@
   },
   "team": {
     "title": "Meet the Academy's Team",
+    "image": "/images/pages/academy/team/team/image.jpg",
+    "imageAlt": "Yogesh Samsi in focus teaching a group of students silhouetted in the foreground.",
     "paragraphs": [
       "Yogesh Samsi’s senior students who have been under his tutelage for more than 15 years one on one under guru shishya parampara. They are all highly qualified and performers in their own right. They have been specially taken through this specifically designed syllabus."
     ]
@@ -54,8 +56,56 @@
     "title": "Frequently Asked Questions",
     "items": [
       {
+        "question": "How do I enroll in the Academy?",
+        "answer": "You can enroll in the academy by clicking the “Enroll Now” button below. We will get in touch to schedule a timeslot for your weekly session with one of our teachers."
+      },
+      {
+        "question": "What exactly will learn?",
+        "answer": "You will learn be taught a comprehensive syllabus that distills this 300 year old art form into modules that methodically take you through the process of setting a solid foundation for absolute beginners all the way into intermediate and advanced concepts. You will benefit from the experience if you have been learning tabla for 0 - 3 years."
+      },
+      {
         "question": "Who will be teaching me?",
-        "answer": "You will be taught by Yogesh Samsi’s senior students, disciples who have trained under him for over 15 years through the guru-shishya parampara. Key milestones in your progress will be reviewed by Yogesh Samsi himself."
+        "answer": "⁠Yogesh Samsi’s senior students who have been under his tutelage for more than 15 years one on one under guru shishya parampara. They are all highly qualified and performers in their own right. They have been specially taken through and trained on how to teach this syllabus most effectively."
+      },
+      {
+        "question": "Will Yogesh Samsi teach me personally?",
+        "answer": "While he will not take your lessons personally, at key milestones in your journey through the syllabus, he will personally review your progress and guide you on how you can improve even further."
+      },
+      {
+        "question": "Do I need a tabla?",
+        "answer": "Yes. Since classes are conducted online over Zoom, it is essential that you already have a pair of tablas."
+      },
+      {
+        "question": "What is the minimum age to join the Academy?",
+        "answer": "The minimum age is 8 - 10 years. We enforce this to ensure that students physically able to play the instrument as well as pay attention in a 60 minute class."
+      },
+      {
+        "question": "Is there an exam?",
+        "answer": "There will not be specific exams, written or otherwise. However, Yogesh Ji will periodically review your progress at key milestones and provide feedback on how you can improve even further."
+      },
+      {
+        "question": "Do I get a certificate?",
+        "answer": "Yes, you will receive a Yogesh Samsi Online Academy certificate at the end of every module you complete."
+      },
+      {
+        "question": "How long is a module?",
+        "answer": "Teachers are trained to personalise training to your needs. The time it takes to complete each module will vary based on your pace of learning and the amount of time you dedicate to practicing what is taught."
+      },
+      {
+        "question": "How do I make payments?",
+        "answer": "We accept UPI or bank transfers from Indian students and international students can pay via PayPal."
+      },
+      {
+        "question": "How many holidays do we get?",
+        "answer": "We follow a list of official holidays in India. If your class time slot falls on a holiday, we will schedule a make-up class at a mutually convenient time."
+      },
+      {
+        "question": "What happens if a teacher misses a class?",
+        "answer": "If your teacher is not available, we will try to arrange a substitute teacher. If that is not possible, we will reschedule the class at a mutually convenient time."
+      },
+      {
+        "question": "What happens if my internet connection is bad?",
+        "answer": "Unfortunately, since you have already scheduled the teacher's time, it is your responsibility if the internet connection is bad. However, if the teacher's internet connection is bad, we will reschedule the class at a mutually convenient time."
       }
     ]
   }
