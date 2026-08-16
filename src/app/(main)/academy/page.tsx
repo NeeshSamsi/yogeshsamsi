@@ -11,6 +11,10 @@ import FaqAccordion from "@/components/FaqAccordion"
 import ProcessTimeline from "@/components/ProcessTimeline"
 import AcademyRegistration from "@/components/AcademyRegistration"
 
+// TEMP: Philosophy video embed is hidden. Flip back to true to restore it —
+// the Keystatic YouTube Embed Link field is left untouched in the meantime.
+const SHOW_PHILOSOPHY_VIDEO: boolean = false
+
 export async function generateMetadata(): Promise<Metadata> {
   const academy = await reader.singletons.academy.read()
   if (!academy) throw new Error("Keystatic Content Not Found - Academy Page")
@@ -76,7 +80,7 @@ export default async function Academy() {
               />
             )}
             <Button asChild variant="secondary" theme="darker">
-              <Link href="/academy#philosophy">
+              <Link href="/academy#features">
                 <span>See how it works</span>
                 <span>
                   <ArrowDownIcon
@@ -91,24 +95,34 @@ export default async function Academy() {
       </main>
 
       <Section id="philosophy" bgClr="bg-lighter" txtClr="text-darker">
-        <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-16 xl:gap-20 2xl:gap-24">
+        <div
+          className={`grid grid-cols-1 items-start gap-12 md:gap-16 xl:gap-20 2xl:gap-24 ${
+            SHOW_PHILOSOPHY_VIDEO ? "md:grid-cols-2" : ""
+          }`}
+        >
           {/* Sticky video embed */}
-          <div className="md:sticky md:top-24 lg:top-28">
-            <div className="relative aspect-video w-full overflow-hidden bg-light">
-              {philosophy.videoLink && (
-                <iframe
-                  src={philosophy.videoLink}
-                  className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={philosophy.title}
-                />
-              )}
+          {SHOW_PHILOSOPHY_VIDEO && (
+            <div className="md:sticky md:top-24 lg:top-28">
+              <div className="relative aspect-video w-full overflow-hidden bg-light">
+                {philosophy.videoLink && (
+                  <iframe
+                    src={philosophy.videoLink}
+                    className="absolute inset-0 h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={philosophy.title}
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Title + paragraphs */}
-          <div className="space-y-6 md:space-y-8 2xl:space-y-10">
+          <div
+            className={`space-y-6 md:space-y-8 2xl:space-y-10 ${
+              SHOW_PHILOSOPHY_VIDEO ? "" : "max-w-[80ch]"
+            }`}
+          >
             <h2 className="font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
               {philosophy.title}
             </h2>
