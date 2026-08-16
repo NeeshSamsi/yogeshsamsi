@@ -26,7 +26,7 @@ export default function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
         <Disclosure key={i}>
           <div className="bg-light">
             <DisclosureButton className="group flex w-full items-center justify-between px-4 py-2 text-left md:px-6 md:py-4">
-              <span className="font-serif text-xl font-semibold tracking-wide lg:text-2xl xl:text-3xl 2xl:text-4xl">
+              <span className="font-serif text-lg font-semibold tracking-wide lg:text-xl xl:text-2xl 2xl:text-3xl">
                 {item.question}
               </span>
               <ChevronDown
