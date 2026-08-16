@@ -525,6 +525,29 @@ export default config({
           },
           { label: "Features Section" },
         ),
+        process: fields.object(
+          {
+            title: fields.text({
+              label: "Section Title",
+              validation: { length: { min: 1 } },
+            }),
+            steps: fields.array(
+              fields.object({
+                title: fields.text({
+                  label: "Step Title",
+                  validation: { length: { min: 1 } },
+                }),
+              }),
+              {
+                label: "Steps",
+                description:
+                  "Shown in order as a numbered timeline, top to bottom.",
+                itemLabel: (props) => props.fields.title.value,
+              },
+            ),
+          },
+          { label: "Process Section" },
+        ),
         team: fields.object(
           {
             title: fields.text({

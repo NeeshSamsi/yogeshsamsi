@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import Section from "@/components/Section"
 import DynamicIcon from "@/components/DynamicIcon"
 import FaqAccordion from "@/components/FaqAccordion"
+import ProcessTimeline from "@/components/ProcessTimeline"
 import AcademyRegistration from "@/components/AcademyRegistration"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,8 +25,17 @@ export default async function Academy() {
   const academy = await reader.singletons.academy.read()
   if (!academy) throw new Error("Keystatic Content Not Found - Academy Page")
 
-  const { active, inactiveNotice, hero, philosophy, features, team, faq, cta } =
-    academy
+  const {
+    active,
+    inactiveNotice,
+    hero,
+    philosophy,
+    features,
+    process: processSection,
+    team,
+    faq,
+    cta,
+  } = academy
   const { title, description, heroImage, heroMobileImage, heroImageAlt } = hero
 
   return (
@@ -139,6 +149,13 @@ export default async function Academy() {
             </div>
           ))}
         </div>
+      </Section>
+
+      <Section id="process" bgClr="bg-lighter" txtClr="text-darker">
+        <h2 className="font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+          {processSection.title}
+        </h2>
+        <ProcessTimeline steps={processSection.steps} />
       </Section>
 
       <Section id="team" bgClr="bg-lighter" txtClr="text-darker">

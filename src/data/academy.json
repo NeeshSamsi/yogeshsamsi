@@ -46,6 +46,17 @@
       }
     ]
   },
+  "process": {
+    "title": "How Does It Work?",
+    "steps": [
+      { "title": "Enroll" },
+      { "title": "We get in touch to schedule your timeslot" },
+      { "title": "Attend classes once a week" },
+      { "title": "Receive class material" },
+      { "title": "Receive periodic reviews by Yogesh Samsi" },
+      { "title": "Receive a certificate at the end of every module" }
+    ]
+  },
   "team": {
     "title": "Meet the Academy's Team",
     "image": "/images/pages/academy/team/team/image.jpg",
