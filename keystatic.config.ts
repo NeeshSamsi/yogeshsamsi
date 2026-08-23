@@ -660,6 +660,56 @@ export default config({
         }),
       },
     }),
+
+    welcomeUpdates: singleton({
+      label: "Welcome Updates Page",
+      path: "src/data/welcome-updates",
+      format: "json",
+      schema: {
+        heading: fields.text({
+          label: "Heading",
+          description:
+            "The large heading shown to people who have just confirmed their subscription to the mailing list.",
+          validation: { length: { min: 1 } },
+        }),
+        body: fields.document({
+          label: "Body",
+          description:
+            "The content shown below the heading on the page people land on after confirming their subscription.",
+          formatting: {
+            headingLevels: [2],
+            inlineMarks: true,
+            listTypes: true,
+          },
+          links: true,
+        }),
+      },
+    }),
+
+    stillInterested: singleton({
+      label: "Still Interested Page",
+      path: "src/data/still-interested",
+      format: "json",
+      schema: {
+        heading: fields.text({
+          label: "Heading",
+          description:
+            "The large heading shown to people who confirm they still want updates after a re-engagement email.",
+          validation: { length: { min: 1 } },
+        }),
+        body: fields.document({
+          label: "Body",
+          description:
+            "The content shown below the heading on the page people land on after confirming they still want updates.",
+          formatting: {
+            headingLevels: [2],
+            inlineMarks: true,
+            listTypes: true,
+          },
+          links: true,
+        }),
+      },
+    }),
   },
 
   collections: {
