@@ -19,31 +19,17 @@ export const registerAcademy = actionClient
       const formUrl = `${FORM_BASE}?usp=pp_url&entry.995036545=${encodeURIComponent(name)}&entry.1804772862=${encodeURIComponent(email)}`
 
       try {
-        const user = await bento.V1.Subscribers.getSubscribers({ email })
+        const registered = await bento.V1.track({
+          email,
+          type: "$academy.register",
+          fields: {
+            first_name,
+            last_name,
+          },
+        })
 
-        // Check if subscriber already has the audience:academy tag
-        const tags = await bento.V1.Tags.getTags()
-        const academyTag = tags?.find(
-          (t) => t.attributes.name === "audience:academy",
-        )
-        const hasTag =
-          academyTag !== undefined &&
-          user !== null &&
-          user.attributes.cached_tag_ids.includes(academyTag.id)
-
-        if (!hasTag) {
-          const registered = await bento.V1.track({
-            email,
-            type: "$academy.register",
-            fields: {
-              first_name,
-              last_name,
-            },
-          })
-
-          if (!registered) {
-            return { success: false }
-          }
+        if (!registered) {
+          return { success: false }
         }
 
         return { success: true, redirect: formUrl }
