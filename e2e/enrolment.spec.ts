@@ -48,9 +48,10 @@ test("enrolment dialog validates and redirects to the registration form", async 
   await dialog.getByLabel("Email address").fill("test@example.com")
   await dialog.getByRole("button", { name: "Continue" }).click()
 
-  // registerAcademy (src/app/actions/academy.ts) always resolves with a
-  // redirect on success - the dialog's step-2 "already enrolled" UI is
-  // currently unreachable from this action, see the report for this todo.
+  // registerAcademy (src/app/actions/academy.ts) always redirects to the
+  // Google Form on success - Bento's audience:academy tag only means
+  // "expressed interest," not "completed enrolment," so there's no
+  // reliable signal to show an "already enrolled" state instead.
   await page.waitForURL(`${FORM_BASE}**`)
   expect(page.url()).toContain(encodeURIComponent("test@example.com"))
 })
