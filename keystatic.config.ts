@@ -624,6 +624,60 @@ export default config({
       },
     }),
 
+    academyTerms: singleton({
+      label: "Academy Terms of Service",
+      path: "src/data/academy-terms",
+      format: "json",
+      schema: {
+        meta: fields.object(
+          {
+            metaTitle: fields.text({
+              label: "Metadata Title",
+              description:
+                "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+              validation: { length: { min: 1 } },
+            }),
+            metaDescription: fields.text({
+              label: "Metadata Description",
+              description:
+                "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+              multiline: true,
+              validation: { length: { min: 1 } },
+            }),
+          },
+          { label: "Meta Information" },
+        ),
+        title: fields.text({
+          label: "Page Title",
+          description: "The large heading shown at the top of the page.",
+          validation: { length: { min: 1 } },
+        }),
+        intro: fields.text({
+          label: "Introduction",
+          description:
+            "A short paragraph shown under the title, above the terms themselves. Optional.",
+          multiline: true,
+        }),
+        lastUpdated: fields.date({
+          label: "Last Updated",
+          description:
+            "Shown under the title so students know when the terms last changed. Update this whenever you edit the terms below.",
+          validation: { isRequired: true },
+        }),
+        body: fields.document({
+          label: "Terms",
+          description:
+            "The terms themselves. Use Heading 2 for each numbered section and Heading 3 for any sub-sections.",
+          formatting: {
+            headingLevels: [2, 3],
+            inlineMarks: true,
+            listTypes: true,
+          },
+          links: true,
+        }),
+      },
+    }),
+
     contact: singleton({
       label: "Contact Page",
       path: "src/data/contact",

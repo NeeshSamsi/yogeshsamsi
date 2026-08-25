@@ -232,6 +232,17 @@ export default async function Academy() {
           </div>
         </Section>
       )}
+
+      <div className="bg-lighter px-8 pb-12 text-darker md:px-col-inner md:pb-20 2xl:pb-32">
+        <div className="mx-auto max-w-screen-2xl">
+          <Link
+            href="/academy/terms"
+            className="text-sm underline-offset-4 transition-colors hover:text-darker/80 hover:underline sm:text-base xl:text-lg"
+          >
+            Academy Terms of Service
+          </Link>
+        </div>
+      </div>
     </>
   )
 }

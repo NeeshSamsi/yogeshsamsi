@@ -14,6 +14,8 @@ import { registerAcademy } from "@/app/actions/academy"
 
 import { useState } from "react"
 
+import Link from "next/link"
+
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Dialog,
@@ -121,6 +123,18 @@ export default function AcademyRegistration({
                   </p>
                 )}
               </div>
+
+              <p className="text-sm text-darker/80 xl:text-base">
+                By enrolling you agree to the{" "}
+                <Link
+                  href="/academy/terms"
+                  target="_blank"
+                  className="underline underline-offset-4 transition-colors hover:text-darker"
+                >
+                  Academy Terms of Service
+                </Link>
+                .
+              </p>
             </div>
           ),
         }
