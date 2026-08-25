@@ -26,3 +26,18 @@ jobs:
           # Sentry source-map upload needs this on prod builds; without it the
           # build still succeeds but warns. Add as a repo secret if the noise matters.
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+  # Separate job: a ~3 minute browser run should never gate the fast
+  # typecheck/lint/build feedback loop above.
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
