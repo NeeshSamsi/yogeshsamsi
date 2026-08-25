@@ -21,7 +21,9 @@ type Props = {
 // UTIL FUNCTIONS
 
 async function getEventsPaths() {
-  const events = await (await reader.collections.events.all())
+  const events = await (
+    await reader.collections.events.all()
+  )
     .filter(({ entry }) => entry.internal.discriminant === true)
     .map((event) => event.slug)
 

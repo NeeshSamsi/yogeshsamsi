@@ -9,8 +9,7 @@ interface DynamicIconProps extends LucideProps {
 
 export default function DynamicIcon({ name, ...props }: DynamicIconProps) {
   const Icon = Icons[name as IconName] as
-    | React.ComponentType<LucideProps>
-    | undefined
+    React.ComponentType<LucideProps> | undefined
   if (!Icon) return null
   return <Icon {...props} />
 }

@@ -59,7 +59,7 @@ const Navbar = ({
 
           <div
             className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham tham-active"
+              isHamburgerOpen && "tham-active tham"
             }`}
             onClick={handleHamburger}
           >
@@ -74,7 +74,7 @@ const Navbar = ({
       <div
         className={`${
           isHamburgerOpen ? "flex animate-nav-show" : "hidden"
-        } h-full flex-col items-center gap-12  bg-darker  pt-16 text-xl sm:text-2xl md:hidden`}
+        } h-full flex-col items-center gap-12 bg-darker pt-16 text-xl sm:text-2xl md:hidden`}
       >
         <ul className="flex flex-col items-center gap-6">
           {navLinks.map(({ path, text, newWindow }, i) => (

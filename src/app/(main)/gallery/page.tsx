@@ -53,8 +53,8 @@ const Gallery = async () => {
       const blurDataURL = await getBlurDataURL(image)
 
       const imageBuffer = fs.readFileSync(
-      path.join(process.cwd(), "public", image),
-    )
+        path.join(process.cwd(), "public", image),
+      )
       const { height, width } = imageSize(imageBuffer as unknown as Uint8Array)
 
       if (!height || !width)
