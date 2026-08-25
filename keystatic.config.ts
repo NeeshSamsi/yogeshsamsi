@@ -13,6 +13,19 @@ export default config({
     project: "yogeshsamsi/yogeshsamsi",
   },
 
+  ui: {
+    // Every collection & singleton key must be listed here - anything left out
+    // is hidden from the sidebar entirely. Add new entries to a group below.
+    navigation: {
+      Site: ["settings"],
+      Collections: ["events", "testimonials"],
+      "Content Pages": ["home", "about", "gallery", "contact"],
+      Masterclass: ["masterclass"],
+      Academy: ["academy", "academyTerms"],
+      "Email Marketing": ["welcomeUpdates", "stillInterested"],
+    },
+  },
+
   singletons: {
     settings: singleton({
       label: "Site Settings",
