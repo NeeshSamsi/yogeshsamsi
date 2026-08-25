@@ -20,7 +20,7 @@ test("footer mailing-list signup validates and subscribes", async ({
 
   await expect(
     page.getByText(
-      "Please check your inbox and confirm your subsription to Yogesh Samsi Updates.",
+      "Please check your inbox and confirm your subscription to Yogesh Samsi Updates.",
     ),
   ).toBeVisible()
 })

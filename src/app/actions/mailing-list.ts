@@ -26,7 +26,7 @@ export const subscribe = actionClient
         return {
           success: true,
           message:
-            "Please check your inbox and confirm your subsription to Yogesh Samsi Updates.",
+            "Please check your inbox and confirm your subscription to Yogesh Samsi Updates.",
         }
       } else {
         return {
