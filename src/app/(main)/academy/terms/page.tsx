@@ -1,6 +1,7 @@
 import { type Metadata } from "next"
 
 import reader from "@/lib/keystatic"
+import { formatDate } from "@/lib/formatDate"
 import Link from "next/link"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 import { ArrowLeftIcon } from "@heroicons/react/24/solid"
@@ -61,14 +62,4 @@ export default async function AcademyTerms() {
       </div>
     </main>
   )
-}
-
-// The Keystatic date field gives us a YYYY-MM-DD string - parse it as local
-// time so the displayed date never shifts by a day across timezones.
-function formatDate(date: string) {
-  return new Date(`${date}T00:00:00`).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
 }
