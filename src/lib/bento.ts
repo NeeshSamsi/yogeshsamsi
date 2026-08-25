@@ -1,5 +1,4 @@
 import { Analytics } from "@bentonow/bento-node-sdk"
-import { be } from "zod/v4/locales"
 
 const bento = new Analytics({
   authentication: {
