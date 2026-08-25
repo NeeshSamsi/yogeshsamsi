@@ -10,6 +10,16 @@ interface DynamicIconProps extends LucideProps {
 export default function DynamicIcon({ name, ...props }: DynamicIconProps) {
   const Icon = Icons[name as IconName] as
     React.ComponentType<LucideProps> | undefined
-  if (!Icon) return null
+
+  if (!Icon) {
+    if (process.env.NODE_ENV !== "production") {
+      throw new Error(
+        `DynamicIcon: "${name}" is not a lucide-react icon. Check the Lucide Icon Name field in Keystatic.`,
+      )
+    }
+    console.error(`DynamicIcon: unknown icon "${name}"`)
+    return null
+  }
+
   return <Icon {...props} />
 }
