@@ -80,3 +80,74 @@ rect {
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile nav hamburger — replaces tailwind-hamburgers (spin type, w-6 size).
+   Timings/sizes copied from the plugin's generated CSS so the animation is
+   unchanged: box 24px x 15px, 3px bars, 3px gaps. */
+.tham {
+  display: flex;
+  cursor: pointer;
+  transition: opacity 0.15s linear;
+}
+.tham:hover {
+  opacity: 0.7;
+}
+.tham-box {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 15px;
+}
+.tham-inner {
+  position: absolute;
+  display: block;
+  top: 50%;
+  margin-top: -1.5px;
+  width: 24px;
+  height: 3px;
+  border-radius: 4px;
+  background-color: inherit;
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.tham-inner::before,
+.tham-inner::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 3px;
+  border-radius: 4px;
+  background-color: inherit;
+}
+.tham-inner::before {
+  top: -6px;
+  transition:
+    top 0.1s 0.25s ease-in,
+    opacity 0.1s ease-in;
+}
+.tham-inner::after {
+  bottom: -6px;
+  transition:
+    bottom 0.1s 0.25s ease-in,
+    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.tham-active .tham-inner {
+  transform: rotate(225deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.tham-active .tham-inner::before {
+  top: 0;
+  opacity: 0;
+  transition:
+    top 0.1s ease-out,
+    opacity 0.1s 0.12s ease-out;
+}
+.tham-active .tham-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition:
+    bottom 0.1s ease-out,
+    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}

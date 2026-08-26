@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 import Socials from "./Socials"
 
 const Navbar = ({
@@ -37,9 +38,10 @@ const Navbar = ({
             {navLinks.map(({ path, text, newWindow }, i) => (
               <li
                 key={i}
-                className={`transition-colors hover:text-light ${
+                className={cn(
+                  "transition-colors hover:text-light",
                   pathname === path && "text-light"
-                }`}
+                )}
               >
                 <Link href={path} target={newWindow ? "_blank" : "_self"}>
                   {text}
@@ -60,9 +62,10 @@ const Navbar = ({
           </ul>
 
           <div
-            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham-active tham"
-            }`}
+            className={cn(
+              "tham flex hover:opacity-100 md:hidden",
+              isHamburgerOpen && "tham-active"
+            )}
             onClick={handleHamburger}
           >
             <div className="tham-box">
@@ -82,9 +85,10 @@ const Navbar = ({
           {navLinks.map(({ path, text, newWindow }, i) => (
             <li
               key={i}
-              className={`transition-colors hover:text-light ${
+              className={cn(
+                "transition-colors hover:text-light",
                 pathname === path && "text-light"
-              }`}
+              )}
             >
               <Link
                 href={path}

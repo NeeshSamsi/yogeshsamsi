@@ -95,9 +95,6 @@ importers:
       sharp:
         specifier: ^0.34.2
         version: 0.34.5
-      tailwind-hamburgers:
-        specifier: ^1.4.0
-        version: 1.4.0
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.6.1
@@ -4025,9 +4022,6 @@ packages:
 
   tabbable@6.5.0:
     resolution: {integrity: sha512-wieBHXygIm7OyQOu5hQlkk62/WyCFYGlWg7L6/ZCUZwx0o398Zkn4pVmMyfYhfMG8kGrj/Krt8eIk6UKC6VzwA==}
-
-  tailwind-hamburgers@1.4.0:
-    resolution: {integrity: sha512-4YCp3tpWfRXjxL/2bHScdOmxy1lP4CoyXmminKkS9108Mi4Ixl2ueIqaD6BPvNH52Gr3HcaT6zc1oruvC2PyZA==}
 
   tailwind-merge@2.6.1:
     resolution: {integrity: sha512-Oo6tHdpZsGpkKG88HJ8RR1rg/RdnEkQEfMoEk2x1XRI3F1AxeU+ijRXpiVUF4UbLfcxxRGw6TbUINKYdWVsQTQ==}
@@ -8567,8 +8561,6 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tabbable@6.5.0: {}
-
-  tailwind-hamburgers@1.4.0: {}
 
   tailwind-merge@2.6.1: {}
 
