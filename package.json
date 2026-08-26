@@ -11,6 +11,7 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:visual": "playwright test --config=playwright.visual.config.ts",
     "ul:d": "npx unlighthouse --desktop --site www.yogeshsamsi.com",
     "ul:m": "npx unlighthouse --site www.yogeshsamsi.com"
   },
