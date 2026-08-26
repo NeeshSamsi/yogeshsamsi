@@ -4,6 +4,11 @@ const PORT = 3100
 
 export default defineConfig({
   testDir: "e2e",
+  // visual.spec.ts is the Tailwind 4 regression harness and belongs to
+  // playwright.visual.config.ts alone. Its baselines are gitignored and
+  // machine-specific (macOS font hinting != CI Linux), so collecting it here
+  // would fail CI's e2e job on a missing-snapshot error.
+  testIgnore: "visual.spec.ts",
   use: { baseURL: `http://localhost:${PORT}` },
   webServer: {
     // Test the production build, not dev. Runs on 3100 - port 3000 is
