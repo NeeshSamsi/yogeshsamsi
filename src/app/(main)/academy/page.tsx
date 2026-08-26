@@ -45,11 +45,11 @@ export default async function Academy() {
   return (
     <>
       {!active && (
-        <p className="block bg-lighter py-1 text-center text-base font-semibold text-darker sm:text-lg lg:py-3 lg:text-xl 2xl:text-2xl">
+        <p className="bg-lighter text-darker block py-1 text-center text-base font-semibold sm:text-lg lg:py-3 lg:text-xl 2xl:text-2xl">
           {inactiveNotice}
         </p>
       )}
-      <main className="relative flex aspect-[1/2.34] w-full px-8 text-center text-darker md:aspect-[1/0.52] md:items-center md:px-col-inner md:text-start">
+      <main className="text-darker md:px-col-inner relative flex aspect-[1/2.34] w-full px-8 text-center md:aspect-[1/0.52] md:items-center md:text-start">
         <Image
           src={heroImage}
           alt={heroImageAlt}
@@ -66,14 +66,14 @@ export default async function Academy() {
           priority
           sizes="100vw"
         />
-        <div className="mx-auto flex max-w-screen-2xl grow flex-col items-center gap-4 pt-12 md:items-start md:pt-0 xl:gap-8 2xl:gap-10 3xl:gap-12">
-          <h1 className="max-w-[15ch] text-balance font-serif text-4xl font-semibold tracking-wider sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl">
+        <div className="3xl:gap-12 mx-auto flex max-w-screen-2xl grow flex-col items-center gap-4 pt-12 md:items-start md:pt-0 xl:gap-8 2xl:gap-10">
+          <h1 className="3xl:text-8xl max-w-[15ch] font-serif text-4xl font-semibold tracking-wider text-balance sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
             {title}
           </h1>
-          <p className="max-w-[50ch] text-balance text-base text-darker sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+          <p className="text-darker max-w-[50ch] text-base text-balance sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
             {description}
           </p>
-          <div className="flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:items-center lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+          <div className="3xl:text-3xl flex flex-row flex-wrap justify-center gap-2 text-sm font-medium sm:text-lg md:flex-col md:justify-start md:gap-6 md:text-base lg:flex-row lg:items-center lg:text-lg xl:text-xl 2xl:text-2xl">
             {active && (
               <AcademyRegistration
                 callToAction={{ variant: "primary", theme: "darker" }}
@@ -85,7 +85,7 @@ export default async function Academy() {
                 <span>
                   <ArrowDownIcon
                     strokeWidth={2.5}
-                    className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8"
+                    className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6"
                   />
                 </span>
               </Link>
@@ -103,7 +103,7 @@ export default async function Academy() {
           {/* Sticky video embed */}
           {SHOW_PHILOSOPHY_VIDEO && (
             <div className="md:sticky md:top-24 lg:top-28">
-              <div className="relative aspect-video w-full overflow-hidden bg-light">
+              <div className="bg-light relative aspect-video w-full overflow-hidden">
                 {philosophy.videoLink && (
                   <iframe
                     src={philosophy.videoLink}
@@ -218,13 +218,13 @@ export default async function Academy() {
       {active && (
         <Section id="enroll" bgClr="bg-lighter" txtClr="text-darker">
           <div className="flex flex-col items-center gap-6 text-center md:gap-8 2xl:gap-10">
-            <h2 className="max-w-[20ch] text-balance font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+            <h2 className="max-w-[20ch] font-serif text-3xl font-semibold tracking-wide text-balance sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
               {cta.title}
             </h2>
-            <p className="max-w-[55ch] text-balance text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+            <p className="max-w-[55ch] text-base text-balance sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
               {cta.description}
             </p>
-            <div className="text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+            <div className="3xl:text-3xl text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
               <AcademyRegistration
                 callToAction={{ variant: "primary", theme: "darker" }}
               />
@@ -233,11 +233,11 @@ export default async function Academy() {
         </Section>
       )}
 
-      <div className="bg-lighter px-8 pb-12 text-darker md:px-col-inner md:pb-20 2xl:pb-32">
+      <div className="bg-lighter text-darker md:px-col-inner px-8 pb-12 md:pb-20 2xl:pb-32">
         <div className="mx-auto max-w-screen-2xl">
           <Link
             href="/academy/terms"
-            className="text-sm underline-offset-4 transition-colors hover:text-darker/80 hover:underline sm:text-base xl:text-lg"
+            className="hover:text-darker/80 text-sm underline-offset-4 transition-colors hover:underline sm:text-base xl:text-lg"
           >
             Academy Terms of Service
           </Link>

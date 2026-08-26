@@ -29,7 +29,7 @@ const Event = ({
   return (
     <div
       className={cn(
-        "flex flex-col justify-between gap-4 border border-lighter p-4 text-base xl:gap-6 xl:p-6 xl:text-lg 2xl:text-xl",
+        "border-lighter flex flex-col justify-between gap-4 border p-4 text-base xl:gap-6 xl:p-6 xl:text-lg 2xl:text-xl",
         {
           "border-lighter": theme === "Lighter",
           "border-darker": theme === "Darker",

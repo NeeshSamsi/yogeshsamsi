@@ -47,18 +47,18 @@ const MailingList = ({
 
   return (
     <form
-      className="flex max-w-[35ch] flex-col gap-6 border border-darker bg-lighter px-8 py-6 text-base md:px-6 md:py-4 lg:px-8 lg:py-6 xl:text-lg 3xl:gap-8 3xl:text-xl"
+      className="border-darker bg-lighter 3xl:gap-8 3xl:text-xl flex max-w-[35ch] flex-col gap-6 border px-8 py-6 text-base md:px-6 md:py-4 lg:px-8 lg:py-6 xl:text-lg"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
-        <h6 className="mb-4 font-serif text-2xl font-bold tracking-wider xl:text-3xl 3xl:mb-6 3xl:text-4xl">
+        <h6 className="3xl:mb-6 3xl:text-4xl mb-4 font-serif text-2xl font-bold tracking-wider xl:text-3xl">
           {title}
         </h6>
-        <p className="text-sm xl:text-base 3xl:text-lg">{description}</p>
+        <p className="3xl:text-lg text-sm xl:text-base">{description}</p>
       </div>
       <div className="grid gap-2">
-        <div className="flex items-end gap-4 3xl:gap-6">
-          <UserIcon className="aspect-square h-6 xl:h-7 3xl:h-8" />
+        <div className="3xl:gap-6 flex items-end gap-4">
+          <UserIcon className="3xl:h-8 aspect-square h-6 xl:h-7" />
           <FloatingLabelInput
             type="text"
             id="mlName"
@@ -67,14 +67,14 @@ const MailingList = ({
           />
         </div>
         {errors.mlName && (
-          <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
+          <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
             {errors.mlName?.message}
           </p>
         )}
       </div>
       <div className="grid gap-2">
-        <div className="flex items-end gap-4 3xl:gap-6">
-          <EnvelopeIcon className="aspect-square h-6 xl:h-7 3xl:h-8" />
+        <div className="3xl:gap-6 flex items-end gap-4">
+          <EnvelopeIcon className="3xl:h-8 aspect-square h-6 xl:h-7" />
           <FloatingLabelInput
             type="email"
             id="mlEmail"
@@ -83,20 +83,20 @@ const MailingList = ({
           />
         </div>
         {errors.mlEmail && (
-          <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
+          <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
             {errors.mlEmail?.message}
           </p>
         )}
       </div>
       {showConfirmation ? (
-        <p className="text-base text-darker xl:text-lg 3xl:text-xl">
+        <p className="text-darker 3xl:text-xl text-base xl:text-lg">
           {response}
         </p>
       ) : (
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex items-center justify-center bg-darker px-5 py-2 font-serif font-semibold tracking-wider text-lighter transition-all hover:bg-darker/90 focus-visible:bg-darker/90 disabled:cursor-not-allowed disabled:bg-darker/90"
+          className="bg-darker text-lighter hover:bg-darker/90 focus-visible:bg-darker/90 disabled:bg-darker/90 flex items-center justify-center px-5 py-2 font-serif font-semibold tracking-wider transition-all disabled:cursor-not-allowed"
         >
           {!isSubmitting ? (
             <span>Join now</span>
@@ -104,7 +104,7 @@ const MailingList = ({
             <div role="status">
               <svg
                 aria-hidden="true"
-                className="h-8 w-8 animate-spin fill-light text-lighter"
+                className="fill-light text-lighter h-8 w-8 animate-spin"
                 viewBox="0 0 100 100"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,11 +145,11 @@ const FloatingLabelInput = ({
         id={id}
         placeholder={placeholder}
         {...register(id)}
-        className="peer w-full border-0 border-b border-darker bg-lighter px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0 xl:text-lg 3xl:text-xl"
+        className="peer border-darker bg-lighter focus-within:border-darker 3xl:text-xl w-full border-0 border-b px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-lg"
       />
       <label
         htmlFor={id}
-        className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base"
+        className="text-darker peer-placeholder-shown:text-darker/80 peer-focus-within:text-darker 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base absolute -top-3 left-0 w-full cursor-text text-sm placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus-within:-top-3 peer-focus-within:text-sm xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base"
       >
         {placeholder}
       </label>

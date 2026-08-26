@@ -99,7 +99,7 @@ export default function MasterclassRegistration({
                   />
                 </div>
                 {errors.name && (
-                  <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
+                  <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
                     {errors.name?.message}
                   </p>
                 )}
@@ -116,7 +116,7 @@ export default function MasterclassRegistration({
                   />
                 </div>
                 {errors.email && (
-                  <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
+                  <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
                     {errors.email?.message}
                   </p>
                 )}
@@ -165,7 +165,7 @@ export default function MasterclassRegistration({
                   Close
                 </Button>
               ) : showFormError ? (
-                <p className="text-base text-darker xl:text-lg 3xl:text-xl">
+                <p className="text-darker 3xl:text-xl text-base xl:text-lg">
                   {formError}
                 </p>
               ) : (
@@ -181,7 +181,7 @@ export default function MasterclassRegistration({
                     <div role="status">
                       <svg
                         aria-hidden="true"
-                        className="h-8 w-8 animate-spin fill-light text-lighter"
+                        className="fill-light text-lighter h-8 w-8 animate-spin"
                         viewBox="0 0 100 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -226,11 +226,11 @@ const FloatingLabelInput = ({
         id={id}
         placeholder={placeholder}
         {...register(id)}
-        className="peer w-full border-0 border-b border-darker bg-lighter px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0 xl:text-lg 3xl:text-xl"
+        className="peer border-darker bg-lighter focus-within:border-darker 3xl:text-xl w-full border-0 border-b px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-lg"
       />
       <label
         htmlFor={id}
-        className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base"
+        className="text-darker peer-placeholder-shown:text-darker/80 peer-focus-within:text-darker 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base absolute -top-3 left-0 w-full cursor-text text-sm placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus-within:-top-3 peer-focus-within:text-sm xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base"
       >
         {placeholder}
       </label>

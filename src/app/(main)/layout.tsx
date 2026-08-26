@@ -106,7 +106,7 @@ export default async function MainLayout({
     >
       <Umami />
       <body
-        className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
+        className={`${montserrat.variable} ${reckless.variable} bg-lighter text-darker overscroll-none font-sans`}
       >
         {active && <MasterclassBanner title={title} />}
         <Navbar navLinks={navLinks} />

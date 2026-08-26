@@ -36,7 +36,7 @@ const Contact = async () => {
   const { image, imageAlt } = contact
 
   return (
-    <main className="gap-8 px-8 py-12 text-dark md:py-20 lg:flex lg:px-0 lg:py-0 lg:pl-col-inner">
+    <main className="text-dark lg:pl-col-inner gap-8 px-8 py-12 md:py-20 lg:flex lg:px-0 lg:py-0">
       <div className="mx-auto flex w-[70%] flex-col items-center justify-center lg:mx-0 lg:items-start">
         <ContactForm />
       </div>

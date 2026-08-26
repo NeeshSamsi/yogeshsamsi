@@ -37,7 +37,7 @@ export default function MailLayout({
 }) {
   return (
     <div
-      className={`${montserrat.variable} ${reckless.variable} min-h-screen bg-lighter font-sans text-darker`}
+      className={`${montserrat.variable} ${reckless.variable} bg-lighter text-darker min-h-screen font-sans`}
     >
       {children}
     </div>

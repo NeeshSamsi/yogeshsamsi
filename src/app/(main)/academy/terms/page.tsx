@@ -27,12 +27,12 @@ export default async function AcademyTerms() {
   const { title, intro, lastUpdated, body } = terms
 
   return (
-    <main className="bg-lighter px-8 py-12 text-darker md:px-col-inner md:py-20 2xl:py-32">
+    <main className="bg-lighter text-darker md:px-col-inner px-8 py-12 md:py-20 2xl:py-32">
       <div className="mx-auto max-w-screen-2xl space-y-8 md:space-y-12 2xl:space-y-16">
         <div className="space-y-4 md:space-y-6">
           <Link
             href="/academy"
-            className="inline-flex items-center gap-2 text-base transition-colors hover:text-darker/80 lg:text-lg xl:text-xl"
+            className="hover:text-darker/80 inline-flex items-center gap-2 text-base transition-colors lg:text-lg xl:text-xl"
           >
             <ArrowLeftIcon
               strokeWidth={2.5}
@@ -45,7 +45,7 @@ export default async function AcademyTerms() {
             {title}
           </h1>
 
-          <p className="text-base text-darker/80 lg:text-lg xl:text-xl">
+          <p className="text-darker/80 text-base lg:text-lg xl:text-xl">
             Last updated on {formatDate(lastUpdated)}
           </p>
 
@@ -56,7 +56,7 @@ export default async function AcademyTerms() {
           )}
         </div>
 
-        <article className="prose prose-lg max-w-[80ch] text-darker xl:prose-xl marker:text-darker prose-headings:font-serif prose-headings:text-darker prose-p:text-darker prose-a:text-darker prose-strong:text-darker prose-li:text-darker">
+        <article className="prose prose-lg text-darker xl:prose-xl marker:text-darker prose-headings:font-serif prose-headings:text-darker prose-p:text-darker prose-a:text-darker prose-strong:text-darker prose-li:text-darker max-w-[80ch]">
           <DocumentRenderer document={body} />
         </article>
       </div>
