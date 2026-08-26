@@ -80,7 +80,12 @@ const Gallery = async () => {
           Gallery
         </h1>
 
-        <div className="3xl:columns-4 min-h-screen columns-1 gap-4 space-y-6 sm:columns-2 xl:columns-3 xl:gap-8 xl:space-y-8">
+        {/* Tailwind 4 changed space-y-* from `> :not([hidden]) ~ :not([hidden])`
+            (margin-top) to `> :not(:last-child)` (margin-bottom). Inside a
+            multi-column masonry that redistributes spacing at every column
+            break and shifts the whole grid. `[&>*+*]:mt-*` reproduces the v3
+            selector exactly, so the layout stays put. */}
+        <div className="3xl:columns-4 min-h-screen columns-1 gap-4 sm:columns-2 xl:columns-3 xl:gap-8 [&>*+*]:mt-6 xl:[&>*+*]:mt-8">
           {images.length > 0 ? (
             images.map(({ src, alt, dimensions, blurDataURL }, i) => (
               <div
