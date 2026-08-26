@@ -16,9 +16,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec tsc --noEmit
-      # `pnpm lint` runs `next lint`, which is removed in Next 16 - update this
-      # step (and the eslint flat config, todo 176) in the same commit that
-      # upgrades to Next 16, or this step will break.
       - run: pnpm lint
       - run: pnpm test
       - run: pnpm build
