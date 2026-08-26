@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@bentonow/bento-node-sdk':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^2.0.0
+        version: 2.0.0
       '@headlessui/react':
         specifier: ^2.2.10
         version: 2.2.10(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -226,9 +226,9 @@ packages:
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
 
-  '@bentonow/bento-node-sdk@0.2.1':
-    resolution: {integrity: sha512-fyZTPyfc2hJacOfaKM8l70QhXDJRrfuCO6GkKSmbN69tFh6/sVm1MDAlUMc1+DBVDFu0hWq/ZoQ60w1RsrqAmg==}
-    engines: {node: '>=12'}
+  '@bentonow/bento-node-sdk@2.0.0':
+    resolution: {integrity: sha512-uFqyos3IZ5ITK0g3cdeRpGtC3B23UJQdwspqgIiSXcN5isVqSLa2cNUvOWClE24GOtlNhas5nNx5EWk3q7sx9A==}
+    engines: {node: '>=18'}
 
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
@@ -2221,9 +2221,6 @@ packages:
   cookie@1.1.1:
     resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
     engines: {node: '>=18'}
-
-  cross-fetch@4.1.0:
-    resolution: {integrity: sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -4557,11 +4554,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@bentonow/bento-node-sdk@0.2.1':
-    dependencies:
-      cross-fetch: 4.1.0
-    transitivePeerDependencies:
-      - encoding
+  '@bentonow/bento-node-sdk@2.0.0': {}
 
   '@braintree/sanitize-url@6.0.4': {}
 
@@ -6387,12 +6380,6 @@ snapshots:
   convert-source-map@2.0.0: {}
 
   cookie@1.1.1: {}
-
-  cross-fetch@4.1.0:
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
 
   cross-spawn@7.0.6:
     dependencies:

@@ -7,7 +7,6 @@ const bento: Analytics = process.env.BENTO_DISABLED
   ? ({
       V1: {
         Subscribers: { getSubscribers: async () => null },
-        Tags: { getTags: async () => [] },
         track: async () => true,
       },
     } as unknown as Analytics)

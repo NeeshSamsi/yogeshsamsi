@@ -15,7 +15,7 @@
     "ul:m": "npx unlighthouse --site www.yogeshsamsi.com"
   },
   "dependencies": {
-    "@bentonow/bento-node-sdk": "^0.2.1",
+    "@bentonow/bento-node-sdk": "^2.0.0",
     "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.9.1",
