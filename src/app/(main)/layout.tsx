@@ -2,42 +2,12 @@ import "./globals.css"
 
 import { type Viewport } from "next"
 
-import { Montserrat } from "next/font/google"
-import localFont from "next/font/local"
-
 import reader from "@/lib/keystatic"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import MasterclassBanner from "@/components/MasterclassBanner"
 import Umami from "@/components/Umami"
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-montserrat",
-})
-
-const reckless = localFont({
-  src: [
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-SemiBold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-reckless",
-})
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -99,15 +69,9 @@ export default async function MainLayout({
   const { active, title } = masterclass
 
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
-    >
+    <html lang="en">
       <Umami />
-      <body
-        className={`${montserrat.variable} ${reckless.variable} bg-lighter text-darker overscroll-none font-sans`}
-      >
+      <body className="bg-lighter text-darker overscroll-none font-sans">
         {active && <MasterclassBanner title={title} />}
         <Navbar navLinks={navLinks} />
         {children}
