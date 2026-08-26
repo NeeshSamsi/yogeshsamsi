@@ -1,6 +1,75 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    var(--font-montserrat), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif:
+    var(--font-reckless), ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
+
+  --breakpoint-sm: 641px;
+  --breakpoint-md: 769px;
+  --breakpoint-lg: 1025px;
+  --breakpoint-xl: 1281px;
+  --breakpoint-2xl: 1537px;
+  --breakpoint-3xl: 1921px;
+
+  --color-darker: #362009;
+  --color-dark: #222222;
+  --color-light: #e9c493;
+  --color-lighter: #f5e0cc;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --spacing-col-outer: 6vw;
+  --spacing-col-inner: 12vw;
+
+  --animate-nav-show: nav 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-nav-hide: nav 1000ms cubic-bezier(0.4, 0, 0.2, 1) 1 reverse;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  @keyframes nav {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
 
 path,
 circle,
@@ -83,7 +152,9 @@ rect {
 
 /* Mobile nav hamburger — replaces tailwind-hamburgers (spin type, w-6 size).
    Timings/sizes copied from the plugin's generated CSS so the animation is
-   unchanged: box 24px x 15px, 3px bars, 3px gaps. */
+   unchanged: box 24px x 15px, 3px bars, 3px gaps. Deliberately un-layered
+   (not inside @layer) so it keeps winning over Tailwind's base/utilities
+   layers under v4's native cascade layers, same as it did in v3. */
 .tham {
   display: flex;
   cursor: pointer;

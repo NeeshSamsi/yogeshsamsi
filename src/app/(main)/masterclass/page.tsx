@@ -68,7 +68,7 @@ export default async function Masterclass() {
           priority
           sizes="100vw"
         />
-        <div className="mx-auto flex max-w-screen-2xl flex-grow flex-col items-center gap-4 pt-12 md:items-start md:pt-0 xl:gap-8 2xl:gap-10 3xl:gap-12">
+        <div className="mx-auto flex max-w-screen-2xl grow flex-col items-center gap-4 pt-12 md:items-start md:pt-0 xl:gap-8 2xl:gap-10 3xl:gap-12">
           <h1 className="max-w-[15ch] text-balance font-serif text-4xl font-semibold tracking-wider sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl">
             {title}
           </h1>

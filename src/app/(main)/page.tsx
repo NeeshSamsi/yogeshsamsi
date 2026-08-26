@@ -78,7 +78,7 @@ const Home = async () => {
           priority
           sizes="100vw"
         />
-        <div className="mx-auto flex max-w-screen-2xl flex-grow flex-col items-center gap-8 pt-12 md:items-start md:pt-0 xl:gap-12 2xl:gap-16 3xl:gap-20">
+        <div className="mx-auto flex max-w-screen-2xl grow flex-col items-center gap-8 pt-12 md:items-start md:pt-0 xl:gap-12 2xl:gap-16 3xl:gap-20">
           <h1 className="font-serif text-4xl font-semibold tracking-wider sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl">
             Yogesh Samsi
           </h1>
