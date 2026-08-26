@@ -59,7 +59,9 @@ export default function MasterclassRegistration({
         setFormError(undefined)
       }, 5000)
     } else if (res.data?.redirect) {
-      // Handle redirect to external form
+      // Handle redirect to external form.
+      // Navigation side effect in a submit handler, not render - safe to mutate.
+      // eslint-disable-next-line react-hooks/immutability
       window.location.href = res.data.redirect
     } else {
       reset()

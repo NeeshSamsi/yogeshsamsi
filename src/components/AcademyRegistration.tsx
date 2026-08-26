@@ -56,6 +56,8 @@ export default function AcademyRegistration({
     const res = await registerAcademy({ name: data.name, email: data.email })
 
     if (res?.data?.redirect) {
+      // Navigation side effect in a submit handler, not render - safe to mutate.
+      // eslint-disable-next-line react-hooks/immutability
       window.location.href = res.data.redirect
     } else {
       setFormError("Something went wrong. Please try again or reach out to us.")

@@ -101,6 +101,7 @@ export default async function MainLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
     >
       <Umami />

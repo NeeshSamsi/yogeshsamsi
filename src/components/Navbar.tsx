@@ -21,6 +21,8 @@ const Navbar = ({
     setIsHamburgerOpen((prevHamburgerState) => !prevHamburgerState)
   }
 
+  // Close the mobile nav on route change.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setIsHamburgerOpen(false), [pathname])
 
   return (
