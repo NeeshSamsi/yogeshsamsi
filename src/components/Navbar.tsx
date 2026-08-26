@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Socials from "./Socials"
@@ -21,9 +21,9 @@ const Navbar = ({
     setIsHamburgerOpen((prevHamburgerState) => !prevHamburgerState)
   }
 
-  // Close the mobile nav on route change.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => setIsHamburgerOpen(false), [pathname])
+  const closeHamburger = () => {
+    setIsHamburgerOpen(false)
+  }
 
   return (
     <nav
@@ -86,7 +86,11 @@ const Navbar = ({
                 pathname === path && "text-light"
               }`}
             >
-              <Link href={path} target={newWindow ? "_blank" : "_self"}>
+              <Link
+                href={path}
+                target={newWindow ? "_blank" : "_self"}
+                onClick={closeHamburger}
+              >
                 {text}
               </Link>
             </li>
