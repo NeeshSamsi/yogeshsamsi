@@ -237,7 +237,7 @@ export default async function Academy() {
         <div className="mx-auto max-w-screen-2xl">
           <Link
             href="/academy/terms"
-            className="hover:text-darker/80 text-sm underline-offset-4 transition-colors hover:underline sm:text-base xl:text-lg"
+            className="hover:text-darker/80 text-sm underline underline-offset-4 transition-colors sm:text-base xl:text-lg"
           >
             Academy Terms of Service
           </Link>

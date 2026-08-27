@@ -65,7 +65,8 @@ export default async function MainLayout({
   if (!masterclass)
     throw new Error("Keystatic Content Not Found - Masterclass Page")
 
-  const { navLinks, email, mailingListTitle, mailingListDescription } = settings
+  const { navLinks, emails, mailingListTitle, mailingListDescription } =
+    settings
   const { active, title } = masterclass
 
   return (
@@ -75,7 +76,7 @@ export default async function MainLayout({
       <Navbar navLinks={navLinks} />
       {children}
       <Footer
-        email={email}
+        emails={emails}
         navLinks={navLinks}
         mailingListTitle={mailingListTitle}
         mailingListDescription={mailingListDescription}

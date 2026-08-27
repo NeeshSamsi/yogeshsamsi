@@ -39,5 +39,9 @@
   "youtube": "https://youtube.com/@YogeshSamsiOfficial",
   "instagram": "https://instagram.com/yogesh.samsi",
   "facebook": "https://facebook.com/PanditYogeshSamsi",
-  "email": "team@yogeshsamsi.com"
+  "emails": [
+    "team@yogeshsamsi.com",
+    "masterclass@yogeshsamsi.com",
+    "academy@yogeshsamsi.com"
+  ]
 }

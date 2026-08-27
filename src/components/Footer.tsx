@@ -6,7 +6,7 @@ import Socials from "./Socials"
 import MailingList from "./MailingList"
 
 type Props = {
-  readonly email: string
+  readonly emails: readonly string[]
   readonly navLinks: readonly {
     readonly text: string
     readonly path: string
@@ -17,7 +17,7 @@ type Props = {
 }
 
 const Footer = ({
-  email,
+  emails,
   navLinks,
   mailingListTitle,
   mailingListDescription,
@@ -39,12 +39,18 @@ const Footer = ({
           <ul className="flex gap-4 md:gap-6">
             <Socials hoverClr="text-darker/80" sizes="h-8 xl:h-10" />
           </ul>
-          <a
-            href={`mailto:${email}`}
-            className="text-base hover:underline xl:text-lg 2xl:text-xl"
-          >
-            {email}
-          </a>
+          <ul className="flex flex-col items-center gap-1 md:items-start 2xl:gap-2">
+            {emails.map((email) => (
+              <li key={email}>
+                <a
+                  href={`mailto:${email}`}
+                  className="text-base hover:underline xl:text-lg 2xl:text-xl"
+                >
+                  {email}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         <div>
           <ul className="3xl:text-2xl flex flex-col items-center gap-4 text-base uppercase md:items-start lg:text-lg 2xl:gap-6 2xl:text-xl">
