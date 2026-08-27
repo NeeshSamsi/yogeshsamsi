@@ -1,6 +1,75 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    var(--font-montserrat), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif:
+    var(--font-reckless), ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
+
+  --breakpoint-sm: 641px;
+  --breakpoint-md: 769px;
+  --breakpoint-lg: 1025px;
+  --breakpoint-xl: 1281px;
+  --breakpoint-2xl: 1537px;
+  --breakpoint-3xl: 1921px;
+
+  --color-darker: #362009;
+  --color-dark: #222222;
+  --color-light: #e9c493;
+  --color-lighter: #f5e0cc;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --spacing-col-outer: 6vw;
+  --spacing-col-inner: 12vw;
+
+  --animate-nav-show: nav 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-nav-hide: nav 1000ms cubic-bezier(0.4, 0, 0.2, 1) 1 reverse;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  @keyframes nav {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
 
 path,
 circle,
@@ -11,8 +80,6 @@ polyline,
 rect {
   stroke-width: inherit;
 }
-
-
 
 @layer base {
   :root {
@@ -70,13 +137,90 @@ rect {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Mobile nav hamburger — replaces tailwind-hamburgers (spin type, w-6 size).
+   Timings/sizes copied from the plugin's generated CSS so the animation is
+   unchanged: box 24px x 15px, 3px bars, 3px gaps.
+
+   MUST stay inside @layer components. The v3 plugin registered these via
+   addComponents(), i.e. the components layer, so utilities outranked them.
+   Un-layered CSS outranks every layer, which made `.tham { display: flex }`
+   beat `md:hidden` — the hamburger then rendered at every width and added
+   15px to the navbar on every page. */
+@layer components {
+  .tham {
+    display: flex;
+    cursor: pointer;
+    transition: opacity 0.15s linear;
+  }
+  .tham:hover {
+    opacity: 0.7;
+  }
+  .tham-box {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 15px;
+  }
+  .tham-inner {
+    position: absolute;
+    display: block;
+    top: 50%;
+    margin-top: -1.5px;
+    width: 24px;
+    height: 3px;
+    border-radius: 4px;
+    background-color: inherit;
+    transition-duration: 0.22s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  .tham-inner::before,
+  .tham-inner::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 3px;
+    border-radius: 4px;
+    background-color: inherit;
+  }
+  .tham-inner::before {
+    top: -6px;
+    transition:
+      top 0.1s 0.25s ease-in,
+      opacity 0.1s ease-in;
+  }
+  .tham-inner::after {
+    bottom: -6px;
+    transition:
+      bottom 0.1s 0.25s ease-in,
+      transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  .tham-active .tham-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .tham-active .tham-inner::before {
+    top: 0;
+    opacity: 0;
+    transition:
+      top 0.1s ease-out,
+      opacity 0.1s 0.12s ease-out;
+  }
+  .tham-active .tham-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition:
+      bottom 0.1s ease-out,
+      transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 }

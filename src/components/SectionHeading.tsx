@@ -13,7 +13,7 @@ const SectionHeading: FC<Props> = ({ as, text }) => {
       className:
         "text-center font-serif text-3xl font-semibold tracking-wide sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl",
     },
-    text
+    text,
   )
 }
 

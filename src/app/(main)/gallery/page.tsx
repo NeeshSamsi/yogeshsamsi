@@ -53,8 +53,8 @@ const Gallery = async () => {
       const blurDataURL = await getBlurDataURL(image)
 
       const imageBuffer = fs.readFileSync(
-      path.join(process.cwd(), "public", image),
-    )
+        path.join(process.cwd(), "public", image),
+      )
       const { height, width } = imageSize(imageBuffer as unknown as Uint8Array)
 
       if (!height || !width)
@@ -74,21 +74,26 @@ const Gallery = async () => {
   )
 
   return (
-    <main className="bg-lighter px-8 py-12 text-dark md:px-col-inner md:py-20 2xl:py-32">
+    <main className="bg-lighter text-dark md:px-col-inner px-8 py-12 md:py-20 2xl:py-32">
       <div className="mx-auto max-w-screen-2xl space-y-12 md:space-y-20 2xl:space-y-24">
-        <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
+        <h1 className="3xl:text-7xl font-serif text-4xl leading-relaxed font-bold tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl">
           Gallery
         </h1>
 
-        <div className="min-h-screen columns-1 gap-4 space-y-6 sm:columns-2 xl:columns-3 xl:gap-8 xl:space-y-8 3xl:columns-4">
+        {/* Tailwind 4 changed space-y-* from `> :not([hidden]) ~ :not([hidden])`
+            (margin-top) to `> :not(:last-child)` (margin-bottom). Inside a
+            multi-column masonry that redistributes spacing at every column
+            break and shifts the whole grid. `[&>*+*]:mt-*` reproduces the v3
+            selector exactly, so the layout stays put. */}
+        <div className="3xl:columns-4 min-h-screen columns-1 gap-4 sm:columns-2 xl:columns-3 xl:gap-8 [&>*+*]:mt-6 xl:[&>*+*]:mt-8">
           {images.length > 0 ? (
             images.map(({ src, alt, dimensions, blurDataURL }, i) => (
               <div
                 key={i}
-                className="group relative h-full w-full shadow-md shadow-darker/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg"
+                className="group shadow-darker/20 relative h-full w-full shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg"
               >
-                <div className="absolute z-0 h-full w-full transition-colors group-hover:bg-darker/60 group-focus-visible:bg-darker/60">
-                  <div className="absolute bottom-0 flex h-fit w-full items-center justify-between p-4 text-lighter opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="group-hover:bg-darker/60 group-focus-visible:bg-darker/60 absolute z-0 h-full w-full transition-colors">
+                  <div className="text-lighter absolute bottom-0 flex h-fit w-full items-center justify-between p-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                     <p className="text-base xl:text-lg">
                       {dimensions.width} x {dimensions.height}
                     </p>

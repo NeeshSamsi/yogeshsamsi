@@ -53,19 +53,19 @@ const About = async () => {
 
   return (
     <>
-      <main className="gap-8 px-8 py-12 text-dark md:py-20 lg:flex lg:px-0 lg:py-0 lg:pl-col-inner">
+      <main className="text-dark lg:pl-col-inner gap-8 px-8 py-12 md:py-20 lg:flex lg:px-0 lg:py-0">
         <div className="mx-auto flex w-[70%] flex-col items-center justify-center gap-8 text-center lg:mx-0 lg:items-start lg:text-start">
-          <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
+          <h1 className="3xl:text-7xl font-serif text-4xl leading-relaxed font-bold tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl">
             Yogesh Samsi
           </h1>
           <ul className="flex gap-4 lg:gap-6">
             <Socials hoverClr="text-darker/90" sizes="h-8 lg:h-10 3xl:h-12" />
           </ul>
-          <div className="max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl 3xl:text-2xl">
+          <div className="3xl:text-2xl max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl">
             <p>&ldquo;{quoteText}&rdquo;</p>
             <p>- {quoteBy}</p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg 3xl:text-xl">
+          <div className="3xl:text-xl flex flex-wrap items-center justify-center gap-2 text-base font-semibold lg:gap-6 lg:text-sm xl:text-lg">
             <Button asChild variant="primary" theme="dark">
               <Link href={`${biodata}`} download>
                 <span>Download biodata</span>

@@ -49,13 +49,13 @@ const ContactForm = () => {
       className="grid w-fit gap-8 xl:gap-12"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h1 className="font-serif text-4xl font-bold leading-relaxed tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
+      <h1 className="3xl:text-7xl font-serif text-4xl leading-relaxed font-bold tracking-wider sm:text-5xl lg:text-5xl xl:text-6xl">
         Contact Us
       </h1>
 
       <div className="grid gap-2">
         <div className="flex items-end gap-4 xl:gap-6">
-          <UserIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
+          <UserIcon className="3xl:h-10 aspect-square h-8 xl:h-9" />
           <FloatingLabelInput
             type="text"
             id="name"
@@ -64,7 +64,7 @@ const ContactForm = () => {
           />
         </div>
         {errors.name && (
-          <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
+          <p className="3xl:text-xl text-base text-red-600 xl:text-lg">
             {errors.name?.message}
           </p>
         )}
@@ -72,7 +72,7 @@ const ContactForm = () => {
 
       <div className="grid gap-2">
         <div className="flex items-end gap-4 xl:gap-6">
-          <EnvelopeIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
+          <EnvelopeIcon className="3xl:h-10 aspect-square h-8 xl:h-9" />
           <FloatingLabelInput
             type="email"
             id="email"
@@ -81,7 +81,7 @@ const ContactForm = () => {
           />
         </div>
         {errors.email && (
-          <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
+          <p className="3xl:text-xl text-base text-red-600 xl:text-lg">
             {errors.email?.message}
           </p>
         )}
@@ -89,7 +89,7 @@ const ContactForm = () => {
 
       <div className="grid gap-2">
         <div className="flex items-end gap-4 xl:gap-6">
-          <ChatBubbleBottomCenterTextIcon className="aspect-square h-8 xl:h-9 3xl:h-10" />
+          <ChatBubbleBottomCenterTextIcon className="3xl:h-10 aspect-square h-8 xl:h-9" />
           <FloatingLabelInput
             type="textarea"
             id="message"
@@ -98,21 +98,21 @@ const ContactForm = () => {
           />
         </div>
         {errors.message && (
-          <p className="text-base text-red-600 xl:text-lg 3xl:text-xl">
+          <p className="3xl:text-xl text-base text-red-600 xl:text-lg">
             {errors.message?.message}
           </p>
         )}
       </div>
 
       {showConfirmation ? (
-        <p className="text-lg font-medium text-dark xl:text-xl 3xl:text-2xl">
+        <p className="text-dark 3xl:text-2xl text-lg font-medium xl:text-xl">
           {response}
         </p>
       ) : (
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex w-fit items-center gap-4 bg-dark px-5 py-3 font-serif text-lg font-semibold tracking-wider text-lighter transition-colors hover:bg-dark/90 disabled:cursor-not-allowed disabled:bg-dark/90 xl:text-xl 3xl:text-2xl"
+          className="bg-dark text-lighter hover:bg-dark/90 disabled:bg-dark/90 3xl:text-2xl flex w-fit items-center gap-4 px-5 py-3 font-serif text-lg font-semibold tracking-wider transition-colors disabled:cursor-not-allowed xl:text-xl"
         >
           {!isSubmitting ? (
             <>
@@ -123,7 +123,7 @@ const ContactForm = () => {
             <div role="status">
               <svg
                 aria-hidden="true"
-                className="h-8 w-8 animate-spin fill-light text-lighter"
+                className="fill-light text-lighter h-8 w-8 animate-spin"
                 viewBox="0 0 100 100"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,11 +165,11 @@ const FloatingLabelInput = ({
           id={id}
           placeholder={placeholder}
           {...register(id)}
-          className="peer w-full border-0 border-b border-dark bg-lighter px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-dark focus:ring-0 xl:text-xl 3xl:text-2xl"
+          className="peer border-dark bg-lighter focus-within:border-dark 3xl:text-2xl w-full border-0 border-b px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-xl"
         />
         <label
           htmlFor={id}
-          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl absolute -top-3 left-0 w-full cursor-text text-base text-dark transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-placeholder-shown:text-dark/70 peer-focus-within:-top-3 peer-focus-within:text-base peer-focus-within:text-dark xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg 3xl:text-xl"
+          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl text-dark peer-placeholder-shown:text-dark/70 peer-focus-within:text-dark 3xl:text-xl absolute -top-3 left-0 w-full cursor-text text-base transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-focus-within:-top-3 peer-focus-within:text-base xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg"
         >
           {placeholder}
         </label>
@@ -183,11 +183,11 @@ const FloatingLabelInput = ({
           id={id}
           placeholder={placeholder}
           {...register(id)}
-          className="peer w-full border-0 border-b border-dark bg-lighter px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-dark focus:ring-0 xl:text-xl 3xl:text-2xl"
+          className="peer border-dark bg-lighter focus-within:border-dark 3xl:text-2xl w-full border-0 border-b px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-xl"
         />
         <label
           htmlFor={id}
-          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl absolute -top-3 left-0 w-full cursor-text text-base text-dark transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-placeholder-shown:text-dark/70 peer-focus-within:-top-3 peer-focus-within:text-base peer-focus-within:text-dark xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg 3xl:text-xl"
+          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl text-dark peer-placeholder-shown:text-dark/70 peer-focus-within:text-dark 3xl:text-xl absolute -top-3 left-0 w-full cursor-text text-base transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-focus-within:-top-3 peer-focus-within:text-base xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg"
         >
           {placeholder}
         </label>

@@ -11,6 +11,10 @@ Sentry.init({
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
 
+  // Deliberate: Sentry 10 ties IP inference to this flag. Keep it true to preserve
+  // today's behaviour of inferring visitor IPs. Do not remove on a future upgrade.
+  sendDefaultPii: true,
+
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 })

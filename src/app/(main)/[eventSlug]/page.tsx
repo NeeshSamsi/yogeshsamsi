@@ -21,7 +21,9 @@ type Props = {
 // UTIL FUNCTIONS
 
 async function getEventsPaths() {
-  const events = await (await reader.collections.events.all())
+  const events = await (
+    await reader.collections.events.all()
+  )
     .filter(({ entry }) => entry.internal.discriminant === true)
     .map((event) => event.slug)
 
@@ -132,10 +134,10 @@ const EventPage = async (props: Props) => {
   } = rawEvent
 
   return (
-    <main className="mx-auto max-w-lg bg-lighter px-8 py-12 text-dark md:max-w-none md:px-col-inner md:py-20 2xl:py-32">
+    <main className="bg-lighter text-dark md:px-col-inner mx-auto max-w-lg px-8 py-12 md:max-w-none md:py-20 2xl:py-32">
       <div className="mx-auto flex max-w-screen-2xl flex-row justify-between gap-16">
         <article className="grid gap-10">
-          <h1 className="font-serif text-4xl font-bold tracking-wide sm:text-5xl lg:text-5xl xl:text-6xl 3xl:text-7xl">
+          <h1 className="3xl:text-7xl font-serif text-4xl font-bold tracking-wide sm:text-5xl lg:text-5xl xl:text-6xl">
             {title}
           </h1>
 
@@ -150,7 +152,7 @@ const EventPage = async (props: Props) => {
             />
           </div>
 
-          <p className="max-w-prose text-base font-medium sm:text-lg xl:text-xl 3xl:text-2xl">
+          <p className="3xl:text-2xl max-w-prose text-base font-medium sm:text-lg xl:text-xl">
             {description}
           </p>
 
@@ -166,7 +168,7 @@ const EventPage = async (props: Props) => {
             </div>
           ))}
 
-          <div className="w-fit text-base font-medium sm:text-lg xl:text-xl 3xl:text-2xl">
+          <div className="3xl:text-2xl w-fit text-base font-medium sm:text-lg xl:text-xl">
             <CTA ctaText={ctaText} ctaLink={ctaLink} />
           </div>
         </article>
@@ -202,16 +204,16 @@ const Details = ({
   ctaLink: string
 }) => {
   return (
-    <aside className="sticky top-36 flex h-fit flex-col gap-4 text-start text-sm font-medium sm:text-base lg:gap-6 xl:text-lg 3xl:text-xl">
+    <aside className="3xl:text-xl sticky top-36 flex h-fit flex-col gap-4 text-start text-sm font-medium sm:text-base lg:gap-6 xl:text-lg">
       <div className="flex items-start gap-2 lg:gap-4">
         <span>
-          <CalendarIcon className="aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6 3xl:w-8" />
+          <CalendarIcon className="3xl:w-8 aspect-square w-4 stroke-[2.5px] sm:w-5 xl:w-6" />
         </span>
         <p>{date}</p>
       </div>
       <div className="flex items-start gap-2 lg:gap-4">
         <span>
-          <ClockIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
+          <ClockIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
         </span>
         <p>{timings}</p>
       </div>
@@ -220,9 +222,9 @@ const Details = ({
           <a href={link}>
             <span>
               {name.toLowerCase() === "online" ? (
-                <GlobeAltIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
+                <GlobeAltIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
               ) : (
-                <MapPinIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
+                <MapPinIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
               )}
             </span>
             <p>{name}</p>
@@ -231,9 +233,9 @@ const Details = ({
           <>
             <span>
               {name.toLowerCase() === "online" ? (
-                <GlobeAltIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
+                <GlobeAltIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
               ) : (
-                <MapPinIcon className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8" />
+                <MapPinIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
               )}
             </span>
             <p>{name}</p>

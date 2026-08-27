@@ -11,6 +11,7 @@ import {
 } from "@/lib/zodSchemas"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { registerAcademy } from "@/app/actions/academy"
+import { redirectTo } from "@/lib/redirectTo"
 
 import { useState } from "react"
 
@@ -41,7 +42,6 @@ export default function AcademyRegistration({
   callToAction: { variant, theme },
 }: AcademyRegistrationProps) {
   const [open, setOpen] = useState(false)
-  const [currentStep, setCurrentStep] = useState(1)
   const [formError, setFormError] = useState<string>()
 
   const {
@@ -56,17 +56,14 @@ export default function AcademyRegistration({
   const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (data) => {
     const res = await registerAcademy({ name: data.name, email: data.email })
 
-    if (!res || res.serverError || res.validationErrors || !res.data?.success) {
+    if (res?.data?.redirect) {
+      redirectTo(res.data.redirect)
+    } else {
       setFormError("Something went wrong. Please try again or reach out to us.")
 
       setTimeout(() => {
         setFormError(undefined)
       }, 5000)
-    } else if (res.data?.redirect) {
-      window.location.href = res.data.redirect
-    } else {
-      reset()
-      setCurrentStep(2)
     }
   }
 
@@ -75,80 +72,11 @@ export default function AcademyRegistration({
     if (!newOpen) {
       setTimeout(() => {
         reset()
-        setCurrentStep(1)
       }, 200)
     }
   }
 
   const showFormError = !isSubmitted ? false : formError ? true : false
-
-  const getDialogContent = () => {
-    switch (currentStep) {
-      case 1:
-        return {
-          title: "Academy Enrollment",
-          description: "Enter your name and email to begin your enrollment.",
-          content: (
-            <div className="space-y-6">
-              <div className="grid gap-2">
-                <div className="flex items-end gap-4">
-                  <UserIcon className="aspect-square h-8" />
-                  <FloatingLabelInput
-                    type="text"
-                    id="name"
-                    placeholder="Full name"
-                    register={register}
-                  />
-                </div>
-                {errors.name && (
-                  <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
-                    {errors.name?.message}
-                  </p>
-                )}
-              </div>
-
-              <div className="grid gap-2">
-                <div className="flex items-end gap-4">
-                  <EnvelopeIcon className="aspect-square h-8" />
-                  <FloatingLabelInput
-                    type="email"
-                    id="email"
-                    placeholder="Email address"
-                    register={register}
-                  />
-                </div>
-                {errors.email && (
-                  <p className="text-sm text-red-600 xl:text-base 3xl:text-lg">
-                    {errors.email?.message}
-                  </p>
-                )}
-              </div>
-
-              <p className="text-sm text-darker/80 xl:text-base">
-                By enrolling you agree to the{" "}
-                <Link
-                  href="/academy/terms"
-                  target="_blank"
-                  className="underline underline-offset-4 transition-colors hover:text-darker"
-                >
-                  Academy Terms of Service
-                </Link>
-                .
-              </p>
-            </div>
-          ),
-        }
-      case 2:
-        return {
-          title: "You're already enrolled!",
-          description: "We look forward to seeing you in class.",
-        }
-      default:
-        return { title: "", description: "", content: null }
-    }
-  }
-
-  const dialogContent = getDialogContent()
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -158,7 +86,7 @@ export default function AcademyRegistration({
           <span>
             <ArrowRightIcon
               strokeWidth={2.5}
-              className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8"
+              className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6"
             />
           </span>
         </Button>
@@ -166,25 +94,64 @@ export default function AcademyRegistration({
       <DialogContent>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <DialogHeader>
-            <DialogTitle>{dialogContent.title}</DialogTitle>
-            <DialogDescription>{dialogContent.description}</DialogDescription>
+            <DialogTitle>Academy Enrollment</DialogTitle>
+            <DialogDescription>
+              Enter your name and email to begin your enrollment.
+            </DialogDescription>
           </DialogHeader>
 
-          {dialogContent.content}
+          <div className="space-y-6">
+            <div className="grid gap-2">
+              <div className="flex items-end gap-4">
+                <UserIcon className="aspect-square h-8" />
+                <FloatingLabelInput
+                  type="text"
+                  id="name"
+                  placeholder="Full name"
+                  register={register}
+                />
+              </div>
+              {errors.name && (
+                <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
+                  {errors.name?.message}
+                </p>
+              )}
+            </div>
+
+            <div className="grid gap-2">
+              <div className="flex items-end gap-4">
+                <EnvelopeIcon className="aspect-square h-8" />
+                <FloatingLabelInput
+                  type="email"
+                  id="email"
+                  placeholder="Email address"
+                  register={register}
+                />
+              </div>
+              {errors.email && (
+                <p className="3xl:text-lg text-sm text-red-600 xl:text-base">
+                  {errors.email?.message}
+                </p>
+              )}
+            </div>
+
+            <p className="text-darker/80 text-sm xl:text-base">
+              By enrolling you agree to the{" "}
+              <Link
+                href="/academy/terms"
+                target="_blank"
+                className="hover:text-darker underline underline-offset-4 transition-colors"
+              >
+                Academy Terms of Service
+              </Link>
+              .
+            </p>
+          </div>
 
           <DialogFooter>
             <div className="flex justify-end">
-              {currentStep === 2 ? (
-                <Button
-                  variant="primary"
-                  theme="darker"
-                  className="w-full"
-                  onClick={() => handleOpenChange(false)}
-                >
-                  Close
-                </Button>
-              ) : showFormError ? (
-                <p className="text-base text-darker xl:text-lg 3xl:text-xl">
+              {showFormError ? (
+                <p className="text-darker 3xl:text-xl text-base xl:text-lg">
                   {formError}
                 </p>
               ) : (
@@ -200,7 +167,7 @@ export default function AcademyRegistration({
                     <div role="status">
                       <svg
                         aria-hidden="true"
-                        className="h-8 w-8 animate-spin fill-light text-lighter"
+                        className="fill-light text-lighter h-8 w-8 animate-spin"
                         viewBox="0 0 100 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -245,11 +212,11 @@ const FloatingLabelInput = ({
         id={id}
         placeholder={placeholder}
         {...register(id)}
-        className="peer w-full border-0 border-b border-darker bg-lighter px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus-within:border-darker focus:ring-0 xl:text-lg 3xl:text-xl"
+        className="peer border-darker bg-lighter focus-within:border-darker 3xl:text-xl w-full border-0 border-b px-0 text-base placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-lg"
       />
       <label
         htmlFor={id}
-        className="absolute -top-3 left-0 w-full cursor-text text-sm text-darker placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-darker/80 peer-focus-within:-top-3 peer-focus-within:text-sm peer-focus-within:text-darker xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base"
+        className="text-darker peer-placeholder-shown:text-darker/80 peer-focus-within:text-darker 3xl:text-base 3xl:peer-placeholder-shown:text-xl 3xl:peer-focus-within:text-base absolute -top-3 left-0 w-full cursor-text text-sm placeholder-transparent transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus-within:-top-3 peer-focus-within:text-sm xl:text-base xl:peer-placeholder-shown:text-lg xl:peer-focus-within:text-base"
       >
         {placeholder}
       </label>

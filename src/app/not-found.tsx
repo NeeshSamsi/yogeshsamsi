@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 const NotFound = () => {
   return (
     <main
-      className={`${montserrat.variable} ${reckless.variable} min-h-screen overscroll-none bg-lighter px-8 py-12 font-sans text-darker md:px-col-inner md:py-20 2xl:py-32`}
+      className={`${montserrat.variable} ${reckless.variable} bg-lighter text-darker md:px-col-inner min-h-screen overscroll-none px-8 py-12 font-sans md:py-20 2xl:py-32`}
     >
       <NotFoundContent />
     </main>

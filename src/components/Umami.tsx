@@ -7,7 +7,11 @@ export default function Umami() {
 
   return (
     <>
-      <Script src="/u/script.js" data-website-id={WEBSITE_ID} strategy="afterInteractive" />
+      <Script
+        src="/u/script.js"
+        data-website-id={WEBSITE_ID}
+        strategy="afterInteractive"
+      />
       <Script
         src="/u/recorder.js"
         data-website-id={WEBSITE_ID}

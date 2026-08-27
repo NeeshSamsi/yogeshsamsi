@@ -108,14 +108,19 @@ export default config({
             isRequired: true,
           },
         }),
-        email: fields.text({
-          label: "Email Contact",
-          description:
-            "The email displayed in the footer under the Reach out section.",
-          validation: {
-            length: { min: 1 },
+        emails: fields.array(
+          fields.text({
+            label: "Email Address",
+            validation: { length: { min: 1 } },
+          }),
+          {
+            label: "Email Contacts",
+            description:
+              "The emails listed in the footer under the Find me here section. Shown in the order set here - drag to reorder.",
+            itemLabel: (props) => props.value,
+            validation: { length: { min: 1 } },
           },
-        }),
+        ),
       },
     }),
 

@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 import Socials from "./Socials"
 
 const Navbar = ({
@@ -21,23 +22,26 @@ const Navbar = ({
     setIsHamburgerOpen((prevHamburgerState) => !prevHamburgerState)
   }
 
-  useEffect(() => setIsHamburgerOpen(false), [pathname])
+  const closeHamburger = () => {
+    setIsHamburgerOpen(false)
+  }
 
   return (
     <nav
       className={`${
         isHamburgerOpen && "h-screen"
-      } sticky inset-0 z-50 text-lighter shadow-xl shadow-darker/40`}
+      } text-lighter shadow-darker/40 sticky inset-0 z-50 shadow-xl`}
     >
-      <div className="flex w-full items-center justify-between gap-12 bg-darker px-8 py-4 md:px-col-outer md:py-6">
+      <div className="bg-darker md:px-col-outer flex w-full items-center justify-between gap-12 px-8 py-4 md:py-6">
         <div>
           <ul className="hidden gap-4 md:flex md:text-base lg:gap-6 lg:text-lg 2xl:text-xl">
             {navLinks.map(({ path, text, newWindow }, i) => (
               <li
                 key={i}
-                className={`transition-colors hover:text-light ${
-                  pathname === path && "text-light"
-                }`}
+                className={cn(
+                  "hover:text-light transition-colors",
+                  pathname === path && "text-light",
+                )}
               >
                 <Link href={path} target={newWindow ? "_blank" : "_self"}>
                   {text}
@@ -58,9 +62,10 @@ const Navbar = ({
           </ul>
 
           <div
-            className={`tham tham-e-spin tham-w-6 flex hover:opacity-100 md:hidden ${
-              isHamburgerOpen && "tham tham-active"
-            }`}
+            className={cn(
+              "tham flex hover:opacity-100 md:hidden",
+              isHamburgerOpen && "tham-active",
+            )}
             onClick={handleHamburger}
           >
             <div className="tham-box">
@@ -73,18 +78,23 @@ const Navbar = ({
       {/* Mobile Nav */}
       <div
         className={`${
-          isHamburgerOpen ? "flex animate-nav-show" : "hidden"
-        } h-full flex-col items-center gap-12  bg-darker  pt-16 text-xl sm:text-2xl md:hidden`}
+          isHamburgerOpen ? "animate-nav-show flex" : "hidden"
+        } bg-darker h-full flex-col items-center gap-12 pt-16 text-xl sm:text-2xl md:hidden`}
       >
         <ul className="flex flex-col items-center gap-6">
           {navLinks.map(({ path, text, newWindow }, i) => (
             <li
               key={i}
-              className={`transition-colors hover:text-light ${
-                pathname === path && "text-light"
-              }`}
+              className={cn(
+                "hover:text-light transition-colors",
+                pathname === path && "text-light",
+              )}
             >
-              <Link href={path} target={newWindow ? "_blank" : "_self"}>
+              <Link
+                href={path}
+                target={newWindow ? "_blank" : "_self"}
+                onClick={closeHamburger}
+              >
                 {text}
               </Link>
             </li>

@@ -46,7 +46,7 @@ export default function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
       ))}
 
       {remaining > 0 && (
-        <div className="flex justify-center pt-4 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl">
+        <div className="3xl:text-3xl flex justify-center pt-4 text-sm font-medium sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
           <Button
             variant="secondary"
             theme="darker"
@@ -58,7 +58,7 @@ export default function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
             <span>
               <ChevronDown
                 strokeWidth={2.5}
-                className="aspect-square w-4 sm:w-5 xl:w-6 3xl:w-8"
+                className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6"
               />
             </span>
           </Button>

@@ -14,6 +14,17 @@
 # testing
 /coverage
 
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
+# visual regression harness (e2e/visual.spec.ts) - baselines are
+# machine-specific (font hinting differs by OS) and re-captured immediately
+# before each use, so they are not committed.
+/test-results-visual/
+/e2e/visual.spec.ts-snapshots/
+
 # next.js
 /.next/
 /out/

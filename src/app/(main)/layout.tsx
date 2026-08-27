@@ -2,42 +2,12 @@ import "./globals.css"
 
 import { type Viewport } from "next"
 
-import { Montserrat } from "next/font/google"
-import localFont from "next/font/local"
-
 import reader from "@/lib/keystatic"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import MasterclassBanner from "@/components/MasterclassBanner"
 import Umami from "@/components/Umami"
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-montserrat",
-})
-
-const reckless = localFont({
-  src: [
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-SemiBold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-reckless",
-})
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -95,28 +65,22 @@ export default async function MainLayout({
   if (!masterclass)
     throw new Error("Keystatic Content Not Found - Masterclass Page")
 
-  const { navLinks, email, mailingListTitle, mailingListDescription } = settings
+  const { navLinks, emails, mailingListTitle, mailingListDescription } =
+    settings
   const { active, title } = masterclass
 
   return (
-    <html
-      lang="en"
-      className="scroll-p-16 overscroll-none scroll-smooth lg:scroll-p-24 2xl:scroll-p-20"
-    >
+    <>
       <Umami />
-      <body
-        className={`${montserrat.variable} ${reckless.variable} overscroll-none bg-lighter font-sans text-darker`}
-      >
-        {active && <MasterclassBanner title={title} />}
-        <Navbar navLinks={navLinks} />
-        {children}
-        <Footer
-          email={email}
-          navLinks={navLinks}
-          mailingListTitle={mailingListTitle}
-          mailingListDescription={mailingListDescription}
-        />
-      </body>
-    </html>
+      {active && <MasterclassBanner title={title} />}
+      <Navbar navLinks={navLinks} />
+      {children}
+      <Footer
+        emails={emails}
+        navLinks={navLinks}
+        mailingListTitle={mailingListTitle}
+        mailingListDescription={mailingListDescription}
+      />
+    </>
   )
 }

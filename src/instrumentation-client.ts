@@ -21,6 +21,10 @@ Sentry.init({
   // Define how likely Replay events are sampled when an error occurs.
   replaysOnErrorSampleRate: 1.0,
 
+  // Deliberate: Sentry 10 ties IP inference to this flag. Keep it true to preserve
+  // today's behaviour of inferring visitor IPs. Do not remove on a future upgrade.
+  sendDefaultPii: true,
+
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 })

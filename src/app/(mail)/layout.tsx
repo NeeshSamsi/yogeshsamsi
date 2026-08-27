@@ -1,44 +1,22 @@
 import "../(main)/globals.css"
 
-import { Montserrat } from "next/font/google"
-import localFont from "next/font/local"
+import reader from "@/lib/keystatic"
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-montserrat",
-})
+import Navbar from "@/components/Navbar"
 
-const reckless = localFont({
-  src: [
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-SemiBold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../fonts/RecklessNeue/ttf/RecklessNeue-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-reckless",
-})
-
-export default function MailLayout({
+export default async function MailLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const settings = await reader.singletons.settings.read()
+  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
+
+  const { navLinks } = settings
+
   return (
-    <div
-      className={`${montserrat.variable} ${reckless.variable} min-h-screen bg-lighter font-sans text-darker`}
-    >
+    <div className="min-h-screen">
+      <Navbar navLinks={navLinks} />
       {children}
     </div>
   )
