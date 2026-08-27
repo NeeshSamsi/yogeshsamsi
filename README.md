@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# yogeshsamsi.com
 
-## Getting Started
+The official website of **Yogesh Samsi** — a tabla artiste who has simultaneously scaled unprecedented heights in solo performance, accompaniment and pedagogy.
 
-First, run the development server:
+> "A man who must be one of the best tabalias of our age."
+> — _The Hindu_
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Son of the late vocalist Pandit Dinkar Kaikini, Yogesh was initiated into tabla by his father at the age of four and carries forward the legacy of the Punjab Gharana. He has accompanied many of India's foremost musicians and dancers — among them Pt Shivkumar Sharma, Pt Hariprasad Chaurasia, Pt Bhimsen Joshi, Ustad Vilayat Khan, Ustad Amjad Ali Khan and Pt Birju Maharaj — and has performed at Carnegie Hall, the Kennedy Center, the Bolshoi Theatre, the Barbican and Sydney Opera House, alongside India's major classical gatherings. He advises the music department at Pune University, is chief advisor for educational activities at Darbar in London, and teaches as a Guru at the Indian Classical Music Gurukul run by the MIT group of institutes in Pune.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What's on the site
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Schedule** — upcoming concerts and appearances
+- **About** — biography, press, and downloadable biodata for organisers
+- **Gallery** — performance photography
+- **Online Tabla Academy** — a structured syllabus that brings the depth of the guru-shishya tradition to weekly one-to-one and small-group sessions
+- **Masterclasses** — periodic international intensives
+- **Mailing list** — announcements of concerts, masterclasses and Academy intakes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Get in touch
 
-## Learn More
+|             |                             |
+| ----------- | --------------------------- |
+| General     | team@yogeshsamsi.com        |
+| Masterclass | masterclass@yogeshsamsi.com |
+| Academy     | academy@yogeshsamsi.com     |
 
-To learn more about Next.js, take a look at the following resources:
+[YouTube](https://youtube.com/@YogeshSamsiOfficial) ·
+[Instagram](https://instagram.com/yogesh.samsi) ·
+[Facebook](https://facebook.com/PanditYogeshSamsi)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Built & Maintained with 💛 by [Neesh Samsi](https://neeshsamsi.com)
