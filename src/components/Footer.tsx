@@ -37,7 +37,7 @@ const Footer = ({
             Find me here:
           </p>
           <ul className="flex gap-4 md:gap-6">
-            <Socials hoverClr="text-darker/80" sizes="h-8 xl:h-10" />
+            <Socials hoverClr="hover:text-darker/80" sizes="h-8 xl:h-10" />
           </ul>
           <ul className="flex flex-col items-center gap-1 md:items-start 2xl:gap-2">
             {emails.map((email) => (
