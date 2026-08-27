@@ -1,5 +1,30 @@
 import { collection, config, fields, singleton } from "@keystatic/core"
 
+// Every content page exposes the same meta pair - title + description - flat at
+// its schema root. One factory so the seven copies can't drift apart again:
+// that drift is exactly how finding F5 happened (academy and academyTerms had
+// nested theirs under a `meta` object, so their page code diverged to
+// `academy.meta.metaTitle` and shipped no OG/Twitter tags).
+const metaFields = () => ({
+  metaTitle: fields.text({
+    label: "Metadata Title",
+    description:
+      "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
+    validation: {
+      length: { min: 1 },
+    },
+  }),
+  metaDescription: fields.text({
+    label: "Metadata Description",
+    description:
+      "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
+    multiline: true,
+    validation: {
+      length: { min: 1 },
+    },
+  }),
+})
+
 export default config({
   storage: {
     kind: "cloud",
@@ -129,23 +154,7 @@ export default config({
       path: "src/data/home",
       format: "json",
       schema: {
-        metaTitle: fields.text({
-          label: "Metadata Title",
-          description:
-            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-          validation: {
-            length: { min: 1 },
-          },
-        }),
-        metaDescription: fields.text({
-          label: "Metadata Description",
-          description:
-            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-          multiline: true,
-          validation: {
-            length: { min: 1 },
-          },
-        }),
+        ...metaFields(),
         heroImage: fields.image({
           label: "Hero Image",
           directory: "/public/images/pages/home/",
@@ -194,23 +203,7 @@ export default config({
       path: "src/data/about",
       format: "json",
       schema: {
-        metaTitle: fields.text({
-          label: "Metadata Title",
-          description:
-            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-          validation: {
-            length: { min: 1 },
-          },
-        }),
-        metaDescription: fields.text({
-          label: "Metadata Description",
-          description:
-            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-          multiline: true,
-          validation: {
-            length: { min: 1 },
-          },
-        }),
+        ...metaFields(),
         heroImage: fields.image({
           label: "Hero Image",
           directory: "/public/images/pages/about/",
@@ -295,23 +288,7 @@ export default config({
       path: "src/data/gallery",
       format: "json",
       schema: {
-        metaTitle: fields.text({
-          label: "Metadata Title",
-          description:
-            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-          validation: {
-            length: { min: 1 },
-          },
-        }),
-        metaDescription: fields.text({
-          label: "Metadata Description",
-          description:
-            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-          multiline: true,
-          validation: {
-            length: { min: 1 },
-          },
-        }),
+        ...metaFields(),
         images: fields.array(
           fields.object(
             {
@@ -344,23 +321,7 @@ export default config({
       path: "src/data/masterclass",
       format: "json",
       schema: {
-        metaTitle: fields.text({
-          label: "Metadata Title",
-          description:
-            "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-          validation: {
-            length: { min: 1 },
-          },
-        }),
-        metaDescription: fields.text({
-          label: "Metadata Description",
-          description:
-            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-          multiline: true,
-          validation: {
-            length: { min: 1 },
-          },
-        }),
+        ...metaFields(),
         active: fields.checkbox({
           label: "Active",
           description: "Is this masterclass active?",
@@ -423,24 +384,7 @@ export default config({
       path: "src/data/academy",
       format: "json",
       schema: {
-        meta: fields.object(
-          {
-            metaTitle: fields.text({
-              label: "Metadata Title",
-              description:
-                "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-              validation: { length: { min: 1 } },
-            }),
-            metaDescription: fields.text({
-              label: "Metadata Description",
-              description:
-                "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-              multiline: true,
-              validation: { length: { min: 1 } },
-            }),
-          },
-          { label: "Meta Information" },
-        ),
+        ...metaFields(),
         active: fields.checkbox({
           label: "Active",
           description:
@@ -647,24 +591,7 @@ export default config({
       path: "src/data/academy-terms",
       format: "json",
       schema: {
-        meta: fields.object(
-          {
-            metaTitle: fields.text({
-              label: "Metadata Title",
-              description:
-                "This is the metadata title of the page. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-              validation: { length: { min: 1 } },
-            }),
-            metaDescription: fields.text({
-              label: "Metadata Description",
-              description:
-                "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-              multiline: true,
-              validation: { length: { min: 1 } },
-            }),
-          },
-          { label: "Meta Information" },
-        ),
+        ...metaFields(),
         title: fields.text({
           label: "Page Title",
           description: "The large heading shown at the top of the page.",
@@ -701,23 +628,7 @@ export default config({
       path: "src/data/contact",
       format: "json",
       schema: {
-        metaTitle: fields.text({
-          label: "Metadata Title",
-          description:
-            "This is the metadata title of the site. It will be prepended to the Site Name in Site Settings. It will be displayed when this page is shared, in the browser tab and used by search engines to rank this page.",
-          validation: {
-            length: { min: 1 },
-          },
-        }),
-        metaDescription: fields.text({
-          label: "Metadata Description",
-          description:
-            "This is the metadata description of the page. It will be displayed when this site is shared and used by search engines to rank this page.",
-          multiline: true,
-          validation: {
-            length: { min: 1 },
-          },
-        }),
+        ...metaFields(),
         image: fields.image({
           label: "Hero Image",
           directory: "/public/images/pages/contact/",
