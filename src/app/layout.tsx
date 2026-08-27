@@ -43,7 +43,12 @@ export default function RootLayout({
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body>{children}</body>
+      {/* Shared page chrome lives here, not in (main)/layout.tsx, so there is
+          exactly one <html>/<body> in the tree. These Tailwind classes are
+          inert on /keystatic, which never imports globals.css. */}
+      <body className="bg-lighter text-darker overscroll-none font-sans">
+        {children}
+      </body>
     </html>
   )
 }

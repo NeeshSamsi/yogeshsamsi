@@ -69,19 +69,17 @@ export default async function MainLayout({
   const { active, title } = masterclass
 
   return (
-    <html lang="en">
+    <>
       <Umami />
-      <body className="bg-lighter text-darker overscroll-none font-sans">
-        {active && <MasterclassBanner title={title} />}
-        <Navbar navLinks={navLinks} />
-        {children}
-        <Footer
-          email={email}
-          navLinks={navLinks}
-          mailingListTitle={mailingListTitle}
-          mailingListDescription={mailingListDescription}
-        />
-      </body>
-    </html>
+      {active && <MasterclassBanner title={title} />}
+      <Navbar navLinks={navLinks} />
+      {children}
+      <Footer
+        email={email}
+        navLinks={navLinks}
+        mailingListTitle={mailingListTitle}
+        mailingListDescription={mailingListDescription}
+      />
+    </>
   )
 }
