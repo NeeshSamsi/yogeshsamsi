@@ -38,13 +38,20 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        // Entrance: rises from just below centre and settles, staying
-        // horizontally centred. The -1/2 horizontal slide is not a visual
-        // choice - it holds the dialog centred while the enter keyframe
-        // overwrites `transform`. The vertical figure is the start position:
-        // 42% vs the resting 50% means it begins 8% of its own height lower
-        // and travels up. shadcn ships 48%, which starts it *above* centre.
-        "border-light bg-lighter data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[42%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[42%] fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:rounded-lg",
+        // Entrance: rises 1rem from below centre. Deliberately NOT shadcn's
+        // stock slide-in-from-left-1/2 + slide-in-from-top-[48%].
+        //
+        // Tailwind 4 compiles translate-x/y-* to the `translate` property,
+        // while the enter/exit keyframes animate `transform`. Those are
+        // separate properties and COMPOSE rather than override, so the stock
+        // classes - which exist to re-supply the -50% centering that v3's
+        // keyframe used to wipe out - end up doubling it. The dialog started
+        // a full width left and nearly a full height up, and flew in from
+        // the top-left corner.
+        //
+        // Under v4 the `translate` centering survives the animation on its
+        // own, so the keyframe only needs to carry the delta.
+        "border-light bg-lighter data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-bottom-4 data-[state=open]:slide-in-from-bottom-4 fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:rounded-lg",
         className,
       )}
       {...props}
