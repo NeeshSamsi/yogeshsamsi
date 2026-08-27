@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid"
@@ -11,7 +12,12 @@ import Event from "@/components/Event"
 import Link from "next/link"
 
 const Home = async () => {
-  const home = await reader.singletons.home.read()
+  const home = await readSingleton("home")
+
+  const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "medium",
+  })
+
   const events = (
     await reader.collections.events.all({ resolveLinkedFiles: true })
   )
@@ -21,23 +27,13 @@ const Home = async () => {
     .map((event) => {
       const { internal, ...rest } = event.entry
 
-      if (internal.discriminant) {
-        return {
-          ...rest,
-          date: new Intl.DateTimeFormat("en-GB", {
-            dateStyle: "medium",
-          }).format(new Date(rest.date)),
-          ctaLink: `/${event.slug}`,
-        }
-      } else {
-        return {
-          ...rest,
-          date: new Intl.DateTimeFormat("en-GB", {
-            dateStyle: "medium",
-          }).format(new Date(rest.date)),
-        }
+      return {
+        ...rest,
+        date: dateFormatter.format(new Date(rest.date)),
+        ctaLink: internal.discriminant ? `/${event.slug}` : rest.ctaLink,
       }
     })
+
   const testimonials = (await reader.collections.testimonials.all()).map(
     (testimonial) => ({
       ...testimonial.entry,
@@ -45,11 +41,6 @@ const Home = async () => {
       name: testimonial.slug,
     }),
   )
-
-  if (!home) throw new Error("Keystatic Content Not Found - Home Page")
-  if (!events) throw new Error("Keystatic Content Not Found - Upcoming Events")
-  if (!testimonials)
-    throw new Error("Keystatic Content Not Found - Press Testimonials")
 
   const {
     heroImage,

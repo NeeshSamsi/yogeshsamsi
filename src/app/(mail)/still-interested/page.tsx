@@ -1,14 +1,10 @@
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 
 const StillInterested = async () => {
-  const stillInterested = await reader.singletons.stillInterested.read({
+  const { heading, body } = await readSingleton("stillInterested", {
     resolveLinkedFiles: true,
   })
-  if (!stillInterested)
-    throw new Error("Keystatic Content Not Found - Still Interested Page")
-
-  const { heading, body } = stillInterested
 
   return (
     <main className="bg-lighter text-darker md:px-col-inner px-8 py-12 md:py-20 2xl:py-32">

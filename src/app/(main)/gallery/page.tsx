@@ -4,7 +4,8 @@ import path from "node:path"
 import Image from "next/image"
 import { imageSize } from "image-size"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 import getBlurDataURL from "@/lib/getBlurDataURL"
 
 import { ArrowDownTrayIcon } from "@heroicons/react/24/solid"
@@ -17,36 +18,14 @@ type ProcessedImage = {
 }
 
 export async function generateMetadata() {
-  const gallery = await reader.singletons.gallery.read()
-  if (!gallery) throw new Error("Keystatic Content Not Found - Gallery Page")
+  const { metaTitle: title, metaDescription: description } =
+    await readSingleton("gallery")
 
-  const { metaTitle: title, metaDescription: description } = gallery
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: "/gallery",
-      type: "website",
-    },
-    twitter: {
-      title,
-      description,
-      card: "summary",
-    },
-    alternates: {
-      canonical: "/gallery",
-    },
-  }
+  return pageMetadata({ title, description, path: "/gallery" })
 }
 
 const Gallery = async () => {
-  const gallery = await reader.singletons.gallery.read()
-  if (!gallery) throw new Error("Keystatic Content Not Found - Gallery Page")
-
-  const { images: rawImages } = gallery
+  const { images: rawImages } = await readSingleton("gallery")
 
   const images = await Promise.all(
     rawImages.map(async ({ image, alt }) => {

@@ -1,30 +1,27 @@
 import { type Metadata } from "next"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 import { formatDate } from "@/lib/formatDate"
 import Link from "next/link"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 import { ArrowLeftIcon } from "@heroicons/react/24/solid"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const terms = await reader.singletons.academyTerms.read()
-  if (!terms)
-    throw new Error("Keystatic Content Not Found - Academy Terms of Service")
+  const { metaTitle, metaDescription } = await readSingleton("academyTerms")
 
-  return {
-    title: terms.meta.metaTitle,
-    description: terms.meta.metaDescription,
-  }
+  return pageMetadata({
+    title: metaTitle,
+    description: metaDescription,
+    path: "/academy/terms",
+  })
 }
 
 export default async function AcademyTerms() {
-  const terms = await reader.singletons.academyTerms.read({
-    resolveLinkedFiles: true,
-  })
-  if (!terms)
-    throw new Error("Keystatic Content Not Found - Academy Terms of Service")
-
-  const { title, intro, lastUpdated, body } = terms
+  const { title, intro, lastUpdated, body } = await readSingleton(
+    "academyTerms",
+    { resolveLinkedFiles: true },
+  )
 
   return (
     <main className="bg-lighter text-darker md:px-col-inner px-8 py-12 md:py-20 2xl:py-32">

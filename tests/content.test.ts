@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest"
 import * as Icons from "lucide-react"
 
 import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 import config from "../keystatic.config"
 
 const singletons = [
@@ -25,6 +26,65 @@ describe("keystatic singletons", () => {
     it(`${name} reads`, async () => {
       const data = await reader.singletons[name].read()
       expect(data, `singleton "${name}" returned null`).not.toBeNull()
+    })
+  }
+})
+
+describe("readSingleton", () => {
+  it("keys its cache on resolveLinkedFiles, not the singleton name alone", async () => {
+    // The trap: a name-only cache would hand this unresolved document to the
+    // caller that asked for the resolved one, blanking the page body.
+    const unresolved = await readSingleton("academyTerms")
+    const resolved = await readSingleton("academyTerms", {
+      resolveLinkedFiles: true,
+    })
+
+    expect(
+      typeof unresolved.body,
+      "unresolved read leaves the document body as a lazy loader",
+    ).toBe("function")
+    expect(
+      Array.isArray(resolved.body),
+      "resolved read inlines the document body",
+    ).toBe(true)
+  })
+})
+
+// Slice 5b: every content page exposes meta the same way - metaTitle and
+// metaDescription flat at the schema root. This is what stops academy /
+// academyTerms drifting back to a nested `meta` object (the root cause of F5).
+describe("singleton meta shape", () => {
+  const withMeta = [
+    "home",
+    "about",
+    "gallery",
+    "masterclass",
+    "contact",
+    "academy",
+    "academyTerms",
+  ] as const
+
+  it("no singleton schema nests meta under a `meta` object", () => {
+    for (const [name, s] of Object.entries(config.singletons ?? {})) {
+      expect(
+        Object.keys(s.schema),
+        `${name} schema still has a nested "meta" object`,
+      ).not.toContain("meta")
+    }
+  })
+
+  for (const name of withMeta) {
+    it(`${name} exposes metaTitle/metaDescription flat`, async () => {
+      const data = await reader.singletons[name].read()
+      expect(data, `singleton "${name}" returned null`).not.toBeNull()
+      expect(typeof data!.metaTitle, `${name}.metaTitle`).toBe("string")
+      expect(typeof data!.metaDescription, `${name}.metaDescription`).toBe(
+        "string",
+      )
+      expect(
+        data,
+        `${name} still carries a nested meta object`,
+      ).not.toHaveProperty("meta")
     })
   }
 })

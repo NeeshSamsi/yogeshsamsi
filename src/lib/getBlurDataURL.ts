@@ -1,13 +1,9 @@
 import fs from "node:fs"
 import path from "node:path"
 
-import reader from "@/lib/keystatic"
 import { getPlaiceholder } from "plaiceholder"
 
 export default async function getBlurDataURL(imageUrl: string) {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
   // const url =
   //   process.env.NODE_ENV === "production"
   //     ? settings.url

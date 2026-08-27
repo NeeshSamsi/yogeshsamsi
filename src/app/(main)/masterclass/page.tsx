@@ -1,6 +1,7 @@
 import { type Metadata } from "next"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 import Image from "next/image"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 import { ArrowDownIcon } from "@heroicons/react/24/solid"
@@ -9,24 +10,19 @@ import { Button } from "@/components/ui/button"
 import MasterclassRegistration from "@/components/MasterclassRegistration"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const masterclass = await reader.singletons.masterclass.read({
-    resolveLinkedFiles: true,
-  })
-  if (!masterclass)
-    throw new Error("Keystatic Content Not Found - Masterclass Page")
+  const { metaTitle, metaDescription } = await readSingleton("masterclass")
 
-  return {
-    title: masterclass.metaTitle,
-    description: masterclass.metaDescription,
-  }
+  return pageMetadata({
+    title: metaTitle,
+    description: metaDescription,
+    path: "/masterclass",
+  })
 }
 
 export default async function Masterclass() {
-  const masterclass = await reader.singletons.masterclass.read({
+  const masterclass = await readSingleton("masterclass", {
     resolveLinkedFiles: true,
   })
-  if (!masterclass)
-    throw new Error("Keystatic Content Not Found - Masterclass Page")
   const {
     heroImage,
     heroMobileImage,

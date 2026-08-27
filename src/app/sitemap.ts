@@ -1,11 +1,8 @@
 import type { MetadataRoute } from "next"
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings.")
-
-  const { url, navLinks } = settings
+  const { url, navLinks } = await readSingleton("settings")
 
   const pageUrls = navLinks.map(({ path }) => ({
     url: `${url}${path}`,
