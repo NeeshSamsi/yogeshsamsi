@@ -1,39 +1,18 @@
 import Image from "next/image"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 import ContactForm from "@/components/ContactForm"
 
 export async function generateMetadata() {
-  const contact = await reader.singletons.contact.read()
-  if (!contact) throw new Error("Keystatic Content Not Found - Contact Page")
+  const { metaTitle: title, metaDescription: description } =
+    await readSingleton("contact")
 
-  const { metaTitle: title, metaDescription: description } = contact
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: "/contact",
-      type: "website",
-    },
-    twitter: {
-      title,
-      description,
-      card: "summary",
-    },
-    alternates: {
-      canonical: "/contact",
-    },
-  }
+  return pageMetadata({ title, description, path: "/contact" })
 }
 
 const Contact = async () => {
-  const contact = await reader.singletons.contact.read()
-  if (!contact) throw new Error("Keystatic Content Not Found - Contact Page")
-
-  const { image, imageAlt } = contact
+  const { image, imageAlt } = await readSingleton("contact")
 
   return (
     <main className="text-dark lg:pl-col-inner gap-8 px-8 py-12 md:py-20 lg:flex lg:px-0 lg:py-0">

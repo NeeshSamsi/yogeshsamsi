@@ -1,6 +1,7 @@
 import { type Metadata } from "next"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
@@ -16,18 +17,17 @@ import AcademyRegistration from "@/components/AcademyRegistration"
 const SHOW_PHILOSOPHY_VIDEO: boolean = false
 
 export async function generateMetadata(): Promise<Metadata> {
-  const academy = await reader.singletons.academy.read()
-  if (!academy) throw new Error("Keystatic Content Not Found - Academy Page")
+  const { metaTitle, metaDescription } = await readSingleton("academy")
 
-  return {
-    title: academy.meta.metaTitle,
-    description: academy.meta.metaDescription,
-  }
+  return pageMetadata({
+    title: metaTitle,
+    description: metaDescription,
+    path: "/academy",
+  })
 }
 
 export default async function Academy() {
-  const academy = await reader.singletons.academy.read()
-  if (!academy) throw new Error("Keystatic Content Not Found - Academy Page")
+  const academy = await readSingleton("academy")
 
   const {
     active,

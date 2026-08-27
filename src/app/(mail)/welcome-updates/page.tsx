@@ -1,14 +1,10 @@
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 
 const WelcomeUpdates = async () => {
-  const welcomeUpdates = await reader.singletons.welcomeUpdates.read({
+  const { heading, body } = await readSingleton("welcomeUpdates", {
     resolveLinkedFiles: true,
   })
-  if (!welcomeUpdates)
-    throw new Error("Keystatic Content Not Found - Welcome Updates Page")
-
-  const { heading, body } = welcomeUpdates
 
   return (
     <main className="bg-lighter text-darker md:px-col-inner px-8 py-12 md:py-20 2xl:py-32">

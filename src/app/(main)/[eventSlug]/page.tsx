@@ -1,6 +1,8 @@
+import { cache } from "react"
 import { notFound } from "next/navigation"
 
 import reader from "@/lib/keystatic"
+import pageMetadata from "@/lib/pageMetadata"
 import { DocumentRenderer } from "@keystatic/core/renderer"
 
 import {
@@ -20,105 +22,57 @@ type Props = {
 
 // UTIL FUNCTIONS
 
-async function getEventsPaths() {
-  const events = await (
-    await reader.collections.events.all()
-  )
-    .filter(({ entry }) => entry.internal.discriminant === true)
-    .map((event) => event.slug)
+async function getInternalEventPaths() {
+  const events = await reader.collections.events.all()
 
   return events
+    .filter(({ entry }) => entry.internal.discriminant === true)
+    .map((event) => event.slug)
 }
 
-async function validateEvent(eventSlug: string) {
-  const slugs = await getEventsPaths()
-
-  if (slugs.find((slug) => slug === eventSlug)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-async function parseEvent(eventSlug: string) {
-  const rawEvent = await reader.collections.events.read(eventSlug, {
+// One lookup for "the internal event at this slug, parsed". Replaces the old
+// validate-then-read pair (list the whole collection to check the slug exists,
+// then read the same slug again) and the copy of this parsing logic that lived
+// inline in the page component. Returns null for a missing slug or an external
+// event so the caller can `notFound()`. Memoised so `generateMetadata` and the
+// page component share the one read.
+const getInternalEvent = cache(async (eventSlug: string) => {
+  const event = await reader.collections.events.read(eventSlug, {
     resolveLinkedFiles: true,
   })
-  if (!rawEvent)
-    throw new Error(
-      `Keystatic Content Not Found - Event with slug: ${eventSlug}`,
-    )
-  if (!rawEvent.internal.value)
-    throw new Error(
-      `Invalid Keystatic Configuration - No timings or page content for event with slug: ${eventSlug}`,
-    )
+
+  if (!event || event.internal.discriminant !== true) return null
 
   const {
     internal: { value },
     ...rest
-  } = rawEvent
+  } = event
 
-  return {
-    ...rest,
-    ...value,
-  }
-}
+  return { ...rest, ...value }
+})
 
 // NEXT FUNCTIONS
 
 export async function generateStaticParams() {
-  return getEventsPaths()
+  return getInternalEventPaths()
 }
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params
-  const { eventSlug } = params
+  const { eventSlug } = await props.params
 
-  if (await validateEvent(eventSlug)) {
-    const event = await parseEvent(eventSlug)
+  const event = await getInternalEvent(eventSlug)
+  if (!event) return {}
 
-    const { title, description } = event
+  const { title, description } = event
 
-    return {
-      title,
-      description,
-      openGraph: {
-        title,
-        description,
-        url: `/${eventSlug}`,
-        type: "website",
-      },
-      twitter: {
-        title,
-        description,
-        card: "summary",
-      },
-      alternates: {
-        canonical: `/${eventSlug}`,
-      },
-    }
-  }
+  return pageMetadata({ title, description, path: `/${eventSlug}` })
 }
 
 const EventPage = async (props: Props) => {
-  const params = await props.params
-  const { eventSlug } = params
+  const { eventSlug } = await props.params
 
-  if (!(await validateEvent(eventSlug))) {
-    notFound()
-  }
-
-  const rawEvent = await reader.collections.events.read(eventSlug, {
-    resolveLinkedFiles: true,
-  })
-  if (!rawEvent)
-    throw new Error(
-      `Keystatic Content Not Found - Event with slug: ${eventSlug}`,
-    )
-  if (!rawEvent.internal.value)
-    throw new Error(
-      `Invalid Keystatic Configuration - No timings or page content for event with slug: ${eventSlug}`,
-    )
+  const event = await getInternalEvent(eventSlug)
+  if (!event) notFound()
 
   const {
     title,
@@ -128,10 +82,9 @@ const EventPage = async (props: Props) => {
     link,
     ctaText,
     ctaLink,
-    internal: {
-      value: { page, timings },
-    },
-  } = rawEvent
+    page,
+    timings,
+  } = event
 
   return (
     <main className="bg-lighter text-dark md:px-col-inner mx-auto max-w-lg px-8 py-12 md:max-w-none md:py-20 2xl:py-32">
@@ -203,6 +156,19 @@ const Details = ({
   ctaText: string
   ctaLink: string
 }) => {
+  const place = (
+    <>
+      <span>
+        {name.toLowerCase() === "online" ? (
+          <GlobeAltIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
+        ) : (
+          <MapPinIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
+        )}
+      </span>
+      <p>{name}</p>
+    </>
+  )
+
   return (
     <aside className="3xl:text-xl sticky top-36 flex h-fit flex-col gap-4 text-start text-sm font-medium sm:text-base lg:gap-6 xl:text-lg">
       <div className="flex items-start gap-2 lg:gap-4">
@@ -218,29 +184,7 @@ const Details = ({
         <p>{timings}</p>
       </div>
       <div className="flex items-start gap-2 lg:gap-4">
-        {link ? (
-          <a href={link}>
-            <span>
-              {name.toLowerCase() === "online" ? (
-                <GlobeAltIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
-              ) : (
-                <MapPinIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
-              )}
-            </span>
-            <p>{name}</p>
-          </a>
-        ) : (
-          <>
-            <span>
-              {name.toLowerCase() === "online" ? (
-                <GlobeAltIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
-              ) : (
-                <MapPinIcon className="3xl:w-8 aspect-square w-4 sm:w-5 xl:w-6" />
-              )}
-            </span>
-            <p>{name}</p>
-          </>
-        )}
+        {link ? <a href={link}>{place}</a> : place}
       </div>
       <div className="w-fit lg:w-auto">
         <CTA ctaText={ctaText} ctaLink={ctaLink} />

@@ -56,7 +56,7 @@ const Navbar = ({
         <div>
           <ul className="hidden gap-4 md:flex lg:gap-6">
             <Socials
-              hoverClr="text-light"
+              hoverClr="hover:text-light"
               sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
             />
           </ul>
@@ -102,7 +102,7 @@ const Navbar = ({
         </ul>
         <ul className="flex gap-6">
           <Socials
-            hoverClr="text-light"
+            hoverClr="hover:text-light"
             sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
           />
         </ul>

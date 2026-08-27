@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
-
-import { useForm, UseFormRegister, type SubmitHandler } from "react-hook-form"
+import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zodSchemas"
 import { contact } from "@/app/actions/contact"
+import { useFormSubmission } from "@/hooks/useFormSubmission"
+import FloatingLabelInput from "@/components/ui/FloatingLabelInput"
+import Spinner from "@/components/ui/Spinner"
 
 import {
   ChatBubbleBottomCenterTextIcon,
@@ -16,33 +17,31 @@ import {
 } from "@heroicons/react/24/solid"
 
 const ContactForm = () => {
-  const [response, setResponse] = useState<string>()
+  const { state, start, succeed, fail } = useFormSubmission()
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitted },
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormSchemaType>({
     resolver: zodResolver(contactFormSchema),
   })
 
   const onSubmit: SubmitHandler<ContactFormSchemaType> = async (data) => {
+    start()
     const res = await contact(data)
 
-    if (res?.serverError || res?.validationErrors || !res?.data?.success) {
-      setResponse("Something went wrong. Please try again later.")
+    if (!res?.data?.ok) {
+      fail("Something went wrong. Please try again later.")
     } else {
-      setResponse("Thank you reaching out. We will get back to you soon.")
+      succeed("Thank you reaching out. We will get back to you soon.")
       reset()
     }
-
-    setTimeout(() => {
-      setResponse(undefined)
-    }, 5000)
   }
 
-  const showConfirmation = !isSubmitted ? false : response ? true : false
+  const outcome =
+    state.status === "done" || state.status === "error" ? state.message : null
 
   return (
     <form
@@ -61,6 +60,7 @@ const ContactForm = () => {
             id="name"
             placeholder="Full name"
             register={register}
+            variant="contact"
           />
         </div>
         {errors.name && (
@@ -78,6 +78,7 @@ const ContactForm = () => {
             id="email"
             placeholder="Email address"
             register={register}
+            variant="contact"
           />
         </div>
         {errors.email && (
@@ -95,6 +96,7 @@ const ContactForm = () => {
             id="message"
             placeholder="Your message"
             register={register}
+            variant="contact"
           />
         </div>
         {errors.message && (
@@ -104,9 +106,9 @@ const ContactForm = () => {
         )}
       </div>
 
-      {showConfirmation ? (
+      {outcome !== null ? (
         <p className="text-dark 3xl:text-2xl text-lg font-medium xl:text-xl">
-          {response}
+          {outcome}
         </p>
       ) : (
         <button
@@ -120,80 +122,12 @@ const ContactForm = () => {
               <PaperAirplaneIcon className="aspect-square h-4 xl:h-5" />
             </>
           ) : (
-            <div role="status">
-              <svg
-                aria-hidden="true"
-                className="fill-light text-lighter h-8 w-8 animate-spin"
-                viewBox="0 0 100 100"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                  fill="currentFill"
-                />
-              </svg>
-              <span className="sr-only">Loading...</span>
-            </div>
+            <Spinner />
           )}
         </button>
       )}
     </form>
   )
-}
-
-const FloatingLabelInput = ({
-  type,
-  id,
-  placeholder,
-  register,
-}: {
-  type: "text" | "email" | "textarea"
-  id: "name" | "email" | "message"
-  placeholder: string
-  register: UseFormRegister<ContactFormSchemaType>
-}) => {
-  if (type === "textarea") {
-    return (
-      <div className="relative w-full cursor-text">
-        <textarea
-          rows={1}
-          id={id}
-          placeholder={placeholder}
-          {...register(id)}
-          className="peer border-dark bg-lighter focus-within:border-dark 3xl:text-2xl w-full border-0 border-b px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-xl"
-        />
-        <label
-          htmlFor={id}
-          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl text-dark peer-placeholder-shown:text-dark/70 peer-focus-within:text-dark 3xl:text-xl absolute -top-3 left-0 w-full cursor-text text-base transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-focus-within:-top-3 peer-focus-within:text-base xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg"
-        >
-          {placeholder}
-        </label>
-      </div>
-    )
-  } else {
-    return (
-      <div className="relative w-full cursor-text">
-        <input
-          type={type}
-          id={id}
-          placeholder={placeholder}
-          {...register(id)}
-          className="peer border-dark bg-lighter focus-within:border-dark 3xl:text-2xl w-full border-0 border-b px-0 text-lg placeholder-transparent transition-all focus-within:border-b-2 focus:ring-0 xl:text-xl"
-        />
-        <label
-          htmlFor={id}
-          className="3xl:peer-placeholder-shown:text-2xl3xl:peer-focus-within:text-xl text-dark peer-placeholder-shown:text-dark/70 peer-focus-within:text-dark 3xl:text-xl absolute -top-3 left-0 w-full cursor-text text-base transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg peer-focus-within:-top-3 peer-focus-within:text-base xl:-top-5 xl:text-lg xl:peer-placeholder-shown:text-xl xl:peer-focus-within:-top-5 xl:peer-focus-within:text-lg"
-        >
-          {placeholder}
-        </label>
-      </div>
-    )
-  }
 }
 
 export default ContactForm

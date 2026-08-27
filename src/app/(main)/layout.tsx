@@ -2,7 +2,8 @@ import "./globals.css"
 
 import { type Viewport } from "next"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
@@ -17,35 +18,21 @@ export const viewport: Viewport = {
 }
 
 export async function generateMetadata() {
-  const settings = await reader.singletons.settings.read()
-  const home = await reader.singletons.home.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-  if (!home) throw new Error("Keystatic Content Not Found - Home Page")
+  const { siteName, url, metaTitle: title } = await readSingleton("settings")
+  const { metaDescription: description } = await readSingleton("home")
 
-  const { siteName, url, metaTitle: title } = settings
-  const { metaDescription: description } = home
+  const base = pageMetadata({ title, description, path: "/" })
 
   return {
+    ...base,
     metadataBase: new URL(url),
     title: {
       default: title,
       template: `%s | ${title}`,
     },
-    description,
     openGraph: {
-      title,
-      description,
-      url: "/",
+      ...base.openGraph,
       siteName,
-      type: "website",
-    },
-    twitter: {
-      title,
-      description,
-      card: "summary",
-    },
-    alternates: {
-      canonical: "/",
     },
     verification: {
       google: "1k9fSdlfvgYGjJYg4ibNvDSDjhhFX3XBUTQGYnZigFI",
@@ -58,12 +45,8 @@ export default async function MainLayout({
 }: {
   children: React.ReactNode
 }) {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
-  const masterclass = await reader.singletons.masterclass.read()
-  if (!masterclass)
-    throw new Error("Keystatic Content Not Found - Masterclass Page")
+  const settings = await readSingleton("settings")
+  const masterclass = await readSingleton("masterclass")
 
   const { navLinks, emails, mailingListTitle, mailingListDescription } =
     settings

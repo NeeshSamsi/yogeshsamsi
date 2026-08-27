@@ -1,6 +1,7 @@
 import Image from "next/image"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
+import pageMetadata from "@/lib/pageMetadata"
 
 import { ArrowRightIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline"
 import Section from "@/components/Section"
@@ -9,35 +10,14 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export async function generateMetadata() {
-  const about = await reader.singletons.about.read()
-  if (!about) throw new Error("Keystatic Content Not Found - About Page")
+  const { metaTitle: title, metaDescription: description } =
+    await readSingleton("about")
 
-  const { metaTitle: title, metaDescription: description } = about
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: "/about",
-      type: "website",
-    },
-    twitter: {
-      title,
-      description,
-      card: "summary",
-    },
-    alternates: {
-      canonical: "/about",
-    },
-  }
+  return pageMetadata({ title, description, path: "/about" })
 }
 
 const About = async () => {
-  const about = await reader.singletons.about.read()
-
-  if (!about) throw new Error("Keystatic Content Not Found - About Page")
+  const about = await readSingleton("about")
 
   const {
     heroImage,
@@ -59,7 +39,10 @@ const About = async () => {
             Yogesh Samsi
           </h1>
           <ul className="flex gap-4 lg:gap-6">
-            <Socials hoverClr="text-darker/90" sizes="h-8 lg:h-10 3xl:h-12" />
+            <Socials
+              hoverClr="hover:text-darker/90"
+              sizes="h-8 lg:h-10 3xl:h-12"
+            />
           </ul>
           <div className="3xl:text-2xl max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl">
             <p>&ldquo;{quoteText}&rdquo;</p>

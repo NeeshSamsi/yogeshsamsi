@@ -1,11 +1,8 @@
 import type { MetadataRoute } from "next"
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
-  const { url } = settings
+  const { url } = await readSingleton("settings")
 
   return {
     rules: {

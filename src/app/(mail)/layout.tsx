@@ -1,6 +1,6 @@
 import "../(main)/globals.css"
 
-import reader from "@/lib/keystatic"
+import { readSingleton } from "@/lib/content"
 
 import Navbar from "@/components/Navbar"
 
@@ -9,10 +9,7 @@ export default async function MailLayout({
 }: {
   children: React.ReactNode
 }) {
-  const settings = await reader.singletons.settings.read()
-  if (!settings) throw new Error("Keystatic Content Not Found - Site Settings")
-
-  const { navLinks } = settings
+  const { navLinks } = await readSingleton("settings")
 
   return (
     <div className="min-h-screen">
