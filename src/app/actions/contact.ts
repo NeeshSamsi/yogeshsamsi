@@ -3,16 +3,17 @@
 import { contactFormSchema } from "@/lib/zodSchemas"
 import { actionClient } from "@/lib/safeAction"
 import bento from "@/lib/bento"
+import type { ActionResult } from "@/lib/actionResult"
+import { splitName } from "@/lib/splitName"
 
 const FORMSPARK_URL = "https://submit-form.com/xE2Dj15to"
 
 export const contact = actionClient
   .inputSchema(contactFormSchema)
-  .action(async ({ parsedInput }) => {
+  .action(async ({ parsedInput }): Promise<ActionResult> => {
     const { name, email, message } = parsedInput
 
-    const first_name = name.split(" ")[0]
-    const last_name = name.split(" ").slice(1).join(" ")
+    const { first_name, last_name } = splitName(name)
 
     try {
       await bento.V1.track({
@@ -46,15 +47,19 @@ export const contact = actionClient
       })
 
       if (res.status === 200) {
-        return {
-          success: true,
-        }
-      } else {
-        console.log(res)
-        throw new Error("Failed to submit, please try again later.")
+        return { ok: true }
+      }
+
+      console.log(res)
+      return {
+        ok: false,
+        message: "Something went wrong, please try again later.",
       }
     } catch (err) {
       console.error(err)
-      throw new Error("Something went wrong, please try again later.")
+      return {
+        ok: false,
+        message: "Something went wrong, please try again later.",
+      }
     }
   })
