@@ -1,25 +1,13 @@
-const socialRedirects = [
-  {
-    source: "/facebook",
-    destination: "https://facebook.com/PanditYogeshSamsi",
-    permanent: true,
-  },
-  {
-    source: "/instagram",
-    destination: "https://instagram.com/yogesh.samsi",
-    permanent: true,
-  },
-  {
-    source: "/youtube",
-    destination: "https://youtube.com/@YogeshSamsiOfficial",
-    permanent: true,
-  },
-  {
-    source: "/bio",
-    destination: "/about",
-    permanent: true,
-  },
-]
+const {
+  campaignRedirects,
+  buildCampaignRedirects,
+} = require("./src/lib/redirects.js")
+
+// Social icon clicks were previously permanent (308) redirects straight to
+// the raw external profile URLs - untracked, since a server redirect runs no
+// JS. Now routed through Umami Links (see src/lib/redirects.js) so the click
+// shows up in Umami's Links section.
+const socialRedirects = buildCampaignRedirects(campaignRedirects)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -34,6 +22,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/bio",
+        destination: "/about",
+        permanent: true,
+      },
       {
         source: "/contact",
         destination: "/#contact",
