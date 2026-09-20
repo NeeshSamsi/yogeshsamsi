@@ -3,20 +3,27 @@
 import { z } from "zod"
 import bento from "@/lib/bento"
 import { actionClient } from "@/lib/safeAction"
-import { masterclassFormSchema } from "@/lib/zodSchemas"
+import { botCheckSchema, masterclassFormSchema } from "@/lib/zodSchemas"
 import type { ActionResult } from "@/lib/actionResult"
 import { splitName } from "@/lib/splitName"
+import { isBotSubmission } from "@/lib/botCheck"
 
 export const registerMasterclass = actionClient
   .inputSchema(
-    masterclassFormSchema.extend({
-      formLink: z.string().min(1, "Name is required.").url(),
-    }),
+    masterclassFormSchema
+      .extend({
+        formLink: z.string().min(1, "Name is required.").url(),
+      })
+      .extend(botCheckSchema.shape),
   )
   .action(
     async ({
-      parsedInput: { name, email, formLink },
-    }): Promise<ActionResult> => {
+      parsedInput: { name, email, formLink, company, startedAt },
+    }): Promise<ActionResult<"new" | "confirmed">> => {
+      // A bot hit never reaches Bento or the payment form: no redirect, no
+      // `result`, so nothing downstream records it.
+      if (isBotSubmission(company, startedAt)) return { ok: true }
+
       const { first_name, last_name } = splitName(name)
 
       try {
@@ -40,9 +47,9 @@ export const registerMasterclass = actionClient
           !user.attributes.fields?.batch ||
           !user.attributes.fields?.timezone
         ) {
-          return { ok: true, redirect: formLink }
+          return { ok: true, redirect: formLink, result: "new" }
         } else {
-          return { ok: true }
+          return { ok: true, result: "confirmed" }
         }
       } catch (err) {
         console.error(err)

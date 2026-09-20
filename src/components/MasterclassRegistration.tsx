@@ -9,11 +9,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { registerMasterclass } from "@/app/actions/masterclass"
 import { redirectTo } from "@/lib/redirectTo"
 import { useFormSubmission } from "@/hooks/useFormSubmission"
+import { track } from "@/lib/analytics"
+import { readHoneypot } from "@/lib/botCheck"
 
 import { useState } from "react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import FloatingLabelInput from "@/components/ui/FloatingLabelInput"
+import HoneypotField from "@/components/ui/HoneypotField"
 import Spinner from "@/components/ui/Spinner"
 import {
   Dialog,
@@ -44,6 +47,12 @@ export default function MasterclassRegistration({
     fail,
     reset: resetSubmission,
   } = useFormSubmission()
+  // Reset when the dialog opens (handleOpenChange below), not at page load,
+  // so the too-fast bot check (src/lib/botCheck.ts) measures time actually
+  // available to fill the form. The lazy initializer keeps the first render
+  // pure; handleOpenChange runs in an event handler, not render, so setting
+  // it there from Date.now() is fine.
+  const [startedAt, setStartedAt] = useState(() => Date.now())
 
   const {
     register,
@@ -54,17 +63,30 @@ export default function MasterclassRegistration({
     resolver: zodResolver(masterclassFormSchema),
   })
 
-  const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (
+    data,
+    event,
+  ) => {
     start()
-    const res = await registerMasterclass({ ...data, formLink })
+    const res = await registerMasterclass({
+      ...data,
+      formLink,
+      company: readHoneypot(event),
+      startedAt,
+    })
     const result = res?.data
 
     if (!result?.ok) {
+      track("masterclass-register-failed", {})
       fail("Something went wrong. Please try again or reach out to us.")
     } else if (result.redirect) {
+      // `result.result` is only set on a genuine registration, never on the
+      // bot fake-success (src/lib/botCheck.ts).
+      if (result.result) track("masterclass-register", { step: result.result })
       // Handle redirect to external form.
       redirectTo(result.redirect)
     } else {
+      if (result.result) track("masterclass-register", { step: result.result })
       reset()
       // The confirmed "step 2" screen — no auto-dismiss, it stays until the
       // dialog closes.
@@ -74,7 +96,9 @@ export default function MasterclassRegistration({
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen)
-    if (!newOpen) {
+    if (newOpen) {
+      setStartedAt(Date.now())
+    } else {
       setTimeout(() => {
         reset()
         resetSubmission()
@@ -151,6 +175,7 @@ export default function MasterclassRegistration({
       </DialogTrigger>
       <DialogContent>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <HoneypotField />
           <DialogHeader>
             <DialogTitle>{dialogContent.title}</DialogTitle>
             <DialogDescription>{dialogContent.description}</DialogDescription>

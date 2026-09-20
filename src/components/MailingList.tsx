@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
@@ -7,7 +8,10 @@ import { mailingListSchema, MailingListSchemaType } from "@/lib/zodSchemas"
 import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/solid"
 import { subscribe } from "@/app/actions/mailing-list"
 import { useFormSubmission } from "@/hooks/useFormSubmission"
+import { track } from "@/lib/analytics"
+import { readHoneypot } from "@/lib/botCheck"
 import FloatingLabelInput from "@/components/ui/FloatingLabelInput"
+import HoneypotField from "@/components/ui/HoneypotField"
 import Spinner from "@/components/ui/Spinner"
 
 const MailingList = ({
@@ -18,6 +22,11 @@ const MailingList = ({
   description: string
 }) => {
   const { state, start, succeed, fail } = useFormSubmission()
+  // This form is always mounted (footer, every page), so "time since
+  // component mount" is a reasonable stand-in for "time a human had to fill
+  // it" - unlike the dialog-based forms, there is no open/close to key off.
+  // The lazy initializer runs once, on mount, rather than on every render.
+  const [startedAt] = useState(() => Date.now())
 
   const {
     register,
@@ -28,12 +37,25 @@ const MailingList = ({
     resolver: zodResolver(mailingListSchema),
   })
 
-  const onSubmit: SubmitHandler<MailingListSchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<MailingListSchemaType> = async (
+    data,
+    event,
+  ) => {
     start()
-    const res = await subscribe(data)
+    const res = await subscribe({
+      ...data,
+      company: readHoneypot(event),
+      startedAt,
+    })
+
     if (!res?.data?.ok) {
+      track("mailing-list-signup-failed", {})
       fail("Something went wrong. Please try again later.")
     } else {
+      // `result` is only set on a genuine signup, never on the bot
+      // fake-success (src/lib/botCheck.ts).
+      if (res.data.result)
+        track("mailing-list-signup", { result: res.data.result })
       succeed(res.data.message || "Thank you for joining the Mailing List!")
       reset()
     }
@@ -47,6 +69,7 @@ const MailingList = ({
       className="border-darker bg-lighter 3xl:gap-8 3xl:text-xl flex max-w-[35ch] flex-col gap-6 border px-8 py-6 text-base md:px-6 md:py-4 lg:px-8 lg:py-6 xl:text-lg"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <HoneypotField />
       <div>
         <h6 className="3xl:mb-6 3xl:text-4xl mb-4 font-serif text-2xl font-bold tracking-wider xl:text-3xl">
           {title}

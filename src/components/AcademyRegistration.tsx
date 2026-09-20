@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { registerAcademy } from "@/app/actions/academy"
 import { redirectTo } from "@/lib/redirectTo"
 import { useFormSubmission } from "@/hooks/useFormSubmission"
+import { track } from "@/lib/analytics"
+import { readHoneypot } from "@/lib/botCheck"
 
 import { useState } from "react"
 
@@ -16,6 +18,7 @@ import Link from "next/link"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import FloatingLabelInput from "@/components/ui/FloatingLabelInput"
+import HoneypotField from "@/components/ui/HoneypotField"
 import Spinner from "@/components/ui/Spinner"
 import {
   Dialog,
@@ -42,6 +45,12 @@ export default function AcademyRegistration({
 }: AcademyRegistrationProps) {
   const [open, setOpen] = useState(false)
   const { state, start, fail, reset: resetSubmission } = useFormSubmission()
+  // Reset when the dialog opens (handleOpenChange below), not at page load,
+  // so the too-fast bot check (src/lib/botCheck.ts) measures time actually
+  // available to fill the form. The lazy initializer keeps the first render
+  // pure; handleOpenChange runs in an event handler, not render, so setting
+  // it there from Date.now() is fine.
+  const [startedAt, setStartedAt] = useState(() => Date.now())
 
   const {
     register,
@@ -52,23 +61,37 @@ export default function AcademyRegistration({
     resolver: zodResolver(masterclassFormSchema),
   })
 
-  const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<MasterclassFormSchemaType> = async (
+    data,
+    event,
+  ) => {
     start()
-    const res = await registerAcademy({ name: data.name, email: data.email })
+    const res = await registerAcademy({
+      name: data.name,
+      email: data.email,
+      company: readHoneypot(event),
+      startedAt,
+    })
     const result = res?.data
 
     if (result?.ok) {
       if (result.redirect) {
+        // `result.result` is only set on a genuine registration, never on
+        // the bot fake-success (src/lib/botCheck.ts).
+        if (result.result) track("academy-register", {})
         redirectTo(result.redirect)
       }
     } else {
+      track("academy-register-failed", {})
       fail("Something went wrong. Please try again or reach out to us.")
     }
   }
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen)
-    if (!newOpen) {
+    if (newOpen) {
+      setStartedAt(Date.now())
+    } else {
       setTimeout(() => {
         reset()
         resetSubmission()
@@ -91,6 +114,7 @@ export default function AcademyRegistration({
       </DialogTrigger>
       <DialogContent>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <HoneypotField />
           <DialogHeader>
             <DialogTitle>Academy Enrollment</DialogTitle>
             <DialogDescription>
