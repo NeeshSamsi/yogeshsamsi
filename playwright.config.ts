@@ -22,6 +22,11 @@ export default defineConfig({
       // them - this short-circuits src/lib/bento.ts to stubbed responses
       // instead, so the suite never writes to the live mailing list.
       BENTO_DISABLED: "1",
+      // src/lib/botCheck.ts rejects a submit that lands faster than a human
+      // could plausibly fill the form - Playwright's scripted fills are
+      // always faster than that, so without this every form-submitting spec
+      // would hit the bot fake-success path instead of the real one.
+      BOT_CHECK_DISABLED: "1",
     },
   },
 })

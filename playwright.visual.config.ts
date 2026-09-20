@@ -66,6 +66,7 @@ export default defineConfig({
       // See playwright.config.ts - same reasoning, stub Bento so the suite
       // never writes to the live mailing list.
       BENTO_DISABLED: "1",
+      BOT_CHECK_DISABLED: "1",
     },
   },
 
