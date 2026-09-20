@@ -42,6 +42,7 @@ const About = async () => {
             <Socials
               hoverClr="hover:text-darker/90"
               sizes="h-8 lg:h-10 3xl:h-12"
+              location="about-hero"
             />
           </ul>
           <div className="3xl:text-2xl max-w-[30ch] space-y-3 text-base font-medium sm:text-lg lg:text-lg xl:text-xl">

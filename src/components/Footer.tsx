@@ -4,6 +4,7 @@ import Link from "next/link"
 
 import Socials from "./Socials"
 import MailingList from "./MailingList"
+import { umamiEventAttrs } from "@/lib/analytics"
 
 type Props = {
   readonly emails: readonly string[]
@@ -37,7 +38,11 @@ const Footer = ({
             Find me here:
           </p>
           <ul className="flex gap-4 md:gap-6">
-            <Socials hoverClr="hover:text-darker/80" sizes="h-8 xl:h-10" />
+            <Socials
+              hoverClr="hover:text-darker/80"
+              sizes="h-8 xl:h-10"
+              location="footer"
+            />
           </ul>
           <ul className="flex flex-col items-center gap-1 md:items-start 2xl:gap-2">
             {emails.map((email) => (
@@ -45,6 +50,7 @@ const Footer = ({
                 <a
                   href={`mailto:${email}`}
                   className="text-base hover:underline xl:text-lg 2xl:text-xl"
+                  {...umamiEventAttrs("contact-click", { email })}
                 >
                   {email}
                 </a>

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
+import { track } from "@/lib/analytics"
 
 type Props = {
   title: string
@@ -18,7 +19,10 @@ export default function MasterclassBanner({ title }: Props) {
     <p className="bg-lighter text-darker flex flex-col items-center justify-center px-8 py-1 text-center text-lg font-medium sm:flex-row sm:text-xl">
       <span>{title} Masterclass by Yogesh Samsi</span>
       <Button asChild variant="secondary" theme="darker">
-        <Link href="/masterclass">
+        <Link
+          href="/masterclass"
+          onClick={() => track("masterclass-banner-click", {})}
+        >
           <span className="font-semibold underline">Join now</span>
           <ArrowRightIcon className="aspect-square size-4 stroke-[2.5px] lg:size-6" />
         </Link>

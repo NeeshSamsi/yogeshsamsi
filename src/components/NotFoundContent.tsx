@@ -1,12 +1,18 @@
 "use client"
 
+import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
+import { track } from "@/lib/analytics"
 
 export default function NotFoundContent() {
   const pathname = usePathname()
+
+  useEffect(() => {
+    track("not-found", { path: pathname ?? "", referrer: document.referrer })
+  }, [pathname])
 
   return (
     <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-4 sm:gap-6 xl:gap-12">

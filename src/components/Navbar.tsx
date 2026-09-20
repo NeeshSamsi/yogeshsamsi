@@ -58,6 +58,7 @@ const Navbar = ({
             <Socials
               hoverClr="hover:text-light"
               sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
+              location="nav"
             />
           </ul>
 
@@ -104,6 +105,7 @@ const Navbar = ({
           <Socials
             hoverClr="hover:text-light"
             sizes="h-8 sm:h-12 md:h-6 lg:h-8 3xl:h-10"
+            location="nav"
           />
         </ul>
       </div>
