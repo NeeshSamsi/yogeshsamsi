@@ -3,5 +3,102 @@
   "metaDescription": "The terms of enrolment for the Yogesh Samsi Online Tabla Academy - fees and payment, class scheduling, course material, conduct and cancellations.",
   "title": "Terms of Service - Yogesh Samsi Tabla Academy",
   "intro": "These terms govern your enrolment in the Yogesh Samsi Tabla Academy. By enrolling, you agree to everything set out below. Please read it carefully and reach out if anything is unclear.",
-  "lastUpdated": "2026-11-26"
+  "lastUpdated": "2026-11-26",
+  "holidays": [
+    {
+      "date": "14.01.2026",
+      "day": "Wednesday",
+      "name": "Makar Sankranti"
+    },
+    {
+      "date": "26.01.2026",
+      "day": "Monday",
+      "name": "Republic Day"
+    },
+    {
+      "date": "15.02.2026",
+      "day": "Sunday",
+      "name": "Mahashivaratri"
+    },
+    {
+      "date": "03.03.2026",
+      "day": "Tuesday",
+      "name": "Holi"
+    },
+    {
+      "date": "19.03.2026",
+      "day": "Thursday",
+      "name": "Gudi Padwa"
+    },
+    {
+      "date": "21.03.2026",
+      "day": "Saturday",
+      "name": "Eid-al-Fitr"
+    },
+    {
+      "date": "26.03.2026",
+      "day": "Thursday",
+      "name": "Ram Navami"
+    },
+    {
+      "date": "03.04.2026",
+      "day": "Friday",
+      "name": "Good Friday"
+    },
+    {
+      "date": "26.06.2026",
+      "day": "Friday",
+      "name": "Muharram"
+    },
+    {
+      "date": "15.08.2026",
+      "day": "Saturday",
+      "name": "Independence Day"
+    },
+    {
+      "date": "26.08.2026",
+      "day": "Wednesday",
+      "name": "Eid – e - Milad"
+    },
+    {
+      "date": "04.09.2026",
+      "day": "Friday",
+      "name": "Gokulashtami"
+    },
+    {
+      "date": "14.09.2026",
+      "day": "Monday",
+      "name": "Ganesh Chaturthi"
+    },
+    {
+      "date": "25.09.2026",
+      "day": "Friday",
+      "name": "Anant Chaturdashi"
+    },
+    {
+      "date": "02.10.2025",
+      "day": "Thursday",
+      "name": "Gandhi Jayanti"
+    },
+    {
+      "date": "20.10.2026",
+      "day": "Thursday",
+      "name": "Dassera"
+    },
+    {
+      "date": "08.11.2026",
+      "day": "Sunday",
+      "name": "Diwali"
+    },
+    {
+      "date": "24.11.2026",
+      "day": "Tuesday",
+      "name": "Guru Nanak Jayanti"
+    },
+    {
+      "date": "25.12.2026",
+      "day": "Friday",
+      "name": "Christmas"
+    }
+  ]
 }
