@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AcademyTerms() {
-  const { title, intro, lastUpdated, body, holidays } = await readSingleton(
+  const { title, intro, lastUpdated, body, holidayYears } = await readSingleton(
     "academyTerms",
     { resolveLinkedFiles: true },
   )
@@ -56,29 +56,34 @@ export default async function AcademyTerms() {
         <article className="prose prose-lg text-darker xl:prose-xl marker:text-darker prose-headings:font-serif prose-headings:text-darker prose-p:text-darker prose-a:text-darker prose-strong:text-darker prose-li:text-darker prose-th:text-darker prose-td:text-darker prose-thead:border-darker/60 prose-tr:border-darker/25 max-w-[80ch]">
           <DocumentRenderer document={body} />
 
-          {holidays.length > 0 && (
+          {holidayYears.length > 0 && (
             <>
               <h2 id="holiday-list" className="scroll-mt-24">
                 Holiday List
               </h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Day</th>
-                    <th>Particulars</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {holidays.map(({ date, day, name }) => (
-                    <tr key={`${date}-${name}`}>
-                      <td>{date}</td>
-                      <td>{day}</td>
-                      <td>{name}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {holidayYears.map(({ year, holidays }) => (
+                <section key={year}>
+                  <h3>{year}</h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Particulars</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {holidays.map(({ date, day, name }) => (
+                        <tr key={`${date}-${name}`}>
+                          <td>{date}</td>
+                          <td>{day}</td>
+                          <td>{name}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </section>
+              ))}
             </>
           )}
         </article>
