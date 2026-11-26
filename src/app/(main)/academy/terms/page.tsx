@@ -53,7 +53,7 @@ export default async function AcademyTerms() {
           )}
         </div>
 
-        <article className="prose prose-lg text-darker xl:prose-xl marker:text-darker prose-headings:font-serif prose-headings:text-darker prose-p:text-darker prose-a:text-darker prose-strong:text-darker prose-li:text-darker prose-th:text-darker prose-td:text-darker max-w-[80ch]">
+        <article className="prose prose-lg text-darker xl:prose-xl marker:text-darker prose-headings:font-serif prose-headings:text-darker prose-p:text-darker prose-a:text-darker prose-strong:text-darker prose-li:text-darker prose-th:text-darker prose-td:text-darker prose-thead:border-darker/60 prose-tr:border-darker/25 max-w-[80ch]">
           <DocumentRenderer document={body} />
 
           {holidays.length > 0 && (
