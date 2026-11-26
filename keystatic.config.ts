@@ -620,6 +620,30 @@ export default config({
           },
           links: true,
         }),
+        holidays: fields.array(
+          fields.object({
+            date: fields.text({
+              label: "Date",
+              description: "As written on the holiday list, e.g. 14.01.2026.",
+              validation: { length: { min: 1 } },
+            }),
+            day: fields.text({
+              label: "Day",
+              validation: { length: { min: 1 } },
+            }),
+            name: fields.text({
+              label: "Holiday",
+              validation: { length: { min: 1 } },
+            }),
+          }),
+          {
+            label: "Holiday List",
+            description:
+              "Official Academy holidays, shown as a table at the bottom of the page under the Holiday List heading. The terms link to it with #holiday-list.",
+            itemLabel: (props) =>
+              `${props.fields.date.value} - ${props.fields.name.value}`,
+          },
+        ),
       },
     }),
 
