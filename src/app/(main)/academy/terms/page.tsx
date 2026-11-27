@@ -64,7 +64,7 @@ export default async function AcademyTerms() {
               {holidayYears.map(({ year, holidays }) => (
                 <section key={year}>
                   <h3>{year}</h3>
-                  <table>
+                  <table className="text-sm lg:text-base [&_td]:py-1.5 [&_th]:py-1.5">
                     <thead>
                       <tr>
                         <th>Date</th>
