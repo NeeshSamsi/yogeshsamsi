@@ -620,28 +620,43 @@ export default config({
           },
           links: true,
         }),
-        holidays: fields.array(
+        holidayYears: fields.array(
           fields.object({
-            date: fields.text({
-              label: "Date",
-              description: "As written on the holiday list, e.g. 14.01.2026.",
-              validation: { length: { min: 1 } },
+            year: fields.text({
+              label: "Year",
+              description:
+                "Shown as the sub-heading above this year's table, e.g. 2027.",
+              validation: { length: { min: 4 } },
             }),
-            day: fields.text({
-              label: "Day",
-              validation: { length: { min: 1 } },
-            }),
-            name: fields.text({
-              label: "Holiday",
-              validation: { length: { min: 1 } },
-            }),
+            holidays: fields.array(
+              fields.object({
+                date: fields.text({
+                  label: "Date",
+                  description:
+                    "As written on the holiday list, e.g. 14.01.2026.",
+                  validation: { length: { min: 1 } },
+                }),
+                day: fields.text({
+                  label: "Day",
+                  validation: { length: { min: 1 } },
+                }),
+                name: fields.text({
+                  label: "Holiday",
+                  validation: { length: { min: 1 } },
+                }),
+              }),
+              {
+                label: "Holidays",
+                itemLabel: (props) =>
+                  `${props.fields.date.value} - ${props.fields.name.value}`,
+              },
+            ),
           }),
           {
             label: "Holiday List",
             description:
-              "Official Academy holidays, shown as a table at the bottom of the page under the Holiday List heading. The terms link to it with #holiday-list.",
-            itemLabel: (props) =>
-              `${props.fields.date.value} - ${props.fields.name.value}`,
+              "Official Academy holidays, one entry per year. Each year is shown as its own table under the Holiday List heading at the bottom of the page. The terms link to it with #holiday-list.",
+            itemLabel: (props) => props.fields.year.value || "New year",
           },
         ),
       },
